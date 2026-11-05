@@ -135,11 +135,13 @@ export const submitCertificateRequest = async (req, res) => {
 
     try {
       const tlEmail = user.internshipDetails?.teamleaderEmail;
+
       if (tlEmail) {
         const tl = await User.findOne({
           email: tlEmail.toLowerCase(),
           role: "teamleader",
         });
+
         if (tl) {
           await notify(tl._id, "REQUEST_SUBMITTED", {
             title: "New Certificate Request",
@@ -408,6 +410,7 @@ export const setPassword = async (req, res) => {
   try {
     const { currentSecret, newPassword } = req.body;
     const user = await User.findById(req.user.id);
+
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
@@ -469,11 +472,12 @@ export const updateProfile = async (req, res) => {
   try {
     const { mobileNo } = req.body;
     const user = await User.findById(req.user.id);
+
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
 
-    // Whitelisted update: Only mobileNo is editable. Ignore every other field in the body.
+    // Whitelisted update: Only mobileNo is editable.
     const oldMobile = user.mobileNo;
     user.mobileNo = String(mobileNo).trim();
     await user.save();
@@ -520,10 +524,17 @@ export const chatWithBot = async (req, res) => {
   const chatbotUrl =
     process.env.CHATBOT_API_URL || "http://127.0.0.1:8000/api/chat";
 
+  // Temporary diagnostics: confirm the request reaches this controller.
+  console.info("[Chatbot Proxy] Request received", {
+    method: req.method,
+    path: req.originalUrl,
+  });
+
   try {
-    // Optionally fetch safe, scoped context for this intern's requests
+    // Optionally fetch safe, scoped context for this intern's requests.
     let internContext = "";
     const cleanMsg = String(message || "").trim();
+
     const isGreeting =
       /^(hi|hello|hey|good\s*(morning|afternoon|evening)|greetings)\b/i.test(
         cleanMsg,
@@ -545,18 +556,21 @@ export const chatWithBot = async (req, res) => {
           const summary = recentRequests
             .map((r) => `${r.certificateType.replace(/_/g, " ")} (${r.status})`)
             .join("; ");
+
           internContext = `[Intern Context: User's requests: ${summary}. Only mention if directly relevant to their question. Keep answers concise, clear, and direct without overwhelming tables.]`;
         }
       }
     } catch {
-      // Non-fatal if context lookup fails
+      // Non-fatal if context lookup fails.
     }
 
     const questionToSend = internContext
       ? `${internContext}\nUser Question: ${cleanMsg}`
       : cleanMsg;
 
-    // Allow sufficient time for AI model inference
+    // Allow sufficient time for AI model inference.
+    console.info("[Chatbot Proxy] Calling Python chatbot service");
+
     const response = await axios.post(
       chatbotUrl,
       { question: questionToSend },
@@ -566,6 +580,10 @@ export const chatWithBot = async (req, res) => {
       },
     );
 
+    console.info("[Chatbot Proxy] Python response received", {
+      status: response.status,
+    });
+
     const answer =
       response.data?.answer ||
       response.data?.response ||
@@ -574,11 +592,16 @@ export const chatWithBot = async (req, res) => {
 
     return res.status(200).json({ answer });
   } catch (err) {
-    // Return polite, friendly fallback message on connection failure or timeout without error stack
-    console.warn(
-      `[Chatbot Proxy] Service fallback triggered (${chatbotUrl}):`,
-      err.message,
-    );
+    // Log diagnostic details without exposing request content or credentials.
+    console.error("[Chatbot Proxy] Python request failed", {
+      message: err.message,
+      status: err.response?.status,
+      code: err.code,
+    });
+
+    // Keep the existing user-friendly fallback response.
+    console.warn("[Chatbot Proxy] Returning fallback answer");
+
     return res.status(200).json({
       answer:
         "The support assistant is currently unreachable. You can check your dashboard for active request statuses or contact support@uptoskill.com if you need immediate assistance.",
