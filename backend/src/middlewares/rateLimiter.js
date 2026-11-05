@@ -20,7 +20,7 @@ export const loginLimiter = rateLimit({
   legacyHeaders: false,
   validate: false,
   keyGenerator: (req) => {
-    const ip = ipKeyGenerator(req);
+    const ip = ipKeyGenerator(req.ip);
     const email = (req.body?.email || '').trim().toLowerCase();
     return `${ip}_${email}`;
   },
@@ -38,7 +38,7 @@ export const forgotPasswordLimiter = rateLimit({
   legacyHeaders: false,
   validate: false,
   keyGenerator: (req) => {
-    const ip = ipKeyGenerator(req);
+    const ip = ipKeyGenerator(req.ip);
     const email = (req.body?.email || '').trim().toLowerCase();
     return `${ip}_${email}`;
   },
@@ -56,7 +56,7 @@ export const passwordLimiter = rateLimit({
   legacyHeaders: false,
   validate: false,
   keyGenerator: (req) => {
-    const ip = ipKeyGenerator(req);
+    const ip = ipKeyGenerator(req.ip);
     return `${ip}_${req.user?.id || req.params?.token || 'pwd'}`;
   },
   handler: createRateLimitHandler(
@@ -73,7 +73,7 @@ export const chatLimiter = rateLimit({
   legacyHeaders: false,
   validate: false,
   keyGenerator: (req) => {
-    const ip = ipKeyGenerator(req);
+    const ip = ipKeyGenerator(req.ip);
     return `${ip}_${req.user?.id || 'chat_user'}`;
   },
   handler: createRateLimitHandler(
