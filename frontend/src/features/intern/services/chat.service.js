@@ -19,7 +19,7 @@ export const sendChatMessage = async (message) => {
           'Content-Type': 'application/json'
         },
         withCredentials: true,
-        timeout: 10000
+        timeout: 70000
       }
     );
     return response.data;

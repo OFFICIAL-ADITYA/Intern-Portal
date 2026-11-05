@@ -1,39 +1,38 @@
-
-import path from 'path';
-import fs from 'fs';
-import { fileURLToPath } from 'url';
-import mongoose from 'mongoose';
-import bcrypt from 'bcryptjs';
-import axios from 'axios';
-import User from '../models/User.js';
-import CertificateRequest from '../models/CertificateRequest.js';
-import Certificate from '../models/Certificate.js';
-import Counter from '../models/Counter.model.js';
-import RetentionPolicy from '../models/RetentionPolicy.js';
-import { logAction } from '../utils/logAction.js';
-import { notify } from '../services/notification.service.js';
+import path from "path";
+import fs from "fs";
+import { fileURLToPath } from "url";
+import mongoose from "mongoose";
+import bcrypt from "bcryptjs";
+import axios from "axios";
+import User from "../models/User.js";
+import CertificateRequest from "../models/CertificateRequest.js";
+import Certificate from "../models/Certificate.js";
+import Counter from "../models/Counter.model.js";
+import RetentionPolicy from "../models/RetentionPolicy.js";
+import { logAction } from "../utils/logAction.js";
+import { notify } from "../services/notification.service.js";
 
 const ALLOWED_TYPES = [
-  'offer_letter',
-  'bonafide',
-  'ojt_certificate',
-  'experience_letter',
-  'completion_certificate',
-  'intern_of_month',
-  'league_winner',
-  'custom'
+  "offer_letter",
+  "bonafide",
+  "ojt_certificate",
+  "experience_letter",
+  "completion_certificate",
+  "intern_of_month",
+  "league_winner",
+  "custom",
 ];
 
 const generateRequestNumber = async () => {
   const year = new Date().getFullYear();
 
   const counter = await Counter.findOneAndUpdate(
-    { _id: 'certRequest' },
+    { _id: "certRequest" },
     { $inc: { seq: 1 } },
-    { new: true, upsert: true }
+    { new: true, upsert: true },
   );
 
-  return `CERT-${year}-${String(counter.seq).padStart(5, '0')}`;
+  return `CERT-${year}-${String(counter.seq).padStart(5, "0")}`;
 };
 
 export const submitCertificateRequest = async (req, res) => {
@@ -42,7 +41,7 @@ export const submitCertificateRequest = async (req, res) => {
 
     if (!certificateType || !ALLOWED_TYPES.includes(certificateType)) {
       return res.status(400).json({
-        message: 'Valid certificate type is required'
+        message: "Valid certificate type is required",
       });
     }
 
@@ -50,54 +49,53 @@ export const submitCertificateRequest = async (req, res) => {
     const user = await User.findById(req.user.id);
 
     if (!user) {
-      return res.status(404).json({ message: 'User not found' });
+      return res.status(404).json({ message: "User not found" });
     }
 
     if (!user.startDate) {
       return res.status(404).json({
-        message: 'No internship details found for this account'
+        message: "No internship details found for this account",
       });
     }
 
     // Eligibility validations.
     const now = new Date();
     const hasEnded = user.endDate && new Date(user.endDate) < now;
-    const isOngoing =
-      user.internshipDetails?.status === 'ongoing' || !hasEnded;
+    const isOngoing = user.internshipDetails?.status === "ongoing" || !hasEnded;
     const isCompleted =
-      user.internshipDetails?.status === 'completed' || hasEnded;
+      user.internshipDetails?.status === "completed" || hasEnded;
 
-    if (certificateType === 'bonafide' && !isOngoing) {
+    if (certificateType === "bonafide" && !isOngoing) {
       return res.status(400).json({
         message:
-          'Bonafide certificate is only available for internships currently in progress'
+          "Bonafide certificate is only available for internships currently in progress",
       });
     }
 
-    if (certificateType === 'completion_certificate' && !isCompleted) {
+    if (certificateType === "completion_certificate" && !isCompleted) {
       return res.status(400).json({
         message:
-          'Internship completion certificate is only available after completing your internship'
+          "Internship completion certificate is only available after completing your internship",
       });
     }
 
-    if (certificateType === 'experience_letter' && !isCompleted) {
+    if (certificateType === "experience_letter" && !isCompleted) {
       return res.status(400).json({
         message:
-          'Experience letter is only available after completing your internship'
+          "Experience letter is only available after completing your internship",
       });
     }
 
     const existingPending = await CertificateRequest.findOne({
       userId: req.user.id,
       certificateType,
-      status: { $in: ['pending', 'processing'] }
+      status: { $in: ["pending", "processing"] },
     });
 
     if (existingPending) {
       return res.status(409).json({
         message:
-          'You already have a request in progress for this certificate type'
+          "You already have a request in progress for this certificate type",
       });
     }
 
@@ -106,9 +104,9 @@ export const submitCertificateRequest = async (req, res) => {
     // Keep only non-empty string metadata values.
     const safeMetadata = {};
 
-    if (metadata && typeof metadata === 'object') {
+    if (metadata && typeof metadata === "object") {
       for (const [key, val] of Object.entries(metadata)) {
-        if (typeof val === 'string' && val.trim()) {
+        if (typeof val === "string" && val.trim()) {
           safeMetadata[key] = val.trim();
         }
       }
@@ -120,47 +118,57 @@ export const submitCertificateRequest = async (req, res) => {
       internCode: user.internCode,
       certificateType,
       reason,
-      metadata: safeMetadata
+      metadata: safeMetadata,
     });
 
     await logAction({
       req,
       actor: req.user,
-      action: 'REQUEST_SUBMITTED',
-      targetType: 'request',
+      action: "REQUEST_SUBMITTED",
+      targetType: "request",
       targetId: request._id,
       meta: {
         certificateType: request.certificateType,
-        requestNumber: request.requestNumber
-      }
+        requestNumber: request.requestNumber,
+      },
     });
 
     try {
       const tlEmail = user.internshipDetails?.teamleaderEmail;
       if (tlEmail) {
-        const tl = await User.findOne({ email: tlEmail.toLowerCase(), role: 'teamleader' });
+        const tl = await User.findOne({
+          email: tlEmail.toLowerCase(),
+          role: "teamleader",
+        });
         if (tl) {
-          await notify(tl._id, 'REQUEST_SUBMITTED', {
-            title: 'New Certificate Request',
-            message: `${user.fullName || 'An intern'} has submitted a request for ${request.certificateType} (Ref: ${request.requestNumber}).`,
+          await notify(tl._id, "REQUEST_SUBMITTED", {
+            title: "New Certificate Request",
+            message: `${user.fullName || "An intern"} has submitted a request for ${request.certificateType} (Ref: ${request.requestNumber}).`,
             requestId: request._id,
-            email: true
+            email: true,
           });
         } else {
-          console.warn(`[Notification] No team leader found with email: ${tlEmail}`);
+          console.warn(
+            `[Notification] No team leader found with email: ${tlEmail}`,
+          );
         }
       } else {
-        console.warn(`[Notification] Intern ${user._id} has no team leader email assigned`);
+        console.warn(
+          `[Notification] Intern ${user._id} has no team leader email assigned`,
+        );
       }
     } catch (notifErr) {
-      console.error('[Notification] Error sending submission notification:', notifErr.message);
+      console.error(
+        "[Notification] Error sending submission notification:",
+        notifErr.message,
+      );
     }
 
     return res.status(201).json({ request });
   } catch (err) {
     return res.status(500).json({
-      message: 'Server error',
-      error: err.message
+      message: "Server error",
+      error: err.message,
     });
   }
 };
@@ -168,12 +176,9 @@ export const submitCertificateRequest = async (req, res) => {
 export const getMyRequests = async (req, res) => {
   try {
     const requests = await CertificateRequest.find({
-      userId: req.user.id
+      userId: req.user.id,
     })
-      .populate(
-        'certificateId',
-        'certificateNumber status pdfPath issuedDate'
-      )
+      .populate("certificateId", "certificateNumber status pdfPath issuedDate")
       .sort({ requestedAt: -1 });
 
     // Never expose draft or incomplete certificates to the intern.
@@ -182,8 +187,8 @@ export const getMyRequests = async (req, res) => {
 
       if (
         plain.certificateId &&
-        (plain.certificateId.status !== 'finalized' ||
-          plain.status !== 'completed')
+        (plain.certificateId.status !== "finalized" ||
+          plain.status !== "completed")
       ) {
         delete plain.certificateId;
       }
@@ -194,30 +199,29 @@ export const getMyRequests = async (req, res) => {
     return res.json({ requests: sanitizedRequests });
   } catch (err) {
     return res.status(500).json({
-      message: 'Server error',
-      error: err.message
+      message: "Server error",
+      error: err.message,
     });
   }
 };
 
 export const getProfile = async (req, res) => {
   try {
-    const user = await User.findById(req.user.id)
-      .select('-password');
+    const user = await User.findById(req.user.id).select("-password");
 
     if (!user) {
-      return res.status(404).json({ message: 'User not found' });
+      return res.status(404).json({ message: "User not found" });
     }
 
     // Preserve the configurable internship retention policy.
     const policy = await RetentionPolicy.findOne({
-      policyKey: 'intern'
+      policyKey: "intern",
     }).lean();
 
     const graceDays = policy?.graceDays ?? 30;
     let archiveNotice = null;
 
-    if (user.endDate && user.role === 'intern' && !user.isArchived) {
+    if (user.endDate && user.role === "intern" && !user.isArchived) {
       const archiveDate = new Date(user.endDate);
       archiveDate.setUTCDate(archiveDate.getUTCDate() + graceDays);
       archiveDate.setUTCHours(0, 0, 0, 0);
@@ -226,13 +230,13 @@ export const getProfile = async (req, res) => {
       today.setUTCHours(0, 0, 0, 0);
 
       const daysUntilArchive = Math.ceil(
-        (archiveDate.getTime() - today.getTime()) / 86400000
+        (archiveDate.getTime() - today.getTime()) / 86400000,
       );
 
       if (daysUntilArchive >= 0 && daysUntilArchive <= 7) {
         archiveNotice = {
           archiveDate,
-          daysUntilArchive
+          daysUntilArchive,
         };
       }
     }
@@ -240,8 +244,8 @@ export const getProfile = async (req, res) => {
     return res.json({ user, hasPassword: !!user.passwordSetAt, archiveNotice });
   } catch (err) {
     return res.status(500).json({
-      message: 'Server error',
-      error: err.message
+      message: "Server error",
+      error: err.message,
     });
   }
 };
@@ -255,26 +259,26 @@ export const getCertificateForRequest = async (req, res) => {
     const { id } = req.params;
 
     if (!mongoose.Types.ObjectId.isValid(id)) {
-      return res.status(400).json({ message: 'Invalid request ID' });
+      return res.status(400).json({ message: "Invalid request ID" });
     }
 
     const request = await CertificateRequest.findById(id);
 
     if (!request) {
       return res.status(404).json({
-        message: 'Certificate request not found'
+        message: "Certificate request not found",
       });
     }
 
     if (request.userId.toString() !== req.user.id) {
       return res.status(403).json({
-        message: 'Access denied: You do not own this certificate request'
+        message: "Access denied: You do not own this certificate request",
       });
     }
 
     if (!request.certificateId) {
       return res.status(404).json({
-        message: 'No certificate exists for this request'
+        message: "No certificate exists for this request",
       });
     }
 
@@ -282,24 +286,21 @@ export const getCertificateForRequest = async (req, res) => {
 
     if (!certificate) {
       return res.status(404).json({
-        message: 'Certificate record not found'
+        message: "Certificate record not found",
       });
     }
 
     if (certificate.userId.toString() !== req.user.id) {
       return res.status(403).json({
-        message: 'Access denied: Certificate does not belong to you'
+        message: "Access denied: Certificate does not belong to you",
       });
     }
 
     // Draft certificates must never be exposed to the intern.
-    if (
-      certificate.status !== 'finalized' ||
-      request.status !== 'completed'
-    ) {
+    if (certificate.status !== "finalized" || request.status !== "completed") {
       return res.status(400).json({
-        message: 'Certificate is not finalized or available yet',
-        status: request.status
+        message: "Certificate is not finalized or available yet",
+        status: request.status,
       });
     }
 
@@ -313,12 +314,12 @@ export const getCertificateForRequest = async (req, res) => {
         status: certificate.status,
         verificationCode: certificate.verificationCode,
         hasPdf: Boolean(certificate.pdfPath),
-        downloadUrl: `/api/intern/requests/${request._id}/certificate/download`
-      }
+        downloadUrl: `/api/intern/requests/${request._id}/certificate/download`,
+      },
     });
   } catch (err) {
     return res.status(500).json({
-      message: 'Internal server error'
+      message: "Internal server error",
     });
   }
 };
@@ -332,26 +333,26 @@ export const downloadCertificateForRequest = async (req, res) => {
     const { id } = req.params;
 
     if (!mongoose.Types.ObjectId.isValid(id)) {
-      return res.status(400).json({ message: 'Invalid request ID' });
+      return res.status(400).json({ message: "Invalid request ID" });
     }
 
     const request = await CertificateRequest.findById(id);
 
     if (!request) {
       return res.status(404).json({
-        message: 'Certificate request not found'
+        message: "Certificate request not found",
       });
     }
 
     if (request.userId.toString() !== req.user.id) {
       return res.status(403).json({
-        message: 'Access denied: You do not own this certificate request'
+        message: "Access denied: You do not own this certificate request",
       });
     }
 
     if (!request.certificateId) {
       return res.status(404).json({
-        message: 'No certificate exists for this request'
+        message: "No certificate exists for this request",
       });
     }
 
@@ -359,56 +360,46 @@ export const downloadCertificateForRequest = async (req, res) => {
 
     if (!certificate) {
       return res.status(404).json({
-        message: 'Certificate record not found'
+        message: "Certificate record not found",
       });
     }
 
     if (certificate.userId.toString() !== req.user.id) {
       return res.status(403).json({
-        message: 'Access denied: Certificate does not belong to you'
+        message: "Access denied: Certificate does not belong to you",
       });
     }
 
-    if (
-      certificate.status !== 'finalized' ||
-      request.status !== 'completed'
-    ) {
+    if (certificate.status !== "finalized" || request.status !== "completed") {
       return res.status(400).json({
-        message: 'Certificate has not been finalized yet'
+        message: "Certificate has not been finalized yet",
       });
     }
 
     if (!certificate.pdfPath) {
       return res.status(404).json({
-        message: 'Certificate PDF path is missing'
+        message: "Certificate PDF path is missing",
       });
     }
 
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = path.dirname(__filename);
-    const absolutePath = path.resolve(
-      __dirname,
-      '../../',
-      certificate.pdfPath
-    );
+    const absolutePath = path.resolve(__dirname, "../../", certificate.pdfPath);
 
     if (!fs.existsSync(absolutePath)) {
       return res.status(404).json({
-        message: 'Certificate PDF file is unavailable on server'
+        message: "Certificate PDF file is unavailable on server",
       });
     }
 
-    const safeFileName = `${
-      (certificate.certificateNumber || 'Certificate').replace(
-        /[^a-zA-Z0-9_-]/g,
-        '_'
-      )
-    }.pdf`;
+    const safeFileName = `${(
+      certificate.certificateNumber || "Certificate"
+    ).replace(/[^a-zA-Z0-9_-]/g, "_")}.pdf`;
 
     return res.download(absolutePath, safeFileName);
   } catch (err) {
     return res.status(500).json({
-      message: 'Internal server error'
+      message: "Internal server error",
     });
   }
 };
@@ -418,7 +409,7 @@ export const setPassword = async (req, res) => {
     const { currentSecret, newPassword } = req.body;
     const user = await User.findById(req.user.id);
     if (!user) {
-      return res.status(404).json({ message: 'User not found' });
+      return res.status(404).json({ message: "User not found" });
     }
 
     const hasPassword = !!user.passwordSetAt;
@@ -426,17 +417,26 @@ export const setPassword = async (req, res) => {
 
     if (!hasPassword) {
       // If no password exists yet, currentSecret must be the intern code.
-      isValidCurrentSecret = (currentSecret === user.internCode) || (typeof user.comparePassword === 'function' ? await user.comparePassword(currentSecret) : false);
+      isValidCurrentSecret =
+        currentSecret === user.internCode ||
+        (typeof user.comparePassword === "function"
+          ? await user.comparePassword(currentSecret)
+          : false);
     } else {
       // If password exists, it must be the current password.
-      isValidCurrentSecret = typeof user.comparePassword === 'function'
-        ? await user.comparePassword(currentSecret)
-        : (user.password ? await bcrypt.compare(currentSecret, user.password) : false);
+      isValidCurrentSecret =
+        typeof user.comparePassword === "function"
+          ? await user.comparePassword(currentSecret)
+          : user.password
+            ? await bcrypt.compare(currentSecret, user.password)
+            : false;
     }
 
     if (!isValidCurrentSecret) {
       return res.status(400).json({
-        message: hasPassword ? 'Incorrect current password' : 'Invalid intern code'
+        message: hasPassword
+          ? "Incorrect current password"
+          : "Invalid intern code",
       });
     }
 
@@ -447,20 +447,20 @@ export const setPassword = async (req, res) => {
     await logAction({
       req,
       actor: req.user,
-      action: 'PASSWORD_CHANGED',
-      targetType: 'user',
+      action: "PASSWORD_CHANGED",
+      targetType: "user",
       targetId: user._id,
-      meta: { email: user.email }
+      meta: { email: user.email },
     });
 
     return res.status(200).json({
-      message: 'Password updated successfully',
-      passwordSetAt: user.passwordSetAt
+      message: "Password updated successfully",
+      passwordSetAt: user.passwordSetAt,
     });
   } catch (err) {
     return res.status(500).json({
-      message: 'Internal server error',
-      error: err.message
+      message: "Internal server error",
+      error: err.message,
     });
   }
 };
@@ -470,7 +470,7 @@ export const updateProfile = async (req, res) => {
     const { mobileNo } = req.body;
     const user = await User.findById(req.user.id);
     if (!user) {
-      return res.status(404).json({ message: 'User not found' });
+      return res.status(404).json({ message: "User not found" });
     }
 
     // Whitelisted update: Only mobileNo is editable. Ignore every other field in the body.
@@ -481,17 +481,17 @@ export const updateProfile = async (req, res) => {
     await logAction({
       req,
       actor: req.user,
-      action: 'PROFILE_UPDATED',
-      targetType: 'user',
+      action: "PROFILE_UPDATED",
+      targetType: "user",
       targetId: user._id,
       meta: {
-        field: 'mobileNo',
-        previousMobile: oldMobile ? `${oldMobile.slice(0, 3)}***` : null
-      }
+        field: "mobileNo",
+        previousMobile: oldMobile ? `${oldMobile.slice(0, 3)}***` : null,
+      },
     });
 
     return res.status(200).json({
-      message: 'Profile updated successfully',
+      message: "Profile updated successfully",
       user: {
         id: user._id,
         fullName: user.fullName,
@@ -500,13 +500,13 @@ export const updateProfile = async (req, res) => {
         domain: user.domain,
         internCode: user.internCode,
         hasPassword: !!user.passwordSetAt,
-        passwordSetAt: user.passwordSetAt
-      }
+        passwordSetAt: user.passwordSetAt,
+      },
     });
   } catch (err) {
     return res.status(500).json({
-      message: 'Internal server error',
-      error: err.message
+      message: "Internal server error",
+      error: err.message,
     });
   }
 };
@@ -517,28 +517,34 @@ export const updateProfile = async (req, res) => {
  */
 export const chatWithBot = async (req, res) => {
   const { message } = req.body;
-  const chatbotUrl = process.env.CHATBOT_API_URL || 'http://127.0.0.1:8000/api/chat';
+  const chatbotUrl =
+    process.env.CHATBOT_API_URL || "http://127.0.0.1:8000/api/chat";
 
   try {
     // Optionally fetch safe, scoped context for this intern's requests
-    let internContext = '';
-    const cleanMsg = String(message || '').trim();
-    const isGreeting = /^(hi|hello|hey|good\s*(morning|afternoon|evening)|greetings)\b/i.test(cleanMsg);
+    let internContext = "";
+    const cleanMsg = String(message || "").trim();
+    const isGreeting =
+      /^(hi|hello|hey|good\s*(morning|afternoon|evening)|greetings)\b/i.test(
+        cleanMsg,
+      );
 
     try {
       if (isGreeting) {
         internContext = `[Guideline: User is saying hello. Reply warmly in 1-2 friendly sentences. Do not dump tables, requests, or unasked instructions.]`;
       } else {
-        const recentRequests = await CertificateRequest.find({ userId: req.user.id })
-          .select('certificateType status submissionDate createdAt')
+        const recentRequests = await CertificateRequest.find({
+          userId: req.user.id,
+        })
+          .select("certificateType status submissionDate createdAt")
           .sort({ createdAt: -1 })
           .limit(4)
           .lean();
 
         if (recentRequests && recentRequests.length > 0) {
           const summary = recentRequests
-            .map((r) => `${r.certificateType.replace(/_/g, ' ')} (${r.status})`)
-            .join('; ');
+            .map((r) => `${r.certificateType.replace(/_/g, " ")} (${r.status})`)
+            .join("; ");
           internContext = `[Intern Context: User's requests: ${summary}. Only mention if directly relevant to their question. Keep answers concise, clear, and direct without overwhelming tables.]`;
         }
       }
@@ -546,33 +552,36 @@ export const chatWithBot = async (req, res) => {
       // Non-fatal if context lookup fails
     }
 
-    const questionToSend = internContext ? `${internContext}\nUser Question: ${cleanMsg}` : cleanMsg;
+    const questionToSend = internContext
+      ? `${internContext}\nUser Question: ${cleanMsg}`
+      : cleanMsg;
 
-    // Call external chatbot service with strict 8-second timeout
+    // Allow sufficient time for AI model inference
     const response = await axios.post(
       chatbotUrl,
       { question: questionToSend },
       {
-        headers: { 'Content-Type': 'application/json' },
-        timeout: 8000
-      }
+        headers: { "Content-Type": "application/json" },
+        timeout: 60000,
+      },
     );
 
     const answer =
       response.data?.answer ||
       response.data?.response ||
       response.data?.message ||
-      'I processed your request, but received an empty response. Please ask again or contact support.';
+      "I processed your request, but received an empty response. Please ask again or contact support.";
 
     return res.status(200).json({ answer });
   } catch (err) {
     // Return polite, friendly fallback message on connection failure or timeout without error stack
-    console.warn(`[Chatbot Proxy] Service fallback triggered (${chatbotUrl}):`, err.message);
+    console.warn(
+      `[Chatbot Proxy] Service fallback triggered (${chatbotUrl}):`,
+      err.message,
+    );
     return res.status(200).json({
       answer:
-        "The support assistant is currently unreachable. You can check your dashboard for active request statuses or contact support@uptoskill.com if you need immediate assistance."
+        "The support assistant is currently unreachable. You can check your dashboard for active request statuses or contact support@uptoskill.com if you need immediate assistance.",
     });
   }
 };
-
-
