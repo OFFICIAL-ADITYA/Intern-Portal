@@ -1,0 +1,1150 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Offer Letter</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background: #e9edf2;
+}
+
+body {
+    font-family: Georgia, "Times New Roman", serif;
+    color: #063b6d;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+}
+
+/* =========================
+   A4 LANDSCAPE
+========================= */
+
+.page {
+    position: relative;
+    width: 1123px;
+    height: 794px;
+    margin: 0 auto;
+    padding: 42px 48px 45px;
+    background: #ffffff;
+    overflow: hidden;
+}
+
+/* =========================
+   BORDERS
+========================= */
+
+.outer-border {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    border: 1.5px solid #e2b52f;
+    pointer-events: none;
+    z-index: 30;
+}
+
+.inner-border {
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    right: 25px;
+    bottom: 25px;
+    border: 1px solid #063b6d;
+    pointer-events: none;
+    z-index: 30;
+}
+
+/* =========================
+   TOP DECORATION
+========================= */
+
+.top-decoration {
+    position: absolute;
+    top: -58px;
+    right: -55px;
+    width: 300px;
+    height: 115px;
+    background: #063b6d;
+    border-radius: 0 0 0 150px;
+    transform: rotate(7deg);
+    z-index: 1;
+}
+
+.top-decoration::after {
+    content: "";
+    position: absolute;
+    left: -20px;
+    bottom: 14px;
+    width: 330px;
+    height: 3px;
+    background: #e2b52f;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.header {
+    position: relative;
+    width: 100%;
+    height: 62px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 5;
+}
+
+/* =========================
+   LOGO
+========================= */
+
+.logo {
+    position: relative;
+    width: 340px;
+    height: 55px;
+    display: flex;
+    align-items: center;
+}
+
+.cap {
+    position: relative;
+    width: 28px;
+    height: 28px;
+    margin-right: 9px;
+    flex-shrink: 0;
+}
+
+.cap-top {
+    position: absolute;
+    top: 3px;
+    left: 1px;
+    width: 26px;
+    height: 15px;
+    background: #063b6d;
+    clip-path: polygon(
+        50% 0,
+        100% 45%,
+        50% 90%,
+        0 45%
+    );
+}
+
+.cap-bottom {
+    position: absolute;
+    top: 16px;
+    left: 7px;
+    width: 16px;
+    height: 6px;
+    background: #063b6d;
+    border-radius: 0 0 8px 8px;
+}
+
+.logo-name {
+    color: #063b6d;
+    font-size: 19px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.logo-arrow {
+    position: absolute;
+    left: 119px;
+    top: 7px;
+    width: 17px;
+    height: 17px;
+    border-top: 3px solid #f47732;
+    border-right: 3px solid #f47732;
+    transform: rotate(45deg);
+}
+
+.logo-tagline {
+    position: absolute;
+    left: 37px;
+    bottom: 0;
+    font-family: Arial, sans-serif;
+    font-size: 7px;
+    letter-spacing: 1.7px;
+    color: #687984;
+}
+
+/* =========================
+   META
+========================= */
+
+.offer-meta {
+    width: 220px;
+    text-align: right;
+    font-family: Arial, sans-serif;
+    font-size: 9px;
+    line-height: 1.8;
+    color: #063b6d;
+}
+
+.offer-meta strong {
+    font-weight: bold;
+}
+
+/* =========================
+   MAIN HEADING
+========================= */
+
+.heading {
+    position: relative;
+    margin-top: 5px;
+    z-index: 5;
+}
+
+.heading h1 {
+    color: #063b6d;
+    font-size: 35px;
+    line-height: 1;
+    font-weight: bold;
+    letter-spacing: 0.2px;
+}
+
+.heading-subtitle {
+    margin-top: 7px;
+    font-family: Arial, sans-serif;
+    font-size: 8px;
+    font-weight: bold;
+    letter-spacing: 5px;
+    color: #063b6d;
+}
+
+.heading-line {
+    position: relative;
+    width: 100%;
+    height: 2px;
+    margin-top: 8px;
+    background: #e2b52f;
+}
+
+.heading-line::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: -2px;
+    width: 78px;
+    height: 6px;
+    background: #063b6d;
+}
+
+/* =========================
+   INTRO
+========================= */
+
+.letter-intro {
+    position: relative;
+    margin-top: 10px;
+    z-index: 5;
+}
+
+.letter-intro h2 {
+    color: #063b6d;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.letter-intro p {
+    font-family: Arial, sans-serif;
+    font-size: 9.5px;
+    line-height: 1.45;
+    color: #244a68;
+}
+
+.letter-intro strong {
+    color: #063b6d;
+}
+
+/* =========================
+   INFORMATION BOX
+========================= */
+
+.information-box {
+    position: relative;
+    width: 100%;
+    height: 142px;
+    margin-top: 17px;
+    display: grid;
+    grid-template-columns: 1fr 1px 1fr;
+    border: 1.5px solid #e2b52f;
+    border-radius: 9px;
+    background: #ffffff;
+    overflow: hidden;
+    z-index: 5;
+}
+
+.info-column {
+    min-width: 0;
+    padding: 11px 17px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.info-column:first-child {
+    padding-right: 22px;
+}
+
+.info-column:last-child {
+    padding-left: 22px;
+}
+
+.vertical-divider {
+    width: 1px;
+    height: 105px;
+    align-self: center;
+    background: #e2b52f;
+}
+
+.info-item {
+    min-height: 26px;
+    display: grid;
+    grid-template-columns: 27px minmax(0, 1fr);
+    align-items: center;
+    column-gap: 9px;
+}
+
+.info-item > div:last-child {
+    min-width: 0;
+}
+
+.info-item b {
+    display: block;
+    margin-bottom: 2px;
+    font-family: Arial, sans-serif;
+    font-size: 8px;
+    line-height: 1.1;
+    color: #063b6d;
+}
+
+.info-item span {
+    display: block;
+    font-family: Arial, sans-serif;
+    font-size: 7.5px;
+    line-height: 1.2;
+    color: #36556d;
+    overflow-wrap: anywhere;
+}
+
+/* =========================
+   ICONS
+========================= */
+
+.info-icon {
+    position: relative;
+    width: 27px;
+    height: 27px;
+    border-radius: 50%;
+    background: #063b6d;
+}
+
+.person-icon::before {
+    content: "";
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    top: 5px;
+    left: 9.5px;
+    border-radius: 50%;
+    background: #ffffff;
+}
+
+.person-icon::after {
+    content: "";
+    position: absolute;
+    width: 14px;
+    height: 8px;
+    bottom: 5px;
+    left: 6.5px;
+    border-radius: 9px 9px 3px 3px;
+    background: #ffffff;
+}
+
+.building-icon::before {
+    content: "";
+    position: absolute;
+    width: 13px;
+    height: 16px;
+    top: 6px;
+    left: 7px;
+    background: #ffffff;
+}
+
+.building-icon::after {
+    content: "▪ ▪";
+    position: absolute;
+    top: 7px;
+    left: 9px;
+    width: 10px;
+    color: #063b6d;
+    font-size: 6px;
+    line-height: 8px;
+}
+
+.calendar-icon::before {
+    content: "";
+    position: absolute;
+    width: 15px;
+    height: 14px;
+    top: 7px;
+    left: 6px;
+    border-radius: 2px;
+    background: #ffffff;
+}
+
+.calendar-icon::after {
+    content: "";
+    position: absolute;
+    width: 15px;
+    height: 3px;
+    top: 8px;
+    left: 6px;
+    background: #e2b52f;
+}
+
+.clock-icon::before {
+    content: "";
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    top: 4px;
+    left: 4px;
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+}
+
+.clock-icon::after {
+    content: "";
+    position: absolute;
+    width: 7px;
+    height: 2px;
+    top: 13px;
+    left: 13px;
+    background: #ffffff;
+    transform: rotate(45deg);
+}
+
+.location-icon::before {
+    content: "";
+    position: absolute;
+    width: 14px;
+    height: 18px;
+    top: 4px;
+    left: 6px;
+    background: #ffffff;
+    border-radius: 10px 10px 10px 2px;
+    transform: rotate(-45deg);
+}
+
+.location-icon::after {
+    content: "";
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    top: 9px;
+    left: 11px;
+    border-radius: 50%;
+    background: #063b6d;
+}
+
+.document-icon::before {
+    content: "";
+    position: absolute;
+    width: 13px;
+    height: 17px;
+    top: 5px;
+    left: 7px;
+    border-radius: 2px;
+    background: #ffffff;
+}
+
+.document-icon::after {
+    content: "≡";
+    position: absolute;
+    top: 3px;
+    left: 10px;
+    color: #063b6d;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.people-icon::before {
+    content: "";
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    top: 5px;
+    left: 10px;
+    border-radius: 50%;
+    background: #ffffff;
+}
+
+.people-icon::after {
+    content: "";
+    position: absolute;
+    width: 15px;
+    height: 9px;
+    bottom: 5px;
+    left: 6px;
+    border-radius: 8px 8px 3px 3px;
+    background: #ffffff;
+}
+
+/* =========================
+   TERMS
+========================= */
+
+.terms {
+    position: relative;
+    margin-top: 14px;
+    z-index: 5;
+}
+
+.terms-title {
+    color: #063b6d;
+    font-family: Arial, sans-serif;
+    font-size: 9px;
+    font-weight: bold;
+    letter-spacing: 1.4px;
+    margin-bottom: 5px;
+}
+
+.terms ol {
+    padding-left: 18px;
+    font-family: Arial, sans-serif;
+    font-size: 7.3px;
+    line-height: 1.35;
+    color: #36556d;
+}
+
+.terms li {
+    margin-bottom: 2px;
+}
+
+/* =========================
+   CLOSING
+========================= */
+
+.closing {
+    position: relative;
+    margin-top: 8px;
+    z-index: 5;
+}
+
+.closing p {
+    font-family: Arial, sans-serif;
+    font-size: 8px;
+    line-height: 1.35;
+    color: #244a68;
+}
+
+.closing strong {
+    color: #063b6d;
+}
+
+/* =========================
+   SIGNATURE AREA
+========================= */
+
+.signature-section {
+    position: relative;
+    height: 83px;
+    margin-top: 5px;
+    display: grid;
+    grid-template-columns: 1fr 180px 130px;
+    align-items: end;
+    z-index: 5;
+}
+
+.signature {
+    font-family: Arial, sans-serif;
+    color: #063b6d;
+}
+
+.best-regards {
+    font-size: 7px;
+    margin-bottom: 4px;
+}
+
+.signature-name {
+    font-family: "Brush Script MT", cursive;
+    font-size: 17px;
+    color: #063b6d;
+    margin-bottom: 1px;
+}
+
+.signature-line {
+    width: 150px;
+    height: 1px;
+    background: #063b6d;
+    margin-bottom: 4px;
+}
+
+.signature strong,
+.signature span {
+    display: block;
+    font-size: 7px;
+    line-height: 1.35;
+}
+
+.signature strong {
+    font-weight: bold;
+}
+
+/* =========================
+   SEAL
+========================= */
+
+.seal {
+    position: relative;
+    width: 75px;
+    height: 75px;
+    justify-self: center;
+    border: 2px solid #e2b52f;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.seal-inner {
+    width: 62px;
+    height: 62px;
+    border: 1px solid #063b6d;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #063b6d;
+}
+
+.seal-top {
+    font-family: Arial, sans-serif;
+    font-size: 5px;
+    letter-spacing: 1px;
+}
+
+.seal-center {
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 20px;
+}
+
+.seal-bottom {
+    font-family: Arial, sans-serif;
+    font-size: 4px;
+    letter-spacing: 0.5px;
+}
+
+.seal-label {
+    position: absolute;
+    bottom: -13px;
+    width: 100px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    font-size: 5.5px;
+    color: #36556d;
+}
+
+/* =========================
+   QR
+========================= */
+
+.qr-section {
+    justify-self: end;
+    text-align: center;
+}
+
+.qr-box {
+    width: 72px;
+    height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
+    background: #ffffff;
+    border: 1px solid #063b6d;
+}
+
+.certificate-qr-code {
+    width: 64px !important;
+    height: 64px !important;
+    object-fit: contain;
+    display: block;
+}
+
+.qr-label {
+    margin-top: 4px;
+    font-family: Arial, sans-serif;
+    font-size: 6px;
+    color: #36556d;
+}
+
+/* =========================
+   BOTTOM DECORATION
+========================= */
+
+.bottom-decoration {
+    position: absolute;
+    right: -5px;
+    bottom: -5px;
+    width: 145px;
+    height: 105px;
+    background: #063b6d;
+    clip-path: polygon(
+        100% 0,
+        100% 100%,
+        0 100%
+    );
+    z-index: 3;
+}
+
+.bottom-decoration::before {
+    content: "";
+    position: absolute;
+    width: 175px;
+    height: 3px;
+    right: -20px;
+    bottom: 35px;
+    background: #e2b52f;
+    transform: rotate(-43deg);
+}
+
+.bottom-decoration::after {
+    content: "";
+    position: absolute;
+    width: 170px;
+    height: 2px;
+    right: -15px;
+    bottom: 25px;
+    background: #e2b52f;
+    transform: rotate(-43deg);
+}
+
+.bottom-decoration-text {
+    position: absolute;
+    right: 11px;
+    bottom: 10px;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    font-size: 5px;
+    line-height: 1.3;
+    font-weight: bold;
+    text-align: right;
+}
+
+/* =========================
+   BACKGROUND WAVES
+========================= */
+
+.background-waves {
+    position: absolute;
+    right: -100px;
+    bottom: 100px;
+    width: 300px;
+    height: 300px;
+    opacity: 0.035;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.background-waves div {
+    position: absolute;
+    border: 1px solid #063b6d;
+    border-radius: 50%;
+}
+
+.background-waves div:nth-child(1) {
+    width: 280px;
+    height: 280px;
+    right: 0;
+    bottom: 0;
+}
+
+.background-waves div:nth-child(2) {
+    width: 215px;
+    height: 215px;
+    right: 32px;
+    bottom: 32px;
+}
+
+.background-waves div:nth-child(3) {
+    width: 150px;
+    height: 150px;
+    right: 65px;
+    bottom: 65px;
+}
+
+/* =========================
+   PRINT
+========================= */
+
+@page {
+    size: A4 landscape;
+    margin: 0;
+}
+
+@media print {
+    html,
+    body {
+        width: 297mm;
+        height: 210mm;
+        margin: 0;
+        padding: 0;
+        background: #ffffff;
+    }
+
+    .page {
+        width: 297mm;
+        height: 210mm;
+        margin: 0;
+        box-shadow: none;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="page">
+
+    <!-- BORDERS -->
+    <div class="outer-border"></div>
+    <div class="inner-border"></div>
+
+    <!-- TOP DECORATION -->
+    <div class="top-decoration"></div>
+
+    <!-- HEADER -->
+    <header class="header">
+
+        <div class="logo">
+            <div class="cap">
+                <div class="cap-top"></div>
+                <div class="cap-bottom"></div>
+            </div>
+
+            <div class="logo-name">
+                UPTO<span>SKILLS</span>
+            </div>
+
+            <div class="logo-arrow"></div>
+
+            <div class="logo-tagline">
+                SKILL · GROW · SUCCEED
+            </div>
+        </div>
+
+        <div class="offer-meta">
+            <div>
+                Date:
+                <strong>{{issueDate}}</strong>
+            </div>
+
+            <div>
+                Offer No:
+                <strong>{{requestNumber}}</strong>
+            </div>
+        </div>
+
+    </header>
+
+    <!-- HEADING -->
+    <section class="heading">
+
+        <h1>OFFER LETTER</h1>
+
+        <div class="heading-subtitle">
+            W E L C O M E &nbsp; T O &nbsp; A &nbsp;
+            B R I G H T E R &nbsp; T O M O R R O W
+        </div>
+
+        <div class="heading-line"></div>
+
+    </section>
+
+    <!-- INTRO -->
+    <section class="letter-intro">
+
+        <h2>
+            Dear <span>{{fullName}}</span>,
+        </h2>
+
+        <p>
+            We are pleased to offer you an internship opportunity at
+            <strong>UptoSkills</strong>.
+            We believe your skills, enthusiasm, and passion for learning
+            make you a great fit for our team. We are excited to have you
+            on board and look forward to a successful journey together.
+        </p>
+
+    </section>
+
+    <!-- INFORMATION -->
+    <section class="information-box">
+
+        <div class="info-column">
+
+            <div class="info-item">
+                <div class="info-icon person-icon"></div>
+
+                <div>
+                    <b>Position</b>
+                    <span>Web Development Intern</span>
+                </div>
+            </div>
+
+            <div class="info-item">
+                <div class="info-icon building-icon"></div>
+
+                <div>
+                    <b>Department</b>
+                    <span>{{domain}}</span>
+                </div>
+            </div>
+
+            <div class="info-item">
+                <div class="info-icon calendar-icon"></div>
+
+                <div>
+                    <b>Start Date</b>
+                    <span>{{startDate}}</span>
+                </div>
+            </div>
+
+            <div class="info-item">
+                <div class="info-icon calendar-icon"></div>
+
+                <div>
+                    <b>End Date</b>
+                    <span>{{endDate}}</span>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="vertical-divider"></div>
+
+        <div class="info-column">
+
+            <div class="info-item">
+                <div class="info-icon clock-icon"></div>
+
+                <div>
+                    <b>Duration</b>
+                    <span>Internship Period</span>
+                </div>
+            </div>
+
+            <div class="info-item">
+                <div class="info-icon location-icon"></div>
+
+                <div>
+                    <b>Mode</b>
+                    <span>Hybrid | Jaipur</span>
+                </div>
+            </div>
+
+            <div class="info-item">
+                <div class="info-icon document-icon"></div>
+
+                <div>
+                    <b>Intern Code</b>
+                    <span>{{internCode}}</span>
+                </div>
+            </div>
+
+            <div class="info-item">
+                <div class="info-icon people-icon"></div>
+
+                <div>
+                    <b>Organization</b>
+                    <span>UptoSkills</span>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- TERMS -->
+    <section class="terms">
+
+        <div class="terms-title">
+            TERMS AND CONDITIONS
+        </div>
+
+        <ol>
+
+            <li>
+                This internship is a learning opportunity and does not
+                constitute a full-time employment offer.
+            </li>
+
+            <li>
+                You are expected to maintain professionalism,
+                confidentiality, and adhere to company policies.
+            </li>
+
+            <li>
+                Your performance will be evaluated during the internship period.
+            </li>
+
+            <li>
+                The company reserves the right to modify or terminate
+                the internship in case of unprofessional conduct or
+                policy violation.
+            </li>
+
+            <li>
+                On successful completion, you will be eligible for an
+                internship completion certificate.
+            </li>
+
+            <li>
+                Any intellectual property or work produced during the
+                internship will remain the property of
+                <strong>UptoSkills</strong>.
+            </li>
+
+        </ol>
+
+    </section>
+
+    <!-- CLOSING -->
+    <section class="closing">
+
+        <p>
+            We are confident that this internship will be a valuable
+            learning experience for you. Welcome to
+            <strong>UptoSkills</strong>!
+        </p>
+
+    </section>
+
+    <!-- SIGNATURE -->
+    <section class="signature-section">
+
+        <div class="signature">
+
+            <div class="best-regards">
+                Best Regards,
+            </div>
+
+            <div class="signature-name">
+                Authorized
+            </div>
+
+            <div class="signature-line"></div>
+
+            <strong>
+                Authorized Person
+            </strong>
+
+            <span>
+                HR Manager
+            </span>
+
+            <span>
+                UptoSkills
+            </span>
+
+        </div>
+
+        <!-- COMPANY SEAL -->
+        <div class="seal">
+
+            <div class="seal-inner">
+
+                <div class="seal-top">
+                    U P T O S K I L L S
+                </div>
+
+                <div class="seal-center">
+                    U
+                </div>
+
+                <div class="seal-bottom">
+                    SKILL · GROW · SUCCEED
+                </div>
+
+            </div>
+
+            <div class="seal-label">
+                Official Company Seal
+            </div>
+
+        </div>
+
+        <!-- QR -->
+        <div class="qr-section">
+
+            <div class="qr-box">
+
+                <img
+                    src="{{qrCodeUrl}}"
+                    alt="QR Code"
+                    class="certificate-qr-code"
+                >
+
+            </div>
+
+            <div class="qr-label">
+                Scan to Verify
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- BOTTOM DECORATION -->
+    <div class="bottom-decoration">
+
+        <div class="bottom-decoration-text">
+            LEARN<br>
+            GROW<br>
+            SUCCEED
+        </div>
+
+    </div>
+
+    <!-- BACKGROUND WAVES -->
+    <div class="background-waves">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+
+</div>
+
+<!-- REQUIRED TEMPLATE PLACEHOLDERS -->
+<div style="display:none;">
+    {{fullName}}
+    {{internCode}}
+    {{domain}}
+    {{startDate}}
+    {{endDate}}
+    {{issueDate}}
+    {{requestNumber}}
+    {{certificateTitle}}
+    {{qrCodeUrl}}
+</div>
+
+</body>
+</html>

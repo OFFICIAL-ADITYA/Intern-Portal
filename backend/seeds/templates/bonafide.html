@@ -1,0 +1,905 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bonafide Certificate</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background: #e9edf2;
+}
+
+body {
+    font-family: Georgia, "Times New Roman", serif;
+    color: #063b6d;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+}
+
+/* =========================
+   A4 LANDSCAPE PAGE
+========================= */
+
+.page {
+    position: relative;
+    width: 1123px;
+    height: 794px;
+    margin: 0 auto;
+    background: #ffffff;
+    overflow: hidden;
+}
+
+/* =========================
+   DOUBLE BORDER
+========================= */
+
+.outer-border {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    border: 2px solid #063b6d;
+    z-index: 20;
+    pointer-events: none;
+}
+
+.inner-border {
+    position: absolute;
+    top: 21px;
+    left: 21px;
+    right: 21px;
+    bottom: 21px;
+    border: 1px solid #d9aa27;
+    z-index: 20;
+    pointer-events: none;
+}
+
+.corner {
+    position: absolute;
+    width: 42px;
+    height: 42px;
+    z-index: 21;
+    pointer-events: none;
+}
+
+.corner::before,
+.corner::after {
+    content: "";
+    position: absolute;
+    background: #d9aa27;
+}
+
+.corner::before {
+    width: 42px;
+    height: 2px;
+}
+
+.corner::after {
+    width: 2px;
+    height: 42px;
+}
+
+.corner-tl {
+    top: 21px;
+    left: 21px;
+}
+
+.corner-tr {
+    top: 21px;
+    right: 21px;
+    transform: rotate(90deg);
+}
+
+.corner-bl {
+    bottom: 21px;
+    left: 21px;
+    transform: rotate(-90deg);
+}
+
+.corner-br {
+    bottom: 21px;
+    right: 21px;
+    transform: rotate(180deg);
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.header {
+    position: relative;
+    height: 115px;
+    padding: 47px 76px 0;
+    text-align: center;
+    z-index: 5;
+}
+
+.logo-name {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 29px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: #063b6d;
+}
+
+.logo-name span {
+    color: #e19c21;
+}
+
+.logo-tagline {
+    margin-top: 4px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 7px;
+    letter-spacing: 4px;
+    color: #718292;
+}
+
+/* =========================
+   HEADER SIDE LINES
+========================= */
+
+.header-line {
+    position: absolute;
+    top: 73px;
+    width: 175px;
+    height: 1px;
+    background: #d9aa27;
+}
+
+.header-line.left {
+    left: 80px;
+}
+
+.header-line.right {
+    right: 80px;
+}
+
+.header-diamond {
+    position: absolute;
+    top: 68px;
+    width: 10px;
+    height: 10px;
+    background: #d9aa27;
+    transform: rotate(45deg);
+}
+
+.header-diamond.left {
+    left: 252px;
+}
+
+.header-diamond.right {
+    right: 252px;
+}
+
+/* =========================
+   TITLE
+========================= */
+
+.title-section {
+    position: relative;
+    text-align: center;
+    z-index: 5;
+}
+
+.title-section h1 {
+    font-size: 38px;
+    line-height: 1.15;
+    letter-spacing: 1px;
+    color: #063b6d;
+    font-weight: 700;
+}
+
+.title-section .subtitle {
+    margin-top: 7px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    color: #d29c1d;
+}
+
+/* =========================
+   ORNAMENT
+========================= */
+
+.ornament {
+    position: relative;
+    width: 270px;
+    height: 22px;
+    margin: 9px auto 0;
+}
+
+.ornament::before {
+    content: "";
+    position: absolute;
+    top: 10px;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: #d9aa27;
+}
+
+.ornament-center {
+    position: absolute;
+    top: 5px;
+    left: calc(50% - 6px);
+    width: 12px;
+    height: 12px;
+    background: #ffffff;
+    border: 2px solid #063b6d;
+    transform: rotate(45deg);
+}
+
+/* =========================
+   CERTIFICATE BODY
+========================= */
+
+.body {
+    position: relative;
+    width: 850px;
+    margin: 8px auto 0;
+    text-align: center;
+    z-index: 5;
+}
+
+.body-intro {
+    font-size: 15px;
+    line-height: 1.55;
+    color: #3d566d;
+}
+
+.student-name {
+    display: inline-block;
+    margin-top: 11px;
+    padding: 0 28px 5px;
+    min-width: 400px;
+    border-bottom: 2px solid #063b6d;
+    color: #063b6d;
+    font-size: 31px;
+    font-weight: bold;
+}
+
+.body-description {
+    margin: 12px auto 0;
+    max-width: 790px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    line-height: 1.65;
+    color: #38566e;
+}
+
+.body-description strong {
+    color: #063b6d;
+}
+
+/* =========================
+   INFORMATION
+========================= */
+
+.info-strip {
+    width: 780px;
+    min-height: 92px;
+    margin: 20px auto 0;
+    padding: 14px 22px;
+    display: grid;
+    grid-template-columns: 1fr 1px 1fr;
+    border: 1px solid #d9aa27;
+    border-radius: 8px;
+    background: #fbfcfd;
+}
+
+.info-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 8px;
+}
+
+.info-divider {
+    width: 1px;
+    background: #d9aa27;
+}
+
+.info-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.info-label {
+    font-size: 8px;
+    font-weight: bold;
+    color: #063b6d;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+}
+
+.info-value {
+    font-size: 9px;
+    color: #4b6274;
+}
+
+/* =========================
+   CERTIFICATE NUMBER
+========================= */
+
+.certificate-number {
+    margin-top: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 8px;
+    color: #607486;
+    letter-spacing: 0.6px;
+}
+
+.certificate-number strong {
+    color: #063b6d;
+}
+
+/* =========================
+   VALIDATION STATEMENT
+========================= */
+
+.statement {
+    width: 760px;
+    margin: 15px auto 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 9.5px;
+    line-height: 1.5;
+    color: #536b7c;
+}
+
+.statement strong {
+    color: #063b6d;
+}
+
+/* =========================
+   BOTTOM AREA
+========================= */
+
+.bottom-section {
+    position: absolute;
+    left: 80px;
+    right: 80px;
+    bottom: 55px;
+    height: 145px;
+    z-index: 5;
+}
+
+/* =========================
+   ISSUE DATE
+========================= */
+
+.issue-date {
+    position: absolute;
+    left: 0;
+    bottom: 14px;
+    width: 180px;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #063b6d;
+}
+
+.issue-date-line {
+    width: 155px;
+    height: 1px;
+    margin: 0 auto 5px;
+    background: #063b6d;
+}
+
+.issue-date-label {
+    font-size: 7px;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+.issue-date-value {
+    margin-top: 3px;
+    font-size: 8px;
+    color: #536b7c;
+}
+
+/* =========================
+   SIGNATURE
+========================= */
+
+.signature {
+    position: absolute;
+    right: 210px;
+    bottom: 13px;
+    width: 180px;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #063b6d;
+}
+
+.signature-name {
+    height: 27px;
+    font-family: "Brush Script MT", cursive;
+    font-size: 21px;
+}
+
+.signature-line {
+    width: 155px;
+    height: 1px;
+    margin: 0 auto 5px;
+    background: #063b6d;
+}
+
+.signature-title {
+    font-size: 7px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+.signature-company {
+    margin-top: 2px;
+    font-size: 6.5px;
+    color: #607486;
+}
+
+/* =========================
+   SEAL
+========================= */
+
+.seal {
+    position: absolute;
+    right: 80px;
+    bottom: 6px;
+    width: 92px;
+    height: 92px;
+    border: 2px solid #d9aa27;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: rotate(-8deg);
+}
+
+.seal::before {
+    content: "";
+    position: absolute;
+    width: 77px;
+    height: 77px;
+    border: 1px solid #063b6d;
+    border-radius: 50%;
+}
+
+.seal-content {
+    position: relative;
+    text-align: center;
+    color: #063b6d;
+    z-index: 2;
+}
+
+.seal-top {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 5px;
+    letter-spacing: 1px;
+}
+
+.seal-symbol {
+    margin: 3px 0;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.seal-bottom {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 4px;
+    letter-spacing: 0.6px;
+}
+
+/* =========================
+   QR
+========================= */
+
+.qr-section {
+    position: absolute;
+    left: 235px;
+    bottom: 0;
+    width: 90px;
+    text-align: center;
+}
+
+.qr-box {
+    width: 76px;
+    height: 76px;
+    margin: 0 auto;
+    padding: 5px;
+    background: #ffffff;
+    border: 1px solid #063b6d;
+}
+
+.certificate-qr-code {
+    width: 64px !important;
+    height: 64px !important;
+    object-fit: contain;
+    display: block;
+}
+
+.qr-label {
+    margin-top: 4px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 5.5px;
+    color: #607486;
+}
+
+/* =========================
+   DECORATIVE SIDES
+========================= */
+
+.left-decoration {
+    position: absolute;
+    left: 42px;
+    top: 260px;
+    width: 3px;
+    height: 160px;
+    background: #d9aa27;
+    z-index: 3;
+}
+
+.left-decoration::before,
+.left-decoration::after {
+    content: "";
+    position: absolute;
+    left: -5px;
+    width: 13px;
+    height: 13px;
+    border: 1px solid #063b6d;
+    transform: rotate(45deg);
+}
+
+.left-decoration::before {
+    top: -8px;
+}
+
+.left-decoration::after {
+    bottom: -8px;
+}
+
+.right-decoration {
+    position: absolute;
+    right: 42px;
+    top: 260px;
+    width: 3px;
+    height: 160px;
+    background: #d9aa27;
+    z-index: 3;
+}
+
+.right-decoration::before,
+.right-decoration::after {
+    content: "";
+    position: absolute;
+    right: -5px;
+    width: 13px;
+    height: 13px;
+    border: 1px solid #063b6d;
+    transform: rotate(45deg);
+}
+
+.right-decoration::before {
+    top: -8px;
+}
+
+.right-decoration::after {
+    bottom: -8px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer {
+    position: absolute;
+    left: 80px;
+    right: 80px;
+    bottom: 27px;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 5.5px;
+    letter-spacing: 1px;
+    color: #82919c;
+    z-index: 5;
+}
+
+/* =========================
+   HIDDEN PLACEHOLDERS
+========================= */
+
+.required-placeholders {
+    display: none;
+}
+
+/* =========================
+   PRINT
+========================= */
+
+@page {
+    size: A4 landscape;
+    margin: 0;
+}
+
+@media print {
+    html,
+    body {
+        width: 297mm;
+        height: 210mm;
+        background: #ffffff;
+    }
+
+    .page {
+        width: 297mm;
+        height: 210mm;
+        margin: 0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="page">
+
+    <!-- DOUBLE BORDER -->
+    <div class="outer-border"></div>
+    <div class="inner-border"></div>
+
+    <!-- CORNERS -->
+    <div class="corner corner-tl"></div>
+    <div class="corner corner-tr"></div>
+    <div class="corner corner-bl"></div>
+    <div class="corner corner-br"></div>
+
+    <!-- SIDE DECORATION -->
+    <div class="left-decoration"></div>
+    <div class="right-decoration"></div>
+
+    <!-- HEADER -->
+    <header class="header">
+
+        <div class="header-line left"></div>
+        <div class="header-line right"></div>
+
+        <div class="header-diamond left"></div>
+        <div class="header-diamond right"></div>
+
+        <div class="logo-name">
+            UPTO<span>SKILLS</span>
+        </div>
+
+        <div class="logo-tagline">
+            SKILL · GROW · SUCCEED
+        </div>
+
+    </header>
+
+    <!-- TITLE -->
+    <section class="title-section">
+
+        <h1>BONAFIDE CERTIFICATE</h1>
+
+        <div class="subtitle">
+            CERTIFICATE OF STUDENTSHIP
+        </div>
+
+        <div class="ornament">
+            <div class="ornament-center"></div>
+        </div>
+
+    </section>
+
+    <!-- BODY -->
+    <section class="body">
+
+        <div class="body-intro">
+            This is to certify that
+        </div>
+
+        <div class="student-name">
+            {{fullName}}
+        </div>
+
+        <div class="body-description">
+
+            bearing Intern Code
+            <strong>{{internCode}}</strong>,
+            is a bonafide intern of
+            <strong>UptoSkills</strong>
+            and is associated with the
+            <strong>{{domain}}</strong>
+            domain.
+
+            The internship period is from
+            <strong>{{startDate}}</strong>
+            to
+            <strong>{{endDate}}</strong>.
+
+        </div>
+
+        <!-- INFORMATION STRIP -->
+        <div class="info-strip">
+
+            <div class="info-column">
+
+                <div class="info-row">
+                    <span class="info-label">
+                        Intern Code
+                    </span>
+
+                    <span class="info-value">
+                        {{internCode}}
+                    </span>
+                </div>
+
+                <div class="info-row">
+                    <span class="info-label">
+                        Domain
+                    </span>
+
+                    <span class="info-value">
+                        {{domain}}
+                    </span>
+                </div>
+
+            </div>
+
+            <div class="info-divider"></div>
+
+            <div class="info-column">
+
+                <div class="info-row">
+                    <span class="info-label">
+                        Start Date
+                    </span>
+
+                    <span class="info-value">
+                        {{startDate}}
+                    </span>
+                </div>
+
+                <div class="info-row">
+                    <span class="info-label">
+                        End Date
+                    </span>
+
+                    <span class="info-value">
+                        {{endDate}}
+                    </span>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="certificate-number">
+            Certificate No:
+            <strong>{{requestNumber}}</strong>
+        </div>
+
+        <div class="statement">
+
+            This certificate is issued upon request for official
+            purposes and confirms the association of the above-mentioned
+            intern with <strong>UptoSkills</strong>.
+
+        </div>
+
+    </section>
+
+    <!-- BOTTOM -->
+    <section class="bottom-section">
+
+        <!-- ISSUE DATE -->
+        <div class="issue-date">
+
+            <div class="issue-date-line"></div>
+
+            <div class="issue-date-label">
+                DATE OF ISSUE
+            </div>
+
+            <div class="issue-date-value">
+                {{issueDate}}
+            </div>
+
+        </div>
+
+        <!-- QR -->
+        <div class="qr-section">
+
+            <div class="qr-box">
+
+                <img
+                    src="{{qrCodeUrl}}"
+                    alt="QR Code"
+                    class="certificate-qr-code"
+                >
+
+            </div>
+
+            <div class="qr-label">
+                SCAN TO VERIFY
+            </div>
+
+        </div>
+
+        <!-- SIGNATURE -->
+        <div class="signature">
+
+            <div class="signature-name">
+                Authorized
+            </div>
+
+            <div class="signature-line"></div>
+
+            <div class="signature-title">
+                AUTHORIZED SIGNATORY
+            </div>
+
+            <div class="signature-company">
+                UptoSkills
+            </div>
+
+        </div>
+
+        <!-- SEAL -->
+        <div class="seal">
+
+            <div class="seal-content">
+
+                <div class="seal-top">
+                    U P T O S K I L L S
+                </div>
+
+                <div class="seal-symbol">
+                    U
+                </div>
+
+                <div class="seal-bottom">
+                    VERIFIED
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- FOOTER -->
+    <div class="footer">
+        UPTOSKILLS · SKILL · GROW · SUCCEED
+    </div>
+
+    <!-- REQUIRED PLACEHOLDERS -->
+    <div class="required-placeholders">
+        {{fullName}}
+        {{internCode}}
+        {{domain}}
+        {{startDate}}
+        {{endDate}}
+        {{issueDate}}
+        {{requestNumber}}
+        {{certificateTitle}}
+        {{qrCodeUrl}}
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,889 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{certificateTitle}}</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background: #e9edf2;
+}
+
+body {
+    font-family: Georgia, "Times New Roman", serif;
+    color: #063b6d;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+}
+
+.page {
+    position: relative;
+    width: 1123px;
+    height: 794px;
+    margin: 0 auto;
+    background: #ffffff;
+    overflow: hidden;
+}
+
+/* =========================
+   DOUBLE BORDER
+========================= */
+
+.outer-border {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    border: 2px solid #063b6d;
+    z-index: 30;
+    pointer-events: none;
+}
+
+.inner-border {
+    position: absolute;
+    top: 22px;
+    left: 22px;
+    right: 22px;
+    bottom: 22px;
+    border: 1px solid #d9aa27;
+    z-index: 30;
+    pointer-events: none;
+}
+
+/* =========================
+   CORNERS
+========================= */
+
+.corner {
+    position: absolute;
+    width: 44px;
+    height: 44px;
+    z-index: 31;
+    pointer-events: none;
+}
+
+.corner::before,
+.corner::after {
+    content: "";
+    position: absolute;
+    background: #d9aa27;
+}
+
+.corner::before {
+    width: 44px;
+    height: 2px;
+}
+
+.corner::after {
+    width: 2px;
+    height: 44px;
+}
+
+.corner-tl {
+    top: 22px;
+    left: 22px;
+}
+
+.corner-tr {
+    top: 22px;
+    right: 22px;
+    transform: rotate(90deg);
+}
+
+.corner-bl {
+    bottom: 22px;
+    left: 22px;
+    transform: rotate(-90deg);
+}
+
+.corner-br {
+    bottom: 22px;
+    right: 22px;
+    transform: rotate(180deg);
+}
+
+/* =========================
+   TOP DECORATION
+========================= */
+
+.top-decoration {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 112px;
+    background: #063b6d;
+    clip-path: polygon(
+        0 0,
+        100% 0,
+        100% 65%,
+        88% 100%,
+        12% 100%,
+        0 65%
+    );
+    z-index: 1;
+}
+
+.top-decoration::after {
+    content: "";
+    position: absolute;
+    left: 140px;
+    right: 140px;
+    bottom: 13px;
+    height: 2px;
+    background: #d9aa27;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.header {
+    position: relative;
+    height: 128px;
+    padding-top: 28px;
+    text-align: center;
+    z-index: 5;
+}
+
+.logo-name {
+    color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 27px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.logo-name span {
+    color: #e2b52f;
+}
+
+.logo-tagline {
+    margin-top: 4px;
+    color: #dbe5ec;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 6px;
+    letter-spacing: 3.5px;
+}
+
+/* =========================
+   TITLE
+========================= */
+
+.title-section {
+    position: relative;
+    width: 900px;
+    margin: 0 auto;
+    text-align: center;
+    z-index: 5;
+}
+
+.title-section h1 {
+    color: #063b6d;
+    font-size: 39px;
+    line-height: 1.1;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.subtitle {
+    margin-top: 8px;
+    color: #d09a1b;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 9px;
+    font-weight: bold;
+    letter-spacing: 4px;
+}
+
+/* =========================
+   ORNAMENT
+========================= */
+
+.ornament {
+    position: relative;
+    width: 330px;
+    height: 26px;
+    margin: 8px auto 0;
+}
+
+.ornament::before {
+    content: "";
+    position: absolute;
+    top: 12px;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: #d9aa27;
+}
+
+.ornament::after {
+    content: "◆";
+    position: absolute;
+    top: 3px;
+    left: calc(50% - 8px);
+    width: 16px;
+    height: 20px;
+    color: #d9aa27;
+    background: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    line-height: 20px;
+}
+
+/* =========================
+   CONTENT
+========================= */
+
+.content {
+    position: relative;
+    width: 850px;
+    margin: 0 auto;
+    text-align: center;
+    z-index: 5;
+}
+
+.intro {
+    color: #40596d;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+.student-name {
+    display: inline-block;
+    min-width: 470px;
+    margin-top: 8px;
+    padding: 0 35px 7px;
+    border-bottom: 2px solid #063b6d;
+    color: #063b6d;
+    font-size: 33px;
+    font-weight: bold;
+}
+
+.description {
+    width: 800px;
+    margin: 12px auto 0;
+    color: #40596d;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10.5px;
+    line-height: 1.6;
+}
+
+.description strong {
+    color: #063b6d;
+}
+
+/* =========================
+   CUSTOM MESSAGE
+========================= */
+
+.custom-message {
+    width: 760px;
+    min-height: 76px;
+    margin: 17px auto 0;
+    padding: 13px 28px;
+    border-left: 4px solid #d9aa27;
+    border-right: 4px solid #d9aa27;
+    background: #f8fafb;
+    color: #40596d;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    line-height: 1.6;
+}
+
+.custom-message strong {
+    color: #063b6d;
+}
+
+/* =========================
+   DETAILS
+========================= */
+
+.details {
+    width: 790px;
+    height: 100px;
+    margin: 16px auto 0;
+    padding: 13px 22px;
+    display: grid;
+    grid-template-columns: 1fr 1px 1fr;
+    border: 1px solid #d9aa27;
+    border-radius: 8px;
+    background: #ffffff;
+}
+
+.detail-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+}
+
+.detail-divider {
+    width: 1px;
+    background: #d9aa27;
+}
+
+.detail-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.detail-label {
+    color: #063b6d;
+    font-size: 7px;
+    font-weight: bold;
+    letter-spacing: 0.7px;
+    text-transform: uppercase;
+}
+
+.detail-value {
+    color: #536c7d;
+    font-size: 8.5px;
+}
+
+/* =========================
+   CERTIFICATE NUMBER
+========================= */
+
+.certificate-number {
+    margin-top: 9px;
+    color: #687b88;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 7.5px;
+    letter-spacing: 0.6px;
+}
+
+.certificate-number strong {
+    color: #063b6d;
+}
+
+/* =========================
+   BOTTOM
+========================= */
+
+.bottom {
+    position: absolute;
+    left: 75px;
+    right: 75px;
+    bottom: 46px;
+    height: 108px;
+    z-index: 5;
+}
+
+/* =========================
+   DATE
+========================= */
+
+.date-block {
+    position: absolute;
+    left: 0;
+    bottom: 2px;
+    width: 175px;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.date-line {
+    width: 150px;
+    height: 1px;
+    margin: 0 auto 5px;
+    background: #063b6d;
+}
+
+.date-label {
+    color: #063b6d;
+    font-size: 6.5px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.date-value {
+    margin-top: 3px;
+    color: #657988;
+    font-size: 8px;
+}
+
+/* =========================
+   QR
+========================= */
+
+.qr-section {
+    position: absolute;
+    left: 255px;
+    bottom: -1px;
+    width: 88px;
+    text-align: center;
+}
+
+.qr-box {
+    width: 72px;
+    height: 72px;
+    margin: 0 auto;
+    padding: 4px;
+    border: 1px solid #063b6d;
+    background: #ffffff;
+}
+
+.certificate-qr-code {
+    display: block;
+    width: 62px !important;
+    height: 62px !important;
+    object-fit: contain;
+}
+
+.qr-label {
+    margin-top: 4px;
+    color: #657988;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 5px;
+}
+
+/* =========================
+   SIGNATURE
+========================= */
+
+.signature {
+    position: absolute;
+    right: 210px;
+    bottom: 0;
+    width: 180px;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.signature-name {
+    height: 27px;
+    color: #063b6d;
+    font-family: "Brush Script MT", cursive;
+    font-size: 21px;
+}
+
+.signature-line {
+    width: 150px;
+    height: 1px;
+    margin: 0 auto 5px;
+    background: #063b6d;
+}
+
+.signature-title {
+    color: #063b6d;
+    font-size: 6.5px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+.signature-company {
+    margin-top: 2px;
+    color: #657988;
+    font-size: 6px;
+}
+
+/* =========================
+   SEAL
+========================= */
+
+.seal {
+    position: absolute;
+    right: 65px;
+    bottom: -3px;
+    width: 95px;
+    height: 95px;
+    border: 2px solid #d9aa27;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: rotate(-8deg);
+}
+
+.seal::before {
+    content: "";
+    position: absolute;
+    width: 78px;
+    height: 78px;
+    border: 1px solid #063b6d;
+    border-radius: 50%;
+}
+
+.seal-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: #063b6d;
+}
+
+.seal-top {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 4.5px;
+    letter-spacing: 1px;
+}
+
+.seal-symbol {
+    margin: 3px 0;
+    color: #d9aa27;
+    font-size: 23px;
+    font-weight: bold;
+}
+
+.seal-bottom {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 4px;
+    letter-spacing: 0.5px;
+}
+
+/* =========================
+   BOTTOM DECORATION
+========================= */
+
+.bottom-decoration {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 295px;
+    height: 50px;
+    background: #063b6d;
+    clip-path: polygon(
+        16% 0,
+        100% 0,
+        100% 100%,
+        0 100%
+    );
+    z-index: 2;
+}
+
+.bottom-decoration::before {
+    content: "";
+    position: absolute;
+    left: 25px;
+    right: 0;
+    top: 7px;
+    height: 2px;
+    background: #d9aa27;
+    transform: rotate(7deg);
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer {
+    position: absolute;
+    left: 75px;
+    bottom: 27px;
+    color: #83919b;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 5.5px;
+    letter-spacing: 1px;
+    z-index: 5;
+}
+
+/* =========================
+   HIDDEN PLACEHOLDERS
+========================= */
+
+.required-placeholders {
+    display: none;
+}
+
+/* =========================
+   PRINT
+========================= */
+
+@page {
+    size: A4 landscape;
+    margin: 0;
+}
+
+@media print {
+    html,
+    body {
+        width: 297mm;
+        height: 210mm;
+        background: #ffffff;
+    }
+
+    .page {
+        width: 297mm;
+        height: 210mm;
+        margin: 0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="page">
+
+    <!-- DOUBLE BORDER -->
+    <div class="outer-border"></div>
+    <div class="inner-border"></div>
+
+    <!-- CORNERS -->
+    <div class="corner corner-tl"></div>
+    <div class="corner corner-tr"></div>
+    <div class="corner corner-bl"></div>
+    <div class="corner corner-br"></div>
+
+    <!-- TOP DECORATION -->
+    <div class="top-decoration"></div>
+
+    <!-- HEADER -->
+    <header class="header">
+
+        <div class="logo-name">
+            UPTO<span>SKILLS</span>
+        </div>
+
+        <div class="logo-tagline">
+            SKILL · GROW · SUCCEED
+        </div>
+
+    </header>
+
+    <!-- TITLE -->
+    <section class="title-section">
+
+        <h1>
+            {{certificateTitle}}
+        </h1>
+
+        <div class="subtitle">
+            OFFICIAL CERTIFICATE
+        </div>
+
+        <div class="ornament"></div>
+
+    </section>
+
+    <!-- CONTENT -->
+    <section class="content">
+
+        <div class="intro">
+            This certificate is proudly presented to
+        </div>
+
+        <div class="student-name">
+            {{fullName}}
+        </div>
+
+        <div class="description">
+
+            bearing Intern Code
+            <strong>{{internCode}}</strong>,
+            associated with
+            <strong>UptoSkills</strong>
+            in the
+            <strong>{{domain}}</strong>
+            domain.
+
+        </div>
+
+        <!-- CUSTOM MESSAGE -->
+        <div class="custom-message">
+
+            This certificate recognizes the participation,
+            contribution, achievement, or successful completion
+            associated with the above-mentioned intern.
+
+            The relevant period of association was from
+            <strong>{{startDate}}</strong>
+            to
+            <strong>{{endDate}}</strong>.
+
+            We appreciate the dedication and commitment demonstrated
+            during the internship journey.
+
+        </div>
+
+        <!-- DETAILS -->
+        <div class="details">
+
+            <div class="detail-column">
+
+                <div class="detail-row">
+
+                    <span class="detail-label">
+                        Intern Code
+                    </span>
+
+                    <span class="detail-value">
+                        {{internCode}}
+                    </span>
+
+                </div>
+
+                <div class="detail-row">
+
+                    <span class="detail-label">
+                        Domain
+                    </span>
+
+                    <span class="detail-value">
+                        {{domain}}
+                    </span>
+
+                </div>
+
+            </div>
+
+            <div class="detail-divider"></div>
+
+            <div class="detail-column">
+
+                <div class="detail-row">
+
+                    <span class="detail-label">
+                        Start Date
+                    </span>
+
+                    <span class="detail-value">
+                        {{startDate}}
+                    </span>
+
+                </div>
+
+                <div class="detail-row">
+
+                    <span class="detail-label">
+                        End Date
+                    </span>
+
+                    <span class="detail-value">
+                        {{endDate}}
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="certificate-number">
+
+            Certificate No:
+            <strong>{{requestNumber}}</strong>
+
+        </div>
+
+    </section>
+
+    <!-- BOTTOM DECORATION -->
+    <div class="bottom-decoration"></div>
+
+    <!-- BOTTOM -->
+    <section class="bottom">
+
+        <!-- ISSUE DATE -->
+        <div class="date-block">
+
+            <div class="date-line"></div>
+
+            <div class="date-label">
+                DATE OF ISSUE
+            </div>
+
+            <div class="date-value">
+                {{issueDate}}
+            </div>
+
+        </div>
+
+        <!-- QR -->
+        <div class="qr-section">
+
+            <div class="qr-box">
+
+                <img
+                    src="{{qrCodeUrl}}"
+                    alt="QR Code"
+                    class="certificate-qr-code"
+                >
+
+            </div>
+
+            <div class="qr-label">
+                SCAN TO VERIFY
+            </div>
+
+        </div>
+
+        <!-- SIGNATURE -->
+        <div class="signature">
+
+            <div class="signature-name">
+                Authorized
+            </div>
+
+            <div class="signature-line"></div>
+
+            <div class="signature-title">
+                AUTHORIZED SIGNATORY
+            </div>
+
+            <div class="signature-company">
+                UptoSkills
+            </div>
+
+        </div>
+
+        <!-- SEAL -->
+        <div class="seal">
+
+            <div class="seal-content">
+
+                <div class="seal-top">
+                    U P T O S K I L L S
+                </div>
+
+                <div class="seal-symbol">
+                    ◆
+                </div>
+
+                <div class="seal-bottom">
+                    OFFICIAL
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- FOOTER -->
+    <div class="footer">
+        UPTOSKILLS · OFFICIAL CERTIFICATE · SKILL · GROW · SUCCEED
+    </div>
+
+    <!-- REQUIRED PLACEHOLDERS -->
+    <div class="required-placeholders">
+        {{fullName}}
+        {{internCode}}
+        {{domain}}
+        {{startDate}}
+        {{endDate}}
+        {{issueDate}}
+        {{requestNumber}}
+        {{certificateTitle}}
+        {{qrCodeUrl}}
+    </div>
+
+</div>
+
+</body>
+</html>

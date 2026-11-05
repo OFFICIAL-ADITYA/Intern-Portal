@@ -1,0 +1,1255 @@
+/* =========================================================
+   UPTOSKILLS
+   INTERNSHIP EXPERIENCE LETTER
+   A4 PORTRAIT
+   210mm × 297mm
+========================================================= */
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    width: 210mm;
+}
+
+body {
+    width: 210mm;
+    min-height: 297mm;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: #eeeeee;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    color: #0b315c;
+}
+
+
+/* =========================================================
+   MAIN A4 PAGE
+========================================================= */
+
+.letter {
+    position: relative;
+
+    width: 210mm;
+    height: 297mm;
+
+    min-width: 794px;
+    min-height: 1123px;
+
+    max-width: 794px;
+    max-height: 1123px;
+
+    overflow: hidden;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 8px 28px rgba(0, 0, 0, 0.16);
+}
+
+
+/* =========================================================
+   OUTER GOLD BORDER
+========================================================= */
+
+.outer-border {
+    position: absolute;
+
+    left: 9px;
+    right: 9px;
+
+    top: 9px;
+    bottom: 9px;
+
+    border: 2px solid #d0a63f;
+
+    z-index: 100;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   INNER NAVY BORDER
+========================================================= */
+
+.inner-border {
+    position: absolute;
+
+    left: 24px;
+    right: 24px;
+
+    top: 28px;
+    bottom: 24px;
+
+    border: 1px solid #0b315c;
+
+    z-index: 100;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   BACKGROUND WATERMARK
+========================================================= */
+
+.watermark {
+    position: absolute;
+
+    right: 245px;
+    top: 365px;
+
+    width: 135px;
+    height: 135px;
+
+    opacity: 0.045;
+
+    z-index: 1;
+
+    pointer-events: none;
+}
+
+.watermark-ring {
+    width: 135px;
+    height: 135px;
+
+    border: 10px solid #15909c;
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.watermark-letter {
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-size: 76px;
+
+    line-height: 1;
+
+    font-weight: 800;
+
+    color: #15909c;
+}
+
+
+/* =========================================================
+   TOP RIGHT DECORATION
+========================================================= */
+
+.top-decoration {
+    position: absolute;
+
+    right: -7px;
+    top: -5px;
+
+    width: 270px;
+    height: 130px;
+
+    z-index: 6;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   LOGO
+========================================================= */
+
+.logo {
+    position: absolute;
+
+    left: 47px;
+    top: 31px;
+
+    width: 250px;
+    height: 67px;
+
+    z-index: 30;
+}
+
+
+/* Graduation cap */
+
+.logo-cap {
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    width: 37px;
+    height: 34px;
+}
+
+
+/* Logo name */
+
+.logo-name {
+    position: absolute;
+
+    left: 35px;
+    top: 5px;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 30px;
+
+    line-height: 1;
+
+    font-weight: 800;
+
+    letter-spacing: -1.8px;
+
+    color: #10b89c;
+}
+
+.logo-name span {
+    color: #f47735;
+}
+
+
+/* Logo subtitle */
+
+.logo-tagline {
+    position: absolute;
+
+    left: 38px;
+    top: 39px;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 8px;
+
+    line-height: 1;
+
+    font-weight: 600;
+
+    color: #0c8190;
+}
+
+
+/* =========================================================
+   COMPANY LINE
+========================================================= */
+
+.company-line {
+    position: absolute;
+
+    left: 48px;
+    top: 91px;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 6px;
+
+    font-weight: 700;
+
+    letter-spacing: 2.2px;
+
+    color: #70879a;
+
+    z-index: 25;
+}
+
+.company-line-rule {
+    position: absolute;
+
+    left: 225px;
+    top: 95px;
+
+    width: 80px;
+    height: 1px;
+
+    background: #7896a0;
+
+    z-index: 25;
+}
+
+
+/* =========================================================
+   REFERENCE INFORMATION
+========================================================= */
+
+.reference-info {
+    position: absolute;
+
+    right: 43px;
+    top: 78px;
+
+    width: 170px;
+
+    font-size: 8px;
+
+    line-height: 1.75;
+
+    color: #0b315c;
+
+    z-index: 30;
+}
+
+.reference-info strong {
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   LEARN / GROW / SUCCEED
+========================================================= */
+
+.learn-grow {
+    position: absolute;
+
+    right: 53px;
+    top: 29px;
+
+    width: 76px;
+
+    text-align: center;
+
+    transform: rotate(-7deg);
+
+    z-index: 25;
+
+    font-family:
+        "Brush Script MT",
+        "Segoe Script",
+        cursive;
+
+    font-size: 13px;
+
+    font-style: italic;
+
+    font-weight: 600;
+
+    line-height: 0.95;
+
+    color: #0b315c;
+}
+
+.learn-grow span {
+    display: block;
+}
+
+
+/* =========================================================
+   MAIN HEADING
+========================================================= */
+
+.heading {
+    position: absolute;
+
+    left: 28px;
+    right: 28px;
+
+    top: 118px;
+
+    text-align: center;
+
+    z-index: 30;
+}
+
+.heading h1 {
+    margin: 0;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 27px;
+
+    line-height: 1.05;
+
+    font-weight: 700;
+
+    letter-spacing: 0.1px;
+
+    color: #0b315c;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   HEADING SUBTITLE
+========================================================= */
+
+.heading-line {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 9px;
+
+    margin-top: 8px;
+}
+
+.heading-line span {
+    width: 67px;
+
+    height: 2px;
+
+    background: #d0a63f;
+}
+
+.heading-line strong {
+    font-size: 10px;
+
+    font-weight: 600;
+
+    letter-spacing: 3.5px;
+
+    white-space: nowrap;
+
+    color: #0b315c;
+}
+
+
+/* =========================================================
+   MAIN CONTENT
+========================================================= */
+
+.content {
+    position: absolute;
+
+    left: 46px;
+    right: 46px;
+
+    top: 195px;
+
+    z-index: 20;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 11.5px;
+
+    line-height: 1.48;
+
+    color: #273e58;
+}
+
+.content p {
+    margin: 0 0 17px;
+}
+
+.content strong {
+    color: #0b315c;
+
+    font-weight: 700;
+}
+
+.opening {
+    max-width: 700px;
+}
+
+
+/* =========================================================
+   INFORMATION ROW
+========================================================= */
+
+.info-row {
+    position: absolute;
+
+    left: 50px;
+    right: 50px;
+
+    top: 500px;
+
+    height: 145px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    column-gap: 0;
+
+    row-gap: 21px;
+
+    z-index: 30;
+}
+
+.info-box {
+    position: relative;
+
+    height: 62px;
+
+    text-align: center;
+
+    border-right: 1px solid #8aa4ad;
+}
+
+.info-box:nth-child(2),
+.info-box:nth-child(4) {
+    border-right: 0;
+}
+
+
+/* =========================================================
+   INFORMATION ICON CONTAINER
+========================================================= */
+
+.info-icon {
+    height: 28px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 4px;
+}
+
+
+/* =========================================================
+   BRIEFCASE ICON
+========================================================= */
+
+.briefcase span {
+    position: relative;
+
+    width: 23px;
+    height: 16px;
+
+    background: #0b315c;
+
+    border-radius: 3px;
+}
+
+.briefcase span::before {
+    content: "";
+
+    position: absolute;
+
+    left: 7px;
+    top: -5px;
+
+    width: 9px;
+    height: 5px;
+
+    border: 2px solid #0b315c;
+
+    border-bottom: 0;
+
+    border-radius: 3px 3px 0 0;
+}
+
+.briefcase span::after {
+    content: "";
+
+    position: absolute;
+
+    left: 9px;
+    top: 6px;
+
+    width: 5px;
+    height: 4px;
+
+    background: #ffffff;
+
+    border-radius: 1px;
+}
+
+
+/* =========================================================
+   CALENDAR ICON
+========================================================= */
+
+.calendar span {
+    position: relative;
+
+    width: 21px;
+    height: 21px;
+
+    border: 2px solid #0b315c;
+
+    border-radius: 3px;
+}
+
+.calendar span::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    right: 0;
+
+    top: 6px;
+
+    border-top: 2px solid #0b315c;
+}
+
+.calendar span::after {
+    content: "";
+
+    position: absolute;
+
+    left: 4px;
+    top: -5px;
+
+    width: 3px;
+    height: 6px;
+
+    background: #0b315c;
+
+    box-shadow:
+        8px 0 #0b315c;
+}
+
+
+/* =========================================================
+   LOCATION ICON
+========================================================= */
+
+.location span {
+    position: relative;
+
+    width: 21px;
+    height: 26px;
+
+    background: #0b315c;
+
+    border-radius:
+        50% 50% 50% 0;
+
+    transform: rotate(-45deg);
+}
+
+.location span::after {
+    content: "";
+
+    position: absolute;
+
+    left: 7px;
+    top: 7px;
+
+    width: 7px;
+    height: 7px;
+
+    background: #ffffff;
+
+    border-radius: 50%;
+}
+
+
+/* =========================================================
+   TEAM ICON
+========================================================= */
+
+.team span {
+    position: relative;
+
+    width: 32px;
+    height: 27px;
+}
+
+.team span::before {
+    content: "";
+
+    position: absolute;
+
+    left: 11px;
+    top: 0;
+
+    width: 9px;
+    height: 9px;
+
+    background: #0b315c;
+
+    border-radius: 50%;
+
+    box-shadow:
+        -10px 5px 0 -1px #0b315c,
+        10px 5px 0 -1px #0b315c;
+}
+
+.team span::after {
+    content: "";
+
+    position: absolute;
+
+    left: 9px;
+    bottom: 0;
+
+    width: 13px;
+    height: 11px;
+
+    background: #0b315c;
+
+    border-radius: 8px 8px 2px 2px;
+
+    box-shadow:
+        -10px 3px 0 -1px #0b315c,
+        10px 3px 0 -1px #0b315c;
+}
+
+
+/* =========================================================
+   INFORMATION TEXT
+========================================================= */
+
+.info-title {
+    font-size: 9px;
+
+    line-height: 1.15;
+
+    font-weight: 700;
+
+    color: #0b315c;
+
+    margin-bottom: 3px;
+}
+
+.info-value {
+    font-size: 9px;
+
+    line-height: 1.2;
+
+    font-weight: 600;
+
+    color: #0b315c;
+}
+
+
+/* =========================================================
+   SIGNATURE SECTION
+========================================================= */
+
+.signature-section {
+    position: absolute;
+
+    left: 48px;
+    top: 690px;
+
+    width: 170px;
+
+    z-index: 35;
+}
+
+.sincerely {
+    font-size: 11px;
+
+    line-height: 1.2;
+
+    margin-bottom: 2px;
+
+    color: #273e58;
+}
+
+.signature {
+    height: 38px;
+
+    display: flex;
+    align-items: center;
+
+    font-family:
+        "Brush Script MT",
+        "Segoe Script",
+        cursive;
+
+    font-size: 25px;
+
+    font-style: italic;
+
+    color: #0b315c;
+}
+
+.signature-line {
+    width: 115px;
+
+    height: 1px;
+
+    background: #0b315c;
+}
+
+.authorized-name {
+    margin-top: 3px;
+
+    font-size: 9px;
+
+    line-height: 1.2;
+
+    font-weight: 700;
+
+    color: #0b315c;
+}
+
+.designation {
+    font-size: 9px;
+
+    line-height: 1.2;
+
+    color: #0b315c;
+}
+
+.signature-company {
+    font-size: 9px;
+
+    line-height: 1.2;
+
+    font-weight: 600;
+
+    color: #0b315c;
+}
+
+
+/* =========================================================
+   COMPANY SEAL
+========================================================= */
+
+.seal {
+    position: absolute;
+
+    left: 50%;
+    top: 690px;
+
+    width: 125px;
+
+    text-align: center;
+
+    transform: translateX(-50%);
+
+    z-index: 35;
+}
+
+.seal svg {
+    display: block;
+
+    width: 112px;
+    height: 112px;
+
+    margin: 0 auto;
+}
+
+.seal-text {
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+
+    fill: #0b315c;
+}
+
+.seal-text.small {
+    font-size: 7px;
+
+    letter-spacing: 1px;
+}
+
+.official-seal {
+    margin-top: 0;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 7px;
+
+    color: #0b315c;
+}
+
+
+/* =========================================================
+   QR SECTION
+========================================================= */
+
+.qr-section {
+    position: absolute;
+
+    right: 45px;
+    top: 690px;
+
+    width: 105px;
+
+    text-align: center;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    color: #0b315c;
+
+    z-index: 35;
+}
+
+.qr-box {
+    width: 88px;
+    height: 88px;
+
+    margin: 0 auto;
+
+    padding: 3px;
+
+    background: #ffffff;
+
+    border: 2px solid #d0a63f;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+}
+
+#qrcode {
+    width: 80px;
+    height: 80px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+}
+
+#qrcode img,
+#qrcode canvas {
+    display: block;
+
+    width: 80px !important;
+    height: 80px !important;
+}
+
+.qr-label {
+    margin-top: 5px;
+
+    font-size: 9px;
+
+    line-height: 1.1;
+
+    font-weight: 600;
+}
+
+.verification {
+    width: 100px;
+
+    margin-top: 2px;
+
+    overflow: hidden;
+
+    white-space: nowrap;
+
+    text-overflow: ellipsis;
+
+    font-size: 6px;
+
+    line-height: 1;
+
+    color: #64798a;
+}
+
+
+/* =========================================================
+   BOTTOM LEFT DECORATION
+========================================================= */
+
+.bottom-left {
+    position: absolute;
+
+    left: 0;
+    bottom: 0;
+
+    width: 245px;
+    height: 150px;
+
+    overflow: hidden;
+
+    z-index: 8;
+}
+
+.bottom-left svg {
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    width: 245px;
+    height: 150px;
+
+    display: block;
+}
+
+.bottom-slogan {
+    position: absolute;
+
+    left: 17px;
+    bottom: 23px;
+
+    z-index: 15;
+
+    color: #ffffff;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 10px;
+
+    font-style: italic;
+
+    line-height: 1.35;
+}
+
+
+/* =========================================================
+   CONTACT BAR
+========================================================= */
+
+.contact-bar {
+    position: absolute;
+
+    left: 175px;
+    right: 45px;
+
+    bottom: 57px;
+
+    min-height: 25px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 5px;
+
+    padding-top: 6px;
+
+    border-top: 1px solid #d0a63f;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 6px;
+
+    line-height: 1.2;
+
+    color: #0b315c;
+
+    white-space: nowrap;
+
+    z-index: 35;
+}
+
+.contact-bar span {
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   BOTTOM TAGLINE
+========================================================= */
+
+.bottom-tagline {
+    position: absolute;
+
+    left: 50%;
+
+    bottom: 30px;
+
+    transform: translateX(-50%);
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 6px;
+
+    line-height: 1;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+
+    color: #5c9aa3;
+
+    white-space: nowrap;
+
+    z-index: 35;
+}
+
+
+/* =========================================================
+   BOTTOM RIGHT CORNER
+========================================================= */
+
+.bottom-corner {
+    position: absolute;
+
+    right: 9px;
+    bottom: 9px;
+
+    width: 30px;
+    height: 30px;
+
+    border-right: 3px solid #0b315c;
+    border-bottom: 3px solid #0b315c;
+
+    z-index: 40;
+}
+
+.bottom-corner::after {
+    content: "";
+
+    position: absolute;
+
+    right: 6px;
+    bottom: 6px;
+
+    width: 20px;
+    height: 20px;
+
+    border-right: 2px solid #d0a63f;
+    border-bottom: 2px solid #d0a63f;
+}
+
+
+/* =========================================================
+   PRINT
+========================================================= */
+
+@media print {
+
+    @page {
+        size: A4 portrait;
+        margin: 0;
+    }
+
+    html,
+    body {
+        width: 210mm;
+        height: 297mm;
+
+        min-width: 210mm;
+        min-height: 297mm;
+
+        margin: 0;
+        padding: 0;
+
+        background: #ffffff;
+    }
+
+    body {
+        display: block;
+    }
+
+    .letter {
+        width: 210mm;
+        height: 297mm;
+
+        min-width: 210mm;
+        min-height: 297mm;
+
+        max-width: 210mm;
+        max-height: 297mm;
+
+        margin: 0;
+
+        box-shadow: none;
+    }
+}
+/* =========================================================
+   FINAL BALANCE — REDUCE BOTTOM EMPTY SPACE
+========================================================= */
+
+/* Move information section slightly down */
+.info-row {
+    top: 535px;
+}
+
+
+/* Move signature / seal / QR down */
+.signature-section {
+    top: 735px;
+}
+
+.seal {
+    top: 725px;
+}
+
+.qr-section {
+    top: 725px;
+}
+
+
+/* Make bottom section more prominent */
+.bottom-left {
+    width: 245px;
+    height: 165px;
+}
+
+.bottom-left svg {
+    width: 245px;
+    height: 165px;
+}
+
+.bottom-slogan {
+    left: 17px;
+    bottom: 25px;
+    font-size: 10px;
+}
+
+
+/* Contact line lower */
+.contact-bar {
+    bottom: 55px;
+}
+
+
+/* Bottom tagline */
+.bottom-tagline {
+    bottom: 30px;
+}
+
+
+/* Keep everything inside inner border */
+.bottom-corner {
+    right: 9px;
+    bottom: 9px;
+}

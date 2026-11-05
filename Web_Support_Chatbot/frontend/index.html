@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Support Chatbot</title>
+  <style>
+    /* Floating Button */
+    #chat-widget-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #4f46e5;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      font-size: 24px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      z-index: 1000;
+    }
+
+    /* Floating Chat Box */
+    #chat-widget-box {
+      display: none;
+      position: fixed;
+      bottom: 90px;
+      right: 20px;
+      width: 350px;
+      height: 480px;
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+      flex-direction: column;
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+      z-index: 1000;
+    }
+
+    #chat-header {
+      background: #4f46e5;
+      color: white;
+      padding: 14px;
+      font-weight: bold;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    #chat-messages {
+      flex: 1;
+      padding: 12px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .message {
+      max-width: 80%;
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 14px;
+      line-height: 1.4;
+    }
+
+    .user-msg {
+      align-self: flex-end;
+      background: #e0e7ff;
+      color: #1e1b4b;
+    }
+
+    .bot-msg {
+      align-self: flex-start;
+      background: #f3f4f6;
+      color: #1f2937;
+    }
+
+    #chat-input-container {
+      display: flex;
+      border-top: 1px solid #e5e7eb;
+      padding: 8px;
+    }
+
+    #chat-input {
+      flex: 1;
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      padding: 8px;
+      outline: none;
+    }
+
+    #chat-send {
+      background: #4f46e5;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      margin-left: 6px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Chat Widget Elements -->
+  <button id="chat-widget-button" onclick="toggleChat()">💬</button>
+
+  <div id="chat-widget-box">
+    <div id="chat-header">
+      <span>Website Assistant</span>
+      <span style="cursor:pointer;" onclick="toggleChat()">✕</span>
+    </div>
+    <div id="chat-messages">
+      <div class="message bot-msg">Hello! How can i help you?.</div>
+    </div>
+    <div id="chat-input-container">
+      <input type="text" id="chat-input" placeholder="Type a message..." onkeypress="handleKey(event)" />
+      <button id="chat-send" onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+  <script>
+    function toggleChat() {
+      const chatBox = document.getElementById('chat-widget-box');
+      chatBox.style.display = chatBox.style.display === 'flex' ? 'none' : 'flex';
+    }
+
+    function handleKey(e) {
+      if (e.key === 'Enter') sendMessage();
+    }
+
+    async function sendMessage() {
+      const input = document.getElementById('chat-input');
+      const messagesContainer = document.getElementById('chat-messages');
+      const text = input.value.trim();
+
+      if (!text) return;
+
+      // Render user message
+      messagesContainer.innerHTML += `<div class="message user-msg">${text}</div>`;
+      input.value = '';
+      messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+      // Render loading placeholder
+      const loadingId = 'loading-' + Date.now();
+      messagesContainer.innerHTML += `<div class="message bot-msg" id="${loadingId}">Thinking...</div>`;
+      messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+      try {
+        const response = await fetch('http://localhost:8000/api/chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ question: text })
+        });
+        const data = await response.json();
+        
+        document.getElementById(loadingId).innerText = data.answer;
+      } catch (err) {
+        document.getElementById(loadingId).innerText = "Error: Unable to connect to backend.";
+      }
+      messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    }
+  </script>
+</body>
+</html>

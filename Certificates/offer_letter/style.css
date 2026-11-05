@@ -1,0 +1,1209 @@
+/* =========================================================
+   UPTOSKILLS OFFER LETTER
+   FINAL CLEAN A4 PORTRAIT
+   ========================================================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    background: #e9edf2;
+}
+
+body {
+    font-family: Georgia, "Times New Roman", serif;
+    color: #063b6d;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+}
+
+/* =========================================================
+   A4 PAGE
+   ========================================================= */
+
+.page {
+    position: relative;
+
+    width: 794px;
+    min-height: 1123px;
+
+    margin: 20px auto;
+    padding: 55px 42px 115px;
+
+    background: #fff;
+    overflow: hidden;
+
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+/* =========================================================
+   BORDERS
+   ========================================================= */
+
+.outer-border {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+
+    border: 1.5px solid #e2b52f;
+
+    pointer-events: none;
+    z-index: 20;
+}
+
+.inner-border {
+    position: absolute;
+    top: 27px;
+    left: 27px;
+    right: 27px;
+    bottom: 27px;
+
+    border: 1px solid #063b6d;
+
+    pointer-events: none;
+    z-index: 20;
+}
+
+/* =========================================================
+   TOP DECORATION
+   ========================================================= */
+
+.top-decoration {
+    position: absolute;
+
+    top: -58px;
+    right: -55px;
+
+    width: 300px;
+    height: 115px;
+
+    background: #063b6d;
+
+    border-radius: 0 0 0 150px;
+
+    transform: rotate(7deg);
+
+    z-index: 1;
+}
+
+.top-decoration::after {
+    content: "";
+
+    position: absolute;
+
+    left: -20px;
+    bottom: 14px;
+
+    width: 330px;
+    height: 3px;
+
+    background: #e2b52f;
+
+    transform: rotate(-1deg);
+}
+
+.top-decoration-text {
+    position: absolute;
+
+    right: 22px;
+    top: 55px;
+
+    color: white;
+
+    font-family: Arial, sans-serif;
+    font-size: 7px;
+    line-height: 1.15;
+    font-weight: bold;
+
+    text-align: right;
+
+    transform: rotate(-7deg);
+}
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.header {
+    position: relative;
+
+    width: 100%;
+    height: 72px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    z-index: 5;
+}
+
+/* =========================================================
+   LOGO
+   ========================================================= */
+
+.logo {
+    position: relative;
+
+    width: 340px;
+    height: 60px;
+
+    display: flex;
+    align-items: center;
+}
+
+.cap {
+    position: relative;
+
+    width: 28px;
+    height: 28px;
+
+    margin-right: 9px;
+
+    flex-shrink: 0;
+}
+
+.cap-top {
+    position: absolute;
+
+    top: 3px;
+    left: 1px;
+
+    width: 26px;
+    height: 15px;
+
+    background: #063b6d;
+
+    clip-path: polygon(
+        50% 0,
+        100% 45%,
+        50% 90%,
+        0 45%
+    );
+}
+
+.cap-bottom {
+    position: absolute;
+
+    top: 16px;
+    left: 7px;
+
+    width: 16px;
+    height: 6px;
+
+    background: #063b6d;
+
+    border-radius: 0 0 8px 8px;
+}
+
+.logo-name {
+    color: #063b6d;
+
+    font-size: 17px;
+    font-weight: bold;
+
+    white-space: nowrap;
+}
+
+.logo-name span {
+    color: #063b6d;
+}
+
+.logo-arrow {
+    position: absolute;
+
+    left: 117px;
+    top: 8px;
+
+    width: 17px;
+    height: 17px;
+
+    border-top: 3px solid #f47732;
+    border-right: 3px solid #f47732;
+
+    transform: rotate(45deg);
+}
+
+.logo-tagline {
+    position: absolute;
+
+    left: 37px;
+    bottom: 0;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 7px;
+    letter-spacing: 1.7px;
+
+    color: #687984;
+}
+
+/* =========================================================
+   DATE / OFFER NUMBER
+   ========================================================= */
+
+.offer-meta {
+    width: 175px;
+
+    text-align: right;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 9px;
+    line-height: 1.8;
+
+    color: #063b6d;
+}
+
+.offer-meta strong {
+    font-weight: bold;
+}
+
+/* =========================================================
+   HEADING
+   ========================================================= */
+
+.heading {
+    position: relative;
+
+    margin-top: 12px;
+
+    z-index: 5;
+}
+
+.heading h1 {
+    color: #063b6d;
+
+    font-size: 36px;
+    line-height: 1;
+
+    font-weight: bold;
+
+    letter-spacing: 0.2px;
+}
+
+.heading-subtitle {
+    margin-top: 10px;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 8px;
+    font-weight: bold;
+
+    letter-spacing: 6px;
+
+    color: #063b6d;
+}
+
+.heading-line {
+    position: relative;
+
+    width: 100%;
+    height: 2px;
+
+    margin-top: 10px;
+
+    background: #e2b52f;
+}
+
+.heading-line::after {
+    content: "";
+
+    position: absolute;
+
+    right: 0;
+    top: -2px;
+
+    width: 78px;
+    height: 6px;
+
+    background: #063b6d;
+}
+
+/* =========================================================
+   INTRO
+   ========================================================= */
+
+.letter-intro {
+    position: relative;
+
+    margin-top: 13px;
+
+    z-index: 5;
+}
+
+.letter-intro h2 {
+    color: #063b6d;
+
+    font-size: 16px;
+
+    margin-bottom: 7px;
+}
+
+.letter-intro p {
+    max-width: 100%;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 9.5px;
+    line-height: 1.55;
+
+    color: #244a68;
+}
+
+.letter-intro strong {
+    color: #063b6d;
+}
+
+/* =========================================================
+   INFORMATION BOX
+   ========================================================= */
+
+.information-box {
+    position: relative;
+
+    width: 100%;
+    height: 155px;
+
+    margin-top: 22px;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1px 1fr;
+
+    border: 1.5px solid #e2b52f;
+    border-radius: 9px;
+
+    background: #fff;
+
+    overflow: hidden;
+
+    z-index: 5;
+}
+
+.info-column {
+    min-width: 0;
+
+    padding: 14px 17px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.info-column:first-child {
+    padding-right: 22px;
+}
+
+.info-column:last-child {
+    padding-left: 22px;
+}
+
+.vertical-divider {
+    width: 1px;
+    height: 105px;
+
+    align-self: center;
+
+    background: #e2b52f;
+}
+
+/* =========================================================
+   INFORMATION ITEM
+   ========================================================= */
+
+.info-item {
+    min-height: 27px;
+
+    display: grid;
+
+    grid-template-columns: 28px minmax(0, 1fr);
+
+    align-items: center;
+
+    column-gap: 9px;
+}
+
+.info-item > div:last-child {
+    min-width: 0;
+}
+
+.info-item b {
+    display: block;
+
+    margin-bottom: 2px;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 8px;
+    line-height: 1.1;
+
+    color: #063b6d;
+
+    font-weight: bold;
+}
+
+.info-item span {
+    display: block;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 7.5px;
+    line-height: 1.2;
+
+    color: #36556d;
+
+    overflow-wrap: anywhere;
+}
+
+/* =========================================================
+   ICONS
+   ========================================================= */
+
+.info-icon {
+    position: relative;
+
+    width: 27px;
+    height: 27px;
+
+    border-radius: 50%;
+
+    background: #063b6d;
+}
+
+/* PERSON */
+
+.person-icon::before {
+    content: "";
+
+    position: absolute;
+
+    width: 8px;
+    height: 8px;
+
+    top: 5px;
+    left: 9.5px;
+
+    border-radius: 50%;
+
+    background: #fff;
+}
+
+.person-icon::after {
+    content: "";
+
+    position: absolute;
+
+    width: 14px;
+    height: 8px;
+
+    bottom: 5px;
+    left: 6.5px;
+
+    border-radius: 9px 9px 3px 3px;
+
+    background: #fff;
+}
+
+/* BUILDING */
+
+.building-icon::before {
+    content: "";
+
+    position: absolute;
+
+    width: 13px;
+    height: 16px;
+
+    top: 6px;
+    left: 7px;
+
+    background: #fff;
+}
+
+.building-icon::after {
+    content: "▪ ▪";
+
+    position: absolute;
+
+    top: 7px;
+    left: 9px;
+
+    width: 10px;
+
+    color: #063b6d;
+
+    font-size: 6px;
+
+    line-height: 8px;
+}
+
+/* CALENDAR */
+
+.calendar-icon::before {
+    content: "";
+
+    position: absolute;
+
+    width: 15px;
+    height: 14px;
+
+    top: 7px;
+    left: 6px;
+
+    border-radius: 2px;
+
+    background: #fff;
+}
+
+.calendar-icon::after {
+    content: "";
+
+    position: absolute;
+
+    width: 15px;
+    height: 3px;
+
+    top: 8px;
+    left: 6px;
+
+    background: #e2b52f;
+}
+
+/* CLOCK */
+
+.clock-icon::before {
+    content: "";
+
+    position: absolute;
+
+    width: 15px;
+    height: 15px;
+
+    top: 4px;
+    left: 4px;
+
+    border: 2px solid #fff;
+
+    border-radius: 50%;
+}
+
+.clock-icon::after {
+    content: "";
+
+    position: absolute;
+
+    width: 7px;
+    height: 2px;
+
+    top: 13px;
+    left: 13px;
+
+    background: #fff;
+
+    transform: rotate(45deg);
+
+    transform-origin: left center;
+}
+
+/* LOCATION */
+
+.location-icon::before {
+    content: "";
+
+    position: absolute;
+
+    width: 14px;
+    height: 18px;
+
+    top: 4px;
+    left: 6px;
+
+    background: #fff;
+
+    border-radius: 10px 10px 10px 2px;
+
+    transform: rotate(-45deg);
+}
+
+.location-icon::after {
+    content: "";
+
+    position: absolute;
+
+    width: 5px;
+    height: 5px;
+
+    top: 9px;
+    left: 11px;
+
+    border-radius: 50%;
+
+    background: #063b6d;
+}
+
+/* DOCUMENT */
+
+.document-icon::before {
+    content: "";
+
+    position: absolute;
+
+    width: 13px;
+    height: 17px;
+
+    top: 5px;
+    left: 7px;
+
+    border-radius: 2px;
+
+    background: #fff;
+}
+
+.document-icon::after {
+    content: "≡";
+
+    position: absolute;
+
+    top: 3px;
+    left: 10px;
+
+    color: #063b6d;
+
+    font-size: 13px;
+    font-weight: bold;
+}
+
+/* PEOPLE */
+
+.people-icon::before {
+    content: "";
+
+    position: absolute;
+
+    width: 7px;
+    height: 7px;
+
+    top: 5px;
+    left: 10px;
+
+    border-radius: 50%;
+
+    background: #fff;
+}
+
+.people-icon::after {
+    content: "";
+
+    position: absolute;
+
+    width: 16px;
+    height: 8px;
+
+    bottom: 5px;
+    left: 5.5px;
+
+    border-radius: 8px 8px 2px 2px;
+
+    background: #fff;
+}
+
+/* =========================================================
+   TERMS
+   ========================================================= */
+
+.terms {
+    position: relative;
+
+    margin-top: 20px;
+
+    z-index: 5;
+}
+
+.terms-title {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    width: 185px;
+    height: 25px;
+
+    padding-left: 12px;
+
+    background: #f0d477;
+
+    color: #063b6d;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 9px;
+    font-weight: bold;
+
+    letter-spacing: 0.4px;
+}
+
+.terms-title::after {
+    content: "";
+
+    position: absolute;
+
+    right: -14px;
+    top: 0;
+
+    width: 0;
+    height: 0;
+
+    border-top: 12.5px solid transparent;
+    border-bottom: 12.5px solid transparent;
+    border-left: 14px solid #f0d477;
+}
+
+.terms ol {
+    margin-top: 10px;
+
+    padding-left: 21px;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 8px;
+    line-height: 1.65;
+
+    color: #294b68;
+}
+
+.terms li {
+    padding-left: 4px;
+    margin-bottom: 1px;
+}
+
+.terms strong {
+    color: #063b6d;
+}
+
+/* =========================================================
+   CLOSING
+   ========================================================= */
+
+.closing {
+    position: relative;
+
+    margin-top: 30px;
+
+    z-index: 5;
+}
+
+.closing p {
+    font-family: Arial, sans-serif;
+
+    font-size: 9.5px;
+    line-height: 1.5;
+
+    color: #244a68;
+}
+
+.closing strong {
+    color: #063b6d;
+}
+
+/* =========================================================
+   SIGNATURE AREA
+   ========================================================= */
+
+.signature-section {
+    position: relative;
+
+    width: 100%;
+    height: 155px;
+
+    margin-top: 42px;
+
+    display: grid;
+
+    grid-template-columns: 1fr 180px 150px;
+
+    align-items: start;
+
+    z-index: 6;
+}
+
+/* =========================================================
+   SIGNATURE
+   ========================================================= */
+
+.signature {
+    padding-top: 3px;
+}
+
+.best-regards {
+    margin-bottom: 7px;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 8.5px;
+
+    color: #294b68;
+}
+
+.signature-name {
+    font-family: "Brush Script MT",
+                 "Segoe Script",
+                 cursive;
+
+    font-size: 25px;
+    font-style: italic;
+
+    color: #063b6d;
+
+    line-height: 1;
+}
+
+.signature-line {
+    width: 135px;
+    height: 1px;
+
+    margin-top: 7px;
+    margin-bottom: 5px;
+
+    background: #063b6d;
+}
+
+.signature > strong,
+.signature > span {
+    display: block;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 7px;
+    line-height: 1.4;
+
+    color: #36556d;
+}
+
+.signature > strong {
+    font-size: 7.5px;
+
+    color: #063b6d;
+}
+
+/* =========================================================
+   SEAL
+   ========================================================= */
+
+.seal {
+    display: flex;
+
+    flex-direction: column;
+    align-items: center;
+
+    padding-top: 0;
+}
+
+.seal-inner {
+    position: relative;
+
+    width: 78px;
+    height: 78px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1.5px solid #063b6d;
+
+    border-radius: 50%;
+}
+
+.seal-inner::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 6px;
+
+    border: 1px solid #063b6d;
+
+    border-radius: 50%;
+}
+
+.seal-top {
+    position: absolute;
+
+    top: 11px;
+
+    left: 0;
+    right: 0;
+
+    text-align: center;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 4.5px;
+
+    letter-spacing: 0.8px;
+
+    color: #063b6d;
+}
+
+.seal-center {
+    width: 29px;
+    height: 29px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #063b6d;
+
+    color: white;
+
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.seal-bottom {
+    position: absolute;
+
+    bottom: 11px;
+
+    left: 0;
+    right: 0;
+
+    text-align: center;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 4px;
+
+    color: #063b6d;
+}
+
+.seal-label {
+    margin-top: 5px;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 6.5px;
+
+    color: #36556d;
+}
+
+/* =========================================================
+   QR CODE
+   ========================================================= */
+
+.qr-section {
+    display: flex;
+
+    flex-direction: column;
+    align-items: center;
+}
+
+.qr-box {
+    width: 72px;
+    height: 72px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 3px;
+
+    background: #fff;
+
+    border: 1px solid #063b6d;
+}
+
+#qrcode {
+    width: 64px;
+    height: 64px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#qrcode img,
+#qrcode canvas {
+    width: 64px !important;
+    height: 64px !important;
+
+    display: block;
+}
+
+.qr-label {
+    margin-top: 5px;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 6.5px;
+
+    color: #36556d;
+}
+
+/* =========================================================
+   BOTTOM DECORATION
+   ========================================================= */
+
+.bottom-decoration {
+    position: absolute;
+
+    right: -5px;
+    bottom: -5px;
+
+    width: 145px;
+    height: 120px;
+
+    background: #063b6d;
+
+    clip-path: polygon(
+        100% 0,
+        100% 100%,
+        0 100%
+    );
+
+    z-index: 3;
+}
+
+.bottom-decoration::before {
+    content: "";
+
+    position: absolute;
+
+    width: 185px;
+    height: 3px;
+
+    right: -25px;
+    bottom: 39px;
+
+    background: #e2b52f;
+
+    transform: rotate(-43deg);
+}
+
+.bottom-decoration::after {
+    content: "";
+
+    position: absolute;
+
+    width: 180px;
+    height: 2px;
+
+    right: -20px;
+    bottom: 28px;
+
+    background: #e2b52f;
+
+    transform: rotate(-43deg);
+}
+
+.bottom-decoration-text {
+    position: absolute;
+
+    right: 12px;
+    bottom: 12px;
+
+    color: white;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 5.5px;
+    line-height: 1.35;
+
+    font-weight: bold;
+
+    text-align: right;
+}
+
+/* =========================================================
+   BACKGROUND WAVES
+   ========================================================= */
+
+.background-waves {
+    position: absolute;
+
+    right: -100px;
+    bottom: 100px;
+
+    width: 300px;
+    height: 300px;
+
+    opacity: 0.035;
+
+    pointer-events: none;
+
+    z-index: 1;
+}
+
+.background-waves div {
+    position: absolute;
+
+    border: 1px solid #063b6d;
+
+    border-radius: 50%;
+}
+
+.background-waves div:nth-child(1) {
+    width: 280px;
+    height: 280px;
+
+    right: 0;
+    bottom: 0;
+}
+
+.background-waves div:nth-child(2) {
+    width: 215px;
+    height: 215px;
+
+    right: 32px;
+    bottom: 32px;
+}
+
+.background-waves div:nth-child(3) {
+    width: 150px;
+    height: 150px;
+
+    right: 65px;
+    bottom: 65px;
+}
+
+/* =========================================================
+   PRINT
+   ========================================================= */
+
+@page {
+    size: A4 portrait;
+    margin: 0;
+}
+
+@media print {
+
+    html,
+    body {
+        width: 210mm;
+        height: 297mm;
+
+        margin: 0;
+        padding: 0;
+
+        background: white;
+    }
+
+    .page {
+        width: 210mm;
+        min-height: 297mm;
+
+        margin: 0;
+
+        box-shadow: none;
+    }
+}

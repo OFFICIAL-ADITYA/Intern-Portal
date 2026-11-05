@@ -1,0 +1,763 @@
+/* =========================================================
+   CERTIFICATE TEMPLATE EDITOR
+   Route/page styling
+   ========================================================= */
+
+.certificate-template-editor-page {
+  width: 100%;
+  min-height: 100vh;
+
+  background: #f4f6f9 !important;
+  color: #111827 !important;
+
+  padding: 24px;
+  box-sizing: border-box;
+
+  isolation: isolate;
+}
+
+.certificate-editor-actions { display: flex; justify-content: space-between; align-items: center; gap: 14px; margin-bottom: 12px; }
+.certificate-editor-actions button { border: 0; border-radius: 9px; padding: 10px 16px; background: linear-gradient(100deg, var(--accent-1), var(--accent-2)); color: #fff; font-weight: 800; }
+.certificate-editor-actions button:disabled { opacity: .6; cursor: not-allowed; }
+.certificate-editor-save-error { margin: 0; color: var(--error); }
+.certificate-editor-retry { margin-top: 6px; padding: 0; background: transparent !important; color: var(--accent) !important; text-decoration: underline; }
+.certificate-template-header-actions { display: flex; gap: 10px; }
+.certificate-template-header-actions button { padding: 10px 16px; border: 1px solid var(--border); border-radius: 9px; background: var(--card); color: var(--text); font-weight: 800; }
+.certificate-template-error { margin-bottom: 14px; padding: 12px 16px; border: 1px solid color-mix(in srgb, var(--error) 40%, transparent); border-radius: 10px; background: color-mix(in srgb, var(--error) 12%, var(--card)); color: var(--error); }
+.certificate-template-create-fields { display: grid; grid-template-columns: repeat(4, minmax(150px, 1fr)); gap: 12px; }
+.certificate-template-create-fields label { display: grid; gap: 6px; color: var(--muted); font-weight: 700; font-size: 13px; }
+.certificate-template-create-fields input { min-height: 42px; padding: 8px 10px; border: 1px solid var(--border); border-radius: 8px; background: var(--input); color: var(--text); }
+.certificate-placeholder-button { max-width: 100%; padding: 0; border: 0; background: transparent; text-align: left; }
+.certificate-placeholder-button:disabled { opacity: .6; cursor: not-allowed; }
+.certificate-placeholder-button code { cursor: pointer; color: var(--accent) !important; }
+.certificate-template-page-loading { display: grid; place-items: center; color: var(--text); }
+@media (max-width: 900px) { .certificate-template-create-fields { grid-template-columns: repeat(2, minmax(140px, 1fr)); } }
+@media (max-width: 600px) { .certificate-template-create-fields { grid-template-columns: 1fr; } .certificate-template-header-actions { width: 100%; } .certificate-template-header-actions button { flex: 1; } }
+.certificate-editor-loading-skeleton { min-height: 150px; display: flex; align-items: center; justify-content: center; gap: 12px; color: var(--muted); border: 1px solid var(--border); border-radius: 12px; background: var(--card); }
+.certificate-editor-loading-spinner { width: 20px; height: 20px; border: 2px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: certificate-editor-spin .8s linear infinite; }
+@keyframes certificate-editor-spin { to { transform: rotate(360deg); } }
+.certificate-template-editor.is-read-only .certificate-editor-canvas { pointer-events: none; opacity: .85; }
+
+/* The editor has a custom light palette above; re-map its interface when the
+   application theme is dark. Keep the certificate preview itself printable. */
+:root[data-theme='dark'] .certificate-template-editor-page {
+  background: var(--page) !important;
+  color: var(--text) !important;
+}
+
+:root[data-theme='dark'] .certificate-template-editor-page .certificate-card {
+  background: var(--card) !important;
+  color: var(--text) !important;
+  border-color: var(--border) !important;
+}
+
+:root[data-theme='dark'] .certificate-template-editor-page .certificate-card-header {
+  background: var(--panel) !important;
+  border-color: var(--border) !important;
+}
+
+:root[data-theme='dark'] .certificate-template-editor-page .certificate-card-body {
+  background: var(--card) !important;
+  color: var(--text) !important;
+}
+
+:root[data-theme='dark'] .certificate-template-editor-page h1,
+:root[data-theme='dark'] .certificate-template-editor-page h2,
+:root[data-theme='dark'] .certificate-template-editor-page h3,
+:root[data-theme='dark'] .certificate-template-editor-page strong,
+:root[data-theme='dark'] .certificate-template-editor-page label,
+:root[data-theme='dark'] .certificate-template-editor-page .certificate-select {
+  color: var(--text) !important;
+}
+
+:root[data-theme='dark'] .certificate-template-editor-page p,
+:root[data-theme='dark'] .certificate-template-editor-page span,
+:root[data-theme='dark'] .certificate-template-editor-page small,
+:root[data-theme='dark'] .certificate-template-editor-page .certificate-label {
+  color: var(--muted) !important;
+}
+
+:root[data-theme='dark'] .certificate-template-editor-page .certificate-select,
+:root[data-theme='dark'] .certificate-template-editor-page .certificate-select option {
+  background: var(--input) !important;
+  border-color: var(--border) !important;
+}
+
+:root[data-theme='dark'] .certificate-template-editor-page .certificate-template-info,
+:root[data-theme='dark'] .certificate-template-editor-page .placeholder-item {
+  background: var(--panel) !important;
+  border-color: var(--border) !important;
+}
+
+:root[data-theme='dark'] .certificate-template-editor-page .certificate-editor-header {
+  background: var(--card) !important;
+  border-color: var(--border) !important;
+}
+
+:root[data-theme='dark'] .certificate-template-editor-page .certificate-editor-wrapper,
+:root[data-theme='dark'] .certificate-template-editor-page .certificate-template-editor,
+:root[data-theme='dark'] .certificate-template-editor-page .certificate-editor-canvas,
+:root[data-theme='dark'] .certificate-template-editor-page .certificate-editor-canvas .gjs-editor,
+:root[data-theme='dark'] .certificate-template-editor-page .certificate-editor-canvas .gjs-cv-canvas {
+  background: var(--panel) !important;
+  color: var(--text) !important;
+}
+
+:root[data-theme='dark'] .certificate-template-editor-page .certificate-editor-canvas .gjs-one-bg {
+  background: var(--card) !important;
+}
+
+:root[data-theme='dark'] .certificate-template-editor-page .certificate-editor-canvas .gjs-three-bg {
+  background: var(--input) !important;
+}
+
+:root[data-theme='dark'] .certificate-template-editor-page .certificate-editor-canvas .gjs-two-color,
+:root[data-theme='dark'] .certificate-template-editor-page .certificate-editor-canvas .gjs-four-color,
+:root[data-theme='dark'] .certificate-template-editor-page .certificate-editor-canvas .gjs-four-color-h:hover,
+:root[data-theme='dark'] .certificate-template-editor-page .certificate-template-info strong,
+:root[data-theme='dark'] .certificate-template-editor-page .sample-data-row strong,
+:root[data-theme='dark'] .certificate-template-editor-page .certificate-info-row strong,
+:root[data-theme='dark'] .certificate-template-editor-page .certificate-saving {
+  color: var(--text) !important;
+}
+
+:root[data-theme='dark'] .certificate-template-editor-page .certificate-template-info span,
+:root[data-theme='dark'] .certificate-template-editor-page .sample-data-row span,
+:root[data-theme='dark'] .certificate-template-editor-page .certificate-info-row span,
+:root[data-theme='dark'] .certificate-template-editor-page .certificate-editor-header p,
+:root[data-theme='dark'] .certificate-template-editor-page .certificate-loading,
+:root[data-theme='dark'] .certificate-template-editor-page .certificate-empty {
+  color: var(--muted) !important;
+}
+
+.certificate-template-editor-page *,
+.certificate-template-editor-page *::before,
+.certificate-template-editor-page *::after {
+  box-sizing: border-box;
+}
+
+.certificate-page-inner {
+  width: 100%;
+  max-width: 1800px;
+  margin: 0 auto;
+}
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.certificate-page-header {
+  margin-bottom: 24px;
+}
+
+.certificate-page-title {
+  margin: 0 0 8px 0 !important;
+
+  font-size: 30px !important;
+  line-height: 1.2 !important;
+  font-weight: 700 !important;
+
+  color: #111827 !important;
+  background: transparent !important;
+}
+
+.certificate-page-subtitle {
+  margin: 0 !important;
+
+  font-size: 15px !important;
+  line-height: 1.6 !important;
+
+  color: #4b5563 !important;
+  background: transparent !important;
+}
+
+/* =========================================================
+   FORCE TEXT VISIBILITY
+   This intentionally overrides global dark-mode styles.
+   ========================================================= */
+
+.certificate-template-editor-page h1,
+.certificate-template-editor-page h2,
+.certificate-template-editor-page h3,
+.certificate-template-editor-page h4,
+.certificate-template-editor-page h5,
+.certificate-template-editor-page h6,
+.certificate-template-editor-page p,
+.certificate-template-editor-page span,
+.certificate-template-editor-page label,
+.certificate-template-editor-page strong,
+.certificate-template-editor-page small,
+.certificate-template-editor-page div {
+  color: inherit;
+}
+
+.certificate-template-editor-page h1 {
+  color: #111827 !important;
+}
+
+.certificate-template-editor-page h2 {
+  color: #111827 !important;
+}
+
+.certificate-template-editor-page p {
+  color: #4b5563 !important;
+}
+
+.certificate-template-editor-page span {
+  color: #374151 !important;
+}
+
+.certificate-template-editor-page strong {
+  color: #111827 !important;
+}
+
+.certificate-template-editor-page label {
+  color: #374151 !important;
+}
+
+/* =========================================================
+   LAYOUT
+   ========================================================= */
+
+.certificate-editor-layout {
+  display: grid;
+
+  grid-template-columns: 330px minmax(0, 1fr);
+
+  gap: 20px;
+
+  align-items: start;
+}
+
+.certificate-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  min-width: 0;
+}
+
+.certificate-editor-main {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* =========================================================
+   CARDS
+   ========================================================= */
+
+.certificate-card {
+  width: 100%;
+
+  background: #ffffff !important;
+
+  color: #111827 !important;
+
+  border: 1px solid #d1d5db !important;
+
+  border-radius: 12px;
+
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.06);
+
+  overflow: hidden;
+}
+
+.certificate-card-header {
+  padding: 16px 18px;
+
+  background: #f9fafb !important;
+
+  border-bottom: 1px solid #e5e7eb !important;
+}
+
+.certificate-card-header h2 {
+  margin: 0 !important;
+
+  font-size: 17px !important;
+  line-height: 1.4 !important;
+
+  font-weight: 700 !important;
+
+  color: #111827 !important;
+}
+
+.certificate-card-body {
+  padding: 18px;
+
+  background: #ffffff !important;
+
+  color: #111827 !important;
+}
+
+/* =========================================================
+   SELECT
+   ========================================================= */
+
+.certificate-label {
+  display: block;
+
+  margin-bottom: 8px;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  color: #374151 !important;
+}
+
+.certificate-select {
+  display: block;
+
+  width: 100%;
+
+  min-height: 44px;
+
+  padding: 10px 12px;
+
+  border: 1px solid #9ca3af !important;
+  border-radius: 8px;
+
+  background: #ffffff !important;
+
+  color: #111827 !important;
+
+  font-size: 14px;
+
+  outline: none;
+
+  appearance: auto;
+}
+
+.certificate-select:focus {
+  border-color: #2563eb !important;
+
+  box-shadow:
+    0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.certificate-select option {
+  background: #ffffff !important;
+  color: #111827 !important;
+}
+
+/* =========================================================
+   TEMPLATE INFO
+   ========================================================= */
+
+.certificate-template-info {
+  margin-top: 16px;
+
+  padding: 12px;
+
+  border-radius: 8px;
+
+  background: #f3f4f6 !important;
+
+  border: 1px solid #e5e7eb !important;
+}
+
+.certificate-info-row {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 10px;
+
+  padding: 7px 0;
+
+  font-size: 13px;
+
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.certificate-info-row:last-child {
+  border-bottom: 0;
+}
+
+.certificate-info-row span {
+  color: #6b7280 !important;
+}
+
+.certificate-info-row strong {
+  color: #111827 !important;
+
+  text-transform: capitalize;
+}
+
+/* =========================================================
+   PLACEHOLDERS
+   ========================================================= */
+
+.placeholder-list {
+  display: flex;
+  flex-direction: column;
+
+  gap: 8px;
+}
+
+.placeholder-item {
+  width: 100%;
+
+  padding: 9px 10px;
+
+  border-radius: 7px;
+
+  background: #f3f4f6 !important;
+
+  border: 1px solid #e5e7eb !important;
+}
+
+.placeholder-item code {
+  display: block;
+
+  font-family:
+    Consolas,
+    "Courier New",
+    monospace;
+
+  font-size: 12px;
+
+  color: #7c3aed !important;
+
+  background: transparent !important;
+
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+/* =========================================================
+   SAMPLE DATA
+   ========================================================= */
+
+.sample-data-list {
+  display: flex;
+  flex-direction: column;
+
+  gap: 0;
+}
+
+.sample-data-row {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 3px;
+
+  padding: 9px 0;
+
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.sample-data-row:last-child {
+  border-bottom: 0;
+}
+
+.sample-data-row span {
+  font-size: 11px;
+
+  color: #6b7280 !important;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.04em;
+}
+
+.sample-data-row strong {
+  font-size: 13px;
+
+  color: #111827 !important;
+
+  overflow-wrap: anywhere;
+}
+
+/* =========================================================
+   ALERTS
+   ========================================================= */
+
+.certificate-alert {
+  width: 100%;
+
+  padding: 13px 16px;
+
+  margin-bottom: 20px;
+
+  border-radius: 8px;
+
+  font-size: 14px;
+
+  color: #111827 !important;
+}
+
+.certificate-alert-error {
+  background: #fee2e2 !important;
+
+  border: 1px solid #fecaca !important;
+
+  color: #991b1b !important;
+}
+
+.certificate-alert-error strong {
+  color: #991b1b !important;
+}
+
+.certificate-alert-success {
+  background: #dcfce7 !important;
+
+  border: 1px solid #bbf7d0 !important;
+
+  color: #166534 !important;
+}
+
+/* =========================================================
+   EDITOR CARD
+   ========================================================= */
+
+.certificate-editor-card {
+  overflow: visible;
+}
+
+.certificate-editor-header {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  padding: 18px 20px;
+
+  background: #ffffff !important;
+
+  border-bottom: 1px solid #e5e7eb !important;
+}
+
+.certificate-editor-header h2 {
+  margin: 0 0 5px 0 !important;
+
+  color: #111827 !important;
+
+  font-size: 18px !important;
+}
+
+.certificate-editor-header p {
+  margin: 0 !important;
+
+  color: #6b7280 !important;
+
+  font-size: 13px !important;
+}
+
+.certificate-saving {
+  flex-shrink: 0;
+
+  padding: 7px 12px;
+
+  border-radius: 6px;
+
+  background: #eff6ff !important;
+
+  color: #1d4ed8 !important;
+
+  border: 1px solid #bfdbfe !important;
+
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.certificate-editor-wrapper {
+  width: 100%;
+
+  min-height: 820px;
+
+  padding: 20px;
+
+  background: #e5e7eb !important;
+
+  color: #111827 !important;
+
+  overflow: auto;
+}
+
+/* =========================================================
+   GRAPESJS
+   ========================================================= */
+
+.certificate-template-editor {
+  width: 100%;
+
+  background: #e5e7eb !important;
+
+  color: #111827 !important;
+}
+
+.certificate-editor-canvas {
+  width: 100%;
+
+  min-height: 794px;
+
+  background: #e5e7eb !important;
+}
+
+/*
+   IMPORTANT:
+   Do NOT force the GrapesJS canvas itself dark.
+   The actual certificate remains white.
+*/
+
+.certificate-editor-canvas .gjs-editor,
+.certificate-editor-canvas .gjs-cv-canvas {
+  background: #e5e7eb !important;
+}
+
+.certificate-editor-canvas .gjs-frame {
+  background: #ffffff !important;
+}
+
+/* GrapesJS top UI */
+
+.certificate-editor-canvas .gjs-one-bg {
+  background: #ffffff !important;
+}
+
+.certificate-editor-canvas .gjs-two-color {
+  color: #374151 !important;
+}
+
+.certificate-editor-canvas .gjs-three-bg {
+  background: #f3f4f6 !important;
+}
+
+.certificate-editor-canvas .gjs-four-color,
+.certificate-editor-canvas .gjs-four-color-h:hover {
+  color: #111827 !important;
+}
+
+/* =========================================================
+   LOADING / EMPTY
+   ========================================================= */
+
+.certificate-loading,
+.certificate-empty {
+  padding: 25px 10px;
+
+  text-align: center;
+
+  color: #6b7280 !important;
+
+  background: transparent !important;
+
+  font-size: 14px;
+}
+
+.editor-loading {
+  min-height: 200px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+}
+
+/* =========================================================
+   PREVIEW
+   ========================================================= */
+
+.certificate-preview-card {
+  overflow: hidden;
+}
+
+.certificate-preview-wrapper {
+  width: 100%;
+
+  padding: 20px;
+
+  background: #e5e7eb !important;
+
+  overflow: auto;
+}
+
+.certificate-preview-frame {
+  display: block;
+
+  width: 1123px;
+  height: 794px;
+
+  max-width: 100%;
+
+  margin: 0 auto;
+
+  border: 0;
+
+  background: #ffffff !important;
+
+  box-shadow:
+    0 4px 18px rgba(0, 0, 0, 0.15);
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1200px) {
+  .certificate-editor-layout {
+    grid-template-columns: 290px minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .certificate-editor-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .certificate-sidebar {
+    order: 1;
+  }
+
+  .certificate-editor-main {
+    order: 2;
+  }
+}
+
+@media (max-width: 600px) {
+  .certificate-template-editor-page {
+    padding: 12px;
+  }
+
+  .certificate-page-title {
+    font-size: 24px !important;
+  }
+
+  .certificate-editor-wrapper {
+    padding: 10px;
+  }
+
+  .certificate-editor-header {
+    flex-direction: column;
+
+    align-items: flex-start;
+  }
+
+  .certificate-preview-wrapper {
+    padding: 10px;
+  }
+}
+
+/* Last in the cascade so editor UI labels override the editor's light-only
+   !important declarations. The certificate is rendered in its own iframe. */
+:root[data-theme='dark'] .certificate-template-editor-page :is(
+  h1, h2, h3, h4, h5, h6, p, span, label, strong, small, code, li,
+  .certificate-page-title, .certificate-page-subtitle, .certificate-label,
+  .certificate-info-row, .sample-data-row, .placeholder-item
+) {
+  color: var(--text) !important;
+}
+
+:root[data-theme='dark'] .certificate-template-editor-page :is(
+  p, small, .certificate-page-subtitle, .certificate-loading, .certificate-empty
+) {
+  color: var(--muted) !important;
+}

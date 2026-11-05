@@ -1,0 +1,67 @@
+# UPTOSKILL INTERNSHIP MANAGEMENT PORTAL - OFFICIAL KNOWLEDGE BASE & SUPPORT GUIDE
+
+## 1. Overview of the Portal
+UPTOSKILL Internship Management Portal is an enterprise MERN-stack platform built for managing intern lifecycles, tracking daily progress, managing task deadlines, tracking attendance, submitting weekly reports, and issuing verifiable digital certificates.
+
+## 2. User Roles and Key Capabilities
+- Intern:
+  * Access personal dashboard with real-time internship progress, task completion metrics, and attendance records.
+  * Submit daily task updates, project links, and weekly progress reports.
+  * Request certificates upon successful completion of the internship duration and project deliverables.
+  * Download PDF certificates with embedded QR codes.
+  * Receive real-time notifications about task reviews and announcements.
+
+- Team Leader (TL):
+  * Monitor assigned interns across diverse tech domains (Web Development, Data Science, AI/ML, UI/UX, Cloud).
+  * Assign tasks, set deadlines, and review intern submissions.
+  * Mark attendance and evaluate weekly reports with scores and feedback.
+  * Recommend interns for certificates, 'Intern of the Month', or 'League Winner'.
+
+- Admin:
+  * Full administrative governance over interns, team leaders, and projects.
+  * Certificate template editor: Customize certificate templates using GrapesJS visual editor.
+  * Approve or reject certificate requests with audit logging.
+  * Issue verifiable PDF certificates with cryptographically signed verification links and QR codes.
+  * Import interns in bulk from Excel spreadsheets.
+  * Access comprehensive analytical dashboards covering performance, completion rates, and domain distribution.
+
+## 3. Account, Login, and Password Reset
+- How to Login:
+  Navigate to the Login page (`/login`), enter your registered Email ID and Password, and click 'Sign In'.
+- Forgot Password:
+  Click 'Forgot Password' on the login screen (`/forgot-password`). Enter your registered email address. A password reset token and link will be sent to your inbox. Use the link (`/reset-password/:token`) to set a new password.
+- Access Issues:
+  If you see 'Access Denied', your account does not have permission for that section. Ensure you are logged into the correct account for your assigned role. For assistance, contact support@uptoskill.com.
+
+## 4. Daily Tasks and Weekly Reports
+- How to Submit Daily Tasks:
+  Interns can view current tasks on their dashboard under 'My Tasks' or the Dashboard timeline. Click on an assigned task to view guidelines, attachments, and deadlines. Once finished, submit your repository link or deliverables and mark the task as complete.
+- Weekly Reports:
+  Submit weekly summaries detailing work done, roadblocks faced, and learnings before the designated deadline (typically Friday 6:00 PM). Your Team Leader reviews and grades this report.
+
+## 5. Certificates and Verification
+- Certificate Eligibility:
+  Interns are eligible for an Internship Completion Certificate upon fulfilling minimum attendance criteria (typically 80%+), completing all mandatory assignments, and receiving TL sign-off.
+- How to Request a Certificate:
+  To request a certificate, log in to your Intern Dashboard, click on 'Certificates' in the left-hand navigation menu. If you have fulfilled your attendance and task requirements, click 'Request Certificate' for your eligible certificate type. Your Team Leader and Admin will review and approve your certificate.
+- How to Download an Issued Certificate:
+  Once approved, navigate to 'Certificates' in the sidebar menu and click 'Download PDF'. Your certificate will include an official seal and an embedded QR code.
+- Certificate Types:
+  * Internship Completion Certificate
+  * Letter of Recommendation / Experience Letter
+  * Offer Letter
+  * Bonafide Certificate
+  * Intern of the Month Award
+  * League Winner Certificate
+- Public Verification System:
+  Every issued certificate contains a unique certificate identifier (such as CERT-2026-00001 or UTS-2026-000001) and an embedded QR code.
+  Anyone (employers, colleges, recruiters) can verify a certificate by scanning the QR code or visiting `/verify/:certificateNumber`.
+  The verification page validates recipient name, domain, dates of internship, and authenticity directly against the blockchain-grade tamper-evident database records.
+
+## 6. Theme and Customization
+- The portal supports both Dark Mode and Light Mode. Click the sun/moon toggle button in the bottom left corner to switch themes at any time.
+
+## 7. Contact and Support Channels
+- Support Email: support@uptoskill.com
+- Technical Helpdesk: Available Monday through Friday, 9:00 AM to 6:00 PM IST.
+- Escalations: For urgent credential or verification disputes, consult your assigned Team Leader directly through the portal notifications.

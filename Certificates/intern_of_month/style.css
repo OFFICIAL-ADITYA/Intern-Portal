@@ -1,0 +1,1502 @@
+/* =========================================================
+   INTERN OF THE MONTH CERTIFICATE
+   CANVAS: 1192 × 757
+========================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: #eeeeee;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    color: #092e5b;
+}
+
+
+/* =========================================================
+   CERTIFICATE
+========================================================= */
+
+.certificate {
+
+    position: relative;
+
+    width: 1192px;
+    height: 757px;
+
+    overflow: hidden;
+
+    background: #ffffff;
+}
+
+
+/* =========================================================
+   BORDERS
+========================================================= */
+
+.outer-border {
+
+    position: absolute;
+
+    inset: 14px;
+
+    border: 2px solid #c6a044;
+
+    z-index: 100;
+}
+
+
+.inner-border {
+
+    position: absolute;
+
+    left: 39px;
+    right: 39px;
+
+    top: 47px;
+    bottom: 29px;
+
+    border: 1px solid #0a315d;
+
+    z-index: 100;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.header {
+
+    position: absolute;
+
+    top: 48px;
+    left: 188px;
+    right: 72px;
+
+    height: 45px;
+
+    z-index: 50;
+}
+
+
+/* =========================================================
+   LOGO
+========================================================= */
+
+.logo {
+
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    height: 40px;
+
+    display: flex;
+
+    align-items: center;
+}
+
+
+.cap {
+
+    position: relative;
+
+    width: 25px;
+    height: 24px;
+
+    margin-right: 5px;
+}
+
+
+.cap-top {
+
+    position: absolute;
+
+    width: 25px;
+    height: 13px;
+
+    left: 0;
+    top: 2px;
+
+    background: #092e55;
+
+    clip-path:
+        polygon(
+            50% 0,
+            100% 50%,
+            50% 100%,
+            0 50%
+        );
+}
+
+
+.cap-bottom {
+
+    position: absolute;
+
+    width: 15px;
+    height: 7px;
+
+    left: 5px;
+    top: 11px;
+
+    background: #092e55;
+
+    border-radius:
+        0 0 50% 50%;
+}
+
+
+.logo-text {
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 27px;
+
+    font-weight: 800;
+
+    letter-spacing: -1.5px;
+
+    color: #10b89d;
+
+    white-space: nowrap;
+}
+
+
+.logo-text span {
+    color: #f47735;
+}
+
+
+.logo-arrow {
+
+    position: absolute;
+
+    left: 128px;
+    top: -4px;
+
+    width: 22px;
+    height: 22px;
+
+    border-top: 4px solid #f47735;
+    border-right: 4px solid #f47735;
+
+    transform: rotate(38deg);
+}
+
+
+/* =========================================================
+   CERTIFICATE NUMBER
+========================================================= */
+
+.certificate-number {
+
+    position: absolute;
+
+    right: 0;
+    top: 6px;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   TOP RIGHT DECORATION
+========================================================= */
+
+.top-decoration {
+
+    position: absolute;
+
+    right: -55px;
+    top: -75px;
+
+    width: 355px;
+    height: 185px;
+
+    border-radius: 50%;
+
+    border-top: 7px solid #092f59;
+    border-right: 7px solid #092f59;
+
+    transform: rotate(14deg);
+
+    z-index: 10;
+}
+
+
+.top-decoration::before {
+
+    content: "";
+
+    position: absolute;
+
+    right: 7px;
+    top: 8px;
+
+    width: 330px;
+    height: 160px;
+
+    border-radius: 50%;
+
+    border-top: 3px solid #c6a044;
+    border-right: 3px solid #c6a044;
+}
+
+
+.top-decoration::after {
+
+    content: "";
+
+    position: absolute;
+
+    right: 21px;
+    top: 22px;
+
+    width: 305px;
+    height: 145px;
+
+    border-radius: 50%;
+
+    border-top: 1px solid #0a315d;
+    border-right: 1px solid #0a315d;
+}
+
+
+/* =========================================================
+   RIBBON
+========================================================= */
+
+.ribbon {
+
+    position: absolute;
+
+    left: 62px;
+    top: 0;
+
+    width: 112px;
+    height: 377px;
+
+    z-index: 40;
+}
+
+
+.ribbon-body {
+
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    width: 112px;
+    height: 340px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #08294e 0%,
+            #143f6d 50%,
+            #08294e 100%
+        );
+
+    border-left: 4px solid #c6a044;
+    border-right: 4px solid #c6a044;
+}
+
+
+.ribbon-text {
+
+    position: absolute;
+
+    left: 7px;
+    right: 7px;
+
+    top: 62px;
+
+    text-align: center;
+
+    color: #f4d47a;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    line-height: 1.5;
+}
+
+
+.ribbon-divider {
+
+    position: absolute;
+
+    left: 32px;
+    top: 220px;
+
+    width: 46px;
+    height: 2px;
+
+    background: #c6a044;
+}
+
+
+.ribbon-tail {
+
+    position: absolute;
+
+    left: 0;
+    bottom: 0;
+
+    width: 112px;
+    height: 88px;
+
+    background: #c6a044;
+
+    clip-path:
+        polygon(
+            0 0,
+            100% 0,
+            100% 68%,
+            76% 48%,
+            50% 100%,
+            24% 48%,
+            0 68%
+        );
+}
+
+
+.ribbon-tail::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 5px;
+    top: 0;
+
+    width: 102px;
+    height: 82px;
+
+    background: #0b315d;
+
+    clip-path:
+        polygon(
+            0 0,
+            100% 0,
+            100% 66%,
+            75% 46%,
+            50% 94%,
+            25% 46%,
+            0 66%
+        );
+}
+
+
+/* =========================================================
+   MEDAL
+========================================================= */
+
+.medal {
+
+    position: absolute;
+
+    left: 118px;
+    top: 153px;
+
+    width: 145px;
+    height: 145px;
+
+    transform: translateX(-50%);
+
+    z-index: 80;
+
+    filter:
+        drop-shadow(
+            0 4px 5px rgba(0,0,0,.25)
+        );
+}
+
+
+.medal-outer {
+
+    position: absolute;
+
+    inset: 0;
+
+    width: 145px;
+    height: 145px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            #fff2a9 0%,
+            #f2cd62 54%,
+            #c18b27 72%,
+            #f2ce68 87%,
+            #bd8622 100%
+        );
+
+    border: 3px solid #c18d27;
+
+    box-shadow:
+        inset 0 0 0 3px #ffe7a0,
+        inset 0 0 0 6px #d19b30;
+}
+
+
+.medal-inner {
+
+    position: absolute;
+
+    left: 14px;
+    top: 14px;
+
+    width: 111px;
+    height: 111px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            #fff4be 0%,
+            #efc966 100%
+        );
+
+    border: 2px solid #bd8928;
+}
+
+
+.medal-cup {
+
+    position: absolute;
+
+    top: 9px;
+
+    left: 0;
+    right: 0;
+
+    text-align: center;
+
+    color: #f0c44f;
+
+    font-size: 23px;
+}
+
+
+.medal-text {
+
+    position: absolute;
+
+    top: 43px;
+
+    left: 27px;
+    right: 27px;
+
+    text-align: center;
+
+    color: #092e55;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    line-height: 1.35;
+}
+
+
+.medal-stars {
+
+    position: absolute;
+
+    left: 0;
+    right: 0;
+
+    bottom: 10px;
+
+    text-align: center;
+
+    color: #092e55;
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+}
+
+
+/* Medal laurels */
+
+.medal-laurel {
+
+    position: absolute;
+
+    top: 43px;
+
+    width: 24px;
+    height: 58px;
+}
+
+
+.medal-laurel-left {
+    left: 7px;
+}
+
+
+.medal-laurel-right {
+    right: 7px;
+
+    transform: scaleX(-1);
+}
+
+
+.medal-laurel span {
+
+    position: absolute;
+
+    width: 7px;
+    height: 15px;
+
+    background: #092e55;
+
+    border-radius:
+        100% 0 100% 0;
+}
+
+
+.medal-laurel span:nth-child(1) {
+    left: 12px;
+    top: 0;
+    transform: rotate(-15deg);
+}
+
+.medal-laurel span:nth-child(2) {
+    left: 8px;
+    top: 11px;
+    transform: rotate(-30deg);
+}
+
+.medal-laurel span:nth-child(3) {
+    left: 4px;
+    top: 23px;
+    transform: rotate(-45deg);
+}
+
+.medal-laurel span:nth-child(4) {
+    left: 2px;
+    top: 36px;
+    transform: rotate(-60deg);
+}
+
+.medal-laurel span:nth-child(5) {
+    left: 5px;
+    top: 48px;
+    transform: rotate(-70deg);
+}
+
+
+/* =========================================================
+   CROWN
+========================================================= */
+
+.crown {
+
+    position: absolute;
+
+    left: 50%;
+
+    top: 65px;
+
+    transform: translateX(-50%);
+
+    color: #e0ad32;
+
+    font-size: 43px;
+
+    line-height: 1;
+
+    z-index: 45;
+
+    text-shadow:
+        0 1px 0 #fff;
+}
+
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.title-section {
+
+    position: absolute;
+
+    top: 108px;
+
+    left: 190px;
+    right: 190px;
+
+    text-align: center;
+
+    z-index: 45;
+}
+
+
+.title-section h1 {
+
+    margin: 0;
+
+    color: #092e5b;
+
+    font-size: 42px;
+
+    line-height: 1.08;
+
+    font-weight: 700;
+}
+
+
+.certificate-title {
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 18px;
+
+    margin-top: 9px;
+
+    color: #092e5b;
+
+    font-size: 17px;
+
+    letter-spacing: 8px;
+}
+
+
+.certificate-title span {
+
+    width: 88px;
+    height: 2px;
+
+    background: #c6a044;
+}
+
+
+/* =========================================================
+   QR
+========================================================= */
+
+.qr-section {
+
+    position: absolute;
+
+    top: 163px;
+
+    right: 70px;
+
+    width: 110px;
+
+    text-align: center;
+
+    z-index: 60;
+}
+
+
+.qr-box {
+
+    width: 96px;
+    height: 96px;
+
+    margin: auto;
+
+    padding: 3px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background: white;
+
+    border: 2px solid #c6a044;
+}
+
+
+#qrcode {
+
+    width: 86px;
+    height: 86px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+}
+
+
+#qrcode img,
+#qrcode canvas {
+
+    width: 86px !important;
+    height: 86px !important;
+}
+
+
+.qr-label {
+
+    margin-top: 5px;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 12px;
+
+    color: #111;
+}
+
+
+/* =========================================================
+   RIGHT MESSAGE
+========================================================= */
+
+.right-message {
+
+    position: absolute;
+
+    right: 82px;
+
+    top: 300px;
+
+    width: 115px;
+
+    text-align: center;
+
+    font-family:
+        "Brush Script MT",
+        "Segoe Script",
+        cursive;
+
+    font-size: 23px;
+
+    font-style: italic;
+
+    line-height: 1.08;
+
+    color: #092e5b;
+
+    transform: rotate(-8deg);
+
+    z-index: 35;
+}
+
+
+.message-line {
+
+    width: 55px;
+
+    height: 2px;
+
+    margin: 10px auto 0;
+
+    background: #c6a044;
+
+    transform: rotate(-8deg);
+}
+
+
+/* =========================================================
+   MAIN CONTENT
+========================================================= */
+
+.main-content {
+
+    position: absolute;
+
+    top: 183px;
+
+    left: 220px;
+    right: 220px;
+
+    text-align: center;
+
+    z-index: 45;
+}
+
+
+.certify {
+
+    font-size: 16px;
+
+    line-height: 1.25;
+}
+
+
+.intern-name {
+
+    margin-top: 5px;
+
+    font-family:
+        "Brush Script MT",
+        "Segoe Script",
+        "Lucida Handwriting",
+        cursive;
+
+    font-size: 43px;
+
+    font-style: italic;
+
+    line-height: 1;
+}
+
+
+.name-decoration {
+
+    width: 315px;
+
+    margin: 7px auto 9px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+}
+
+
+.name-decoration span {
+
+    flex: 1;
+
+    height: 2px;
+
+    background: #c6a044;
+}
+
+
+.name-decoration b {
+
+    font-size: 10px;
+
+    color: #c6a044;
+}
+
+
+/* =========================================================
+   MONTH CONTENT
+========================================================= */
+
+.award-line {
+
+    font-size: 16px;
+
+    line-height: 1.35;
+
+    color: #092e5b;
+}
+
+
+.award-line strong {
+
+    color: #c28d24;
+}
+
+
+.performance-text {
+
+    margin-top: 3px;
+
+    font-size: 16px;
+
+    line-height: 1.32;
+}
+
+
+.performance-text strong {
+
+    color: #c28d24;
+}
+
+
+.appreciation-text {
+
+    margin-top: 10px;
+
+    font-size: 14px;
+
+    line-height: 1.4;
+
+    color: #243b57;
+}
+
+
+/* Bottom stars */
+
+.bottom-stars {
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    margin-top: 9px;
+
+    color: #d09b2d;
+
+    font-size: 17px;
+}
+
+
+.bottom-stars span {
+
+    width: 70px;
+
+    height: 2px;
+
+    background: #c6a044;
+}
+
+
+/* =========================================================
+   DETAILS
+========================================================= */
+
+.details {
+
+    position: absolute;
+
+    left: 120px;
+    right: 120px;
+
+    top: 451px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    column-gap: 34px;
+
+    text-align: center;
+
+    z-index: 55;
+}
+
+
+.detail {
+    min-width: 0;
+}
+
+
+/* Icons */
+
+.detail-icon {
+
+    height: 30px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    margin-bottom: 3px;
+}
+
+
+/* Calendar */
+
+.calendar-icon span {
+
+    position: relative;
+
+    width: 21px;
+    height: 21px;
+
+    border: 2px solid #092e5b;
+
+    border-radius: 2px;
+}
+
+
+.calendar-icon span::before {
+
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    right: 0;
+
+    top: 6px;
+
+    border-top: 2px solid #092e5b;
+}
+
+
+.calendar-icon span::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 4px;
+    top: -5px;
+
+    width: 3px;
+    height: 6px;
+
+    background: #092e5b;
+
+    box-shadow:
+        9px 0 #092e5b;
+}
+
+
+/* Location */
+
+.location-icon span {
+
+    position: relative;
+
+    width: 21px;
+    height: 25px;
+
+    background: #092e5b;
+
+    border-radius:
+        50% 50% 50% 0;
+
+    transform: rotate(-45deg);
+}
+
+
+.location-icon span::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 6px;
+    top: 6px;
+
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: white;
+}
+
+
+/* People */
+
+.people-icon span {
+
+    position: relative;
+
+    width: 32px;
+    height: 27px;
+}
+
+
+.people-icon span::before {
+
+    content: "";
+
+    position: absolute;
+
+    left: 11px;
+    top: 0;
+
+    width: 10px;
+    height: 10px;
+
+    background: #092e5b;
+
+    border-radius: 50%;
+}
+
+
+.people-icon span::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 4px;
+    bottom: 0;
+
+    width: 24px;
+    height: 14px;
+
+    background: #092e5b;
+
+    border-radius:
+        12px 12px 2px 2px;
+}
+
+
+/* Detail line */
+
+.detail-line {
+
+    height: 1px;
+
+    margin: 2px 10px 7px;
+
+    background: #092e5b;
+}
+
+
+.detail-title {
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    line-height: 1.25;
+}
+
+
+.detail-value {
+
+    margin-top: 4px;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    line-height: 1.25;
+}
+
+
+/* Signature */
+
+.signature {
+
+    height: 30px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    font-family:
+        "Brush Script MT",
+        "Segoe Script",
+        cursive;
+
+    font-size: 25px;
+
+    font-style: italic;
+}
+
+
+/* =========================================================
+   ORGANIZATION
+========================================================= */
+
+.organization {
+
+    position: absolute;
+
+    left: 360px;
+    right: 360px;
+
+    top: 552px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 14px;
+
+    z-index: 55;
+}
+
+
+.organization span {
+
+    width: 100px;
+
+    height: 2px;
+
+    background: #c6a044;
+}
+
+
+.organization strong {
+
+    white-space: nowrap;
+
+    font-size: 19px;
+
+    color: #092e5b;
+}
+
+
+/* =========================================================
+   BOTTOM LEFT
+========================================================= */
+
+.bottom-left {
+
+    position: absolute;
+
+    left: -5px;
+    bottom: -5px;
+
+    width: 395px;
+    height: 185px;
+
+    background: #0b315d;
+
+    z-index: 20;
+
+    border-radius:
+        0 100% 0 0 / 0 100% 0 0;
+}
+
+
+.bottom-left::before {
+
+    content: "";
+
+    position: absolute;
+
+    left: -45px;
+    top: -72px;
+
+    width: 450px;
+    height: 225px;
+
+    border-radius: 50%;
+
+    border-top: 8px solid #c6a044;
+
+    transform: rotate(7deg);
+}
+
+
+.bottom-left::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: -50px;
+    top: -58px;
+
+    width: 440px;
+    height: 210px;
+
+    border-radius: 50%;
+
+    border-top: 2px solid #e4c46c;
+
+    transform: rotate(7deg);
+}
+
+
+/* Bottom text */
+
+.tagline {
+
+    position: absolute;
+
+    left: 28px;
+    bottom: 32px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    color: #ffffff;
+
+    font-size: 15px;
+
+    font-style: italic;
+
+    line-height: 1.45;
+
+    text-align: left;
+
+    z-index: 30;
+}
+
+
+/* =========================================================
+   BOTTOM RIGHT
+========================================================= */
+
+.bottom-right {
+
+    position: absolute;
+
+    right: -10px;
+    bottom: -8px;
+
+    width: 120px;
+    height: 150px;
+
+    background: #0b315d;
+
+    border-radius:
+        100% 0 0 0;
+
+    z-index: 20;
+}
+
+
+.bottom-right::before {
+
+    content: "";
+
+    position: absolute;
+
+    right: -50px;
+    bottom: -25px;
+
+    width: 110px;
+    height: 200px;
+
+    border-radius: 50%;
+
+    border: 4px solid #c6a044;
+}
+
+
+/* =========================================================
+   BACKGROUND WAVES
+========================================================= */
+
+.wave-area {
+
+    position: absolute;
+
+    right: -20px;
+    top: 90px;
+
+    width: 430px;
+    height: 550px;
+
+    opacity: .15;
+
+    z-index: 2;
+
+    overflow: hidden;
+}
+
+
+.wave {
+
+    position: absolute;
+
+    border: 1px solid #d8dde3;
+
+    border-left: 0;
+    border-bottom: 0;
+
+    border-radius: 50%;
+}
+
+
+.wave-1 {
+
+    width: 500px;
+    height: 580px;
+
+    right: -180px;
+    top: 20px;
+}
+
+
+.wave-2 {
+
+    width: 470px;
+    height: 550px;
+
+    right: -155px;
+    top: 45px;
+}
+
+
+.wave-3 {
+
+    width: 440px;
+    height: 520px;
+
+    right: -130px;
+    top: 70px;
+}
+
+
+.wave-4 {
+
+    width: 410px;
+    height: 490px;
+
+    right: -105px;
+    top: 95px;
+}
+
+
+/* =========================================================
+   PRINT
+========================================================= */
+
+@media print {
+
+    @page {
+
+        size: 1192px 757px;
+
+        margin: 0;
+    }
+
+    html,
+    body {
+
+        width: 1192px;
+        height: 757px;
+
+        margin: 0;
+        padding: 0;
+
+        background: white;
+    }
+
+    .certificate {
+        box-shadow: none;
+    }
+}

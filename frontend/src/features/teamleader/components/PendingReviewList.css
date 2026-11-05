@@ -1,0 +1,16 @@
+.review-panel { margin-top: 28px; }
+.review-count { padding: 7px 10px; border-radius: 999px; color: var(--accent); background: color-mix(in srgb, var(--accent) 13%, transparent); font-size: 11px; font-weight: 800; white-space: nowrap; }
+.review-list { display: grid; gap: 12px; margin-top: 20px; }
+.review-row { display: flex; justify-content: space-between; gap: 18px; padding: 17px; border: 1px solid var(--border); border-radius: 12px; background: var(--input); }
+.review-details h3 { margin: 0 0 5px; font-size: 15px; }
+.review-details p { margin: 7px 0 0; font-size: 13px; }
+.review-meta { color: var(--muted); font-size: 12px !important; }
+.review-reason { max-width: 600px; color: var(--muted); line-height: 1.4; }
+.review-actions { display: flex; align-items: center; justify-content: flex-end; gap: 8px; min-width: 190px; }
+.review-actions button { padding: 9px 11px; border: 1px solid var(--border); border-radius: 8px; color: var(--text); background: transparent; font-size: 12px; font-weight: 800; cursor: pointer; }
+.review-actions .forward-button { border-color: var(--success); color: var(--success); }
+.review-actions .reject-button { border-color: var(--error); color: var(--error); }
+.reject-form { display: grid; grid-template-columns: 1fr auto auto; gap: 7px; width: 100%; }
+.reject-form input { min-width: 0; margin: 0; }
+.reject-form button:first-of-type { color: var(--success); }
+@media (max-width: 700px) { .review-row { flex-direction: column; } .review-actions { justify-content: flex-start; min-width: 0; } .reject-form { grid-template-columns: 1fr 1fr; } .reject-form input { grid-column: 1 / -1; } }

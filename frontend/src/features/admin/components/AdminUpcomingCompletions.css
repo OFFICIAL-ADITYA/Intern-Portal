@@ -1,0 +1,13 @@
+.admin-upcoming-card { max-width: 1180px; margin: 24px auto 0; padding: 24px 28px; border: 1px solid var(--border); border-radius: 18px; background: color-mix(in srgb, var(--card) 94%, transparent); box-shadow: 0 18px 45px var(--shadow); }
+.admin-upcoming-heading { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 16px; }
+.admin-upcoming-heading h2 { margin: 0 0 5px; font-size: 21px; }
+.admin-upcoming-heading p:last-child { margin: 0; color: var(--muted); font-size: 13px; }
+.admin-upcoming-heading > span { min-width: 36px; padding: 8px 10px; border-radius: 999px; color: var(--accent); background: color-mix(in srgb, var(--accent) 13%, transparent); text-align: center; font-weight: 800; }
+.admin-upcoming-list { display: grid; gap: 10px; }
+.admin-upcoming-item { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 13px 15px; border: 1px solid var(--border); border-radius: 11px; background: var(--input); }
+.admin-upcoming-item > div:last-child { text-align: right; }
+.admin-upcoming-item strong, .admin-upcoming-item small { display: block; }
+.admin-upcoming-item strong { font-size: 14px; }
+.admin-upcoming-item small { margin-top: 4px; color: var(--muted); font-size: 12px; }
+.admin-upcoming-state { margin: 0; color: var(--muted); font-size: 14px; }
+@media (max-width: 560px) { .admin-upcoming-card { padding: 20px 16px; } .admin-upcoming-item { align-items: flex-start; flex-direction: column; } .admin-upcoming-item > div:last-child { text-align: left; } }

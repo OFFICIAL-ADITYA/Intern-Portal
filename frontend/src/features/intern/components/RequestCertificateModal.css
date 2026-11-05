@@ -1,0 +1,17 @@
+.request-modal-backdrop { position: fixed; inset: 0; z-index: 100; display: grid; place-items: center; padding: 20px; background: rgba(10, 10, 25, .65); backdrop-filter: blur(5px); }
+.request-modal { width: min(100%, 500px); padding: 28px; border: 1px solid var(--border); border-radius: 18px; color: var(--text); background: var(--card); box-shadow: 0 24px 70px rgba(0, 0, 0, .35); }
+.request-modal-header, .certificate-actions, .requests-panel-heading, .review-heading { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.request-modal-header { margin-bottom: 24px; }
+.request-eyebrow { margin: 0 0 7px; color: var(--accent); font-size: 11px; font-weight: 900; letter-spacing: 1.3px; }
+.request-modal h2, .requests-panel h2, .review-panel h2, .certificate-actions h2 { margin: 0; font-size: 22px; }
+.request-close { border: 0; color: var(--muted); background: transparent; font-size: 26px; cursor: pointer; }
+.request-field { display: block; margin-bottom: 18px; color: var(--text); font-size: 13px; font-weight: 800; }
+.request-field select, .request-field input, .request-field textarea, .reject-form input { display: block; width: 100%; margin-top: 8px; padding: 11px 12px; border: 1px solid var(--border); border-radius: 9px; outline: 0; color: var(--text); background: var(--input); font: inherit; font-weight: 400; }
+.request-field textarea { resize: vertical; }
+.request-metadata-section { margin-top: 12px; margin-bottom: 12px; padding-top: 12px; border-top: 1px dashed var(--border); }
+.request-metadata-title { font-size: 11px; font-weight: 800; color: var(--muted); text-transform: uppercase; letter-spacing: 0.8px; margin: 0 0 10px; }
+.request-field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.request-submit, .request-primary-button { padding: 11px 16px; border: 0; border-radius: 9px; color: #fff; background: var(--accent); font-weight: 800; cursor: pointer; }
+.request-submit { width: 100%; }
+.request-submit:disabled, .review-actions button:disabled { opacity: .6; cursor: wait; }
+.request-inline-error, .requests-error { color: var(--error); margin-bottom: 14px; font-size: 13px; }

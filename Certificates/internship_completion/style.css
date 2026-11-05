@@ -1,0 +1,1069 @@
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+
+    min-height: 100vh;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    background: #eeeeee;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    color: #0b2d56;
+}
+
+
+/* =========================================================
+   CERTIFICATE
+========================================================= */
+
+.certificate {
+
+    position: relative;
+
+    width: 1192px;
+    height: 757px;
+
+    overflow: hidden;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 10px 35px rgba(0,0,0,.18);
+}
+
+
+/* =========================================================
+   BORDERS
+========================================================= */
+
+.outer-border {
+
+    position: absolute;
+
+    inset: 14px;
+
+    border: 2px solid #c5a044;
+
+    z-index: 70;
+
+    pointer-events: none;
+}
+
+
+.inner-border {
+
+    position: absolute;
+
+    left: 37px;
+    right: 37px;
+
+    top: 40px;
+    bottom: 31px;
+
+    border: 1px solid #0c315c;
+
+    z-index: 70;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   BACKGROUND WAVES
+========================================================= */
+
+.background-waves {
+
+    position: absolute;
+
+    right: -5px;
+    top: 30px;
+
+    width: 470px;
+    height: 650px;
+
+    fill: none;
+
+    stroke: #d8dfe5;
+
+    stroke-width: 1;
+
+    opacity: .22;
+
+    z-index: 1;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   TOP RIGHT DECORATION
+========================================================= */
+
+.top-decoration {
+
+    position: absolute;
+
+    right: -18px;
+    top: -20px;
+
+    width: 350px;
+    height: 145px;
+
+    z-index: 5;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.header {
+
+    position: absolute;
+
+    left: 176px;
+    right: 80px;
+
+    top: 43px;
+
+    height: 50px;
+
+    z-index: 30;
+}
+
+
+/* =========================================================
+   LOGO
+========================================================= */
+
+.logo {
+
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    height: 45px;
+
+    transform: scale(.88);
+
+    transform-origin: left top;
+}
+
+
+.cap {
+
+    position: relative;
+
+    width: 25px;
+    height: 24px;
+
+    margin-right: 5px;
+}
+
+
+.cap-top {
+
+    position: absolute;
+
+    width: 26px;
+    height: 12px;
+
+    top: 2px;
+    left: 0;
+
+    background: #071d35;
+
+    clip-path:
+        polygon(
+            50% 0,
+            100% 50%,
+            50% 100%,
+            0 50%
+        );
+}
+
+
+.cap-bottom {
+
+    position: absolute;
+
+    width: 15px;
+    height: 7px;
+
+    left: 5px;
+    top: 10px;
+
+    background: #071d35;
+
+    border-radius:
+        0 0 50% 50%;
+}
+
+
+.logo-text {
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 28px;
+
+    font-weight: 800;
+
+    letter-spacing: -1.5px;
+
+    color: #10b89c;
+}
+
+
+.logo-text span {
+
+    color: #f47735;
+}
+
+
+.logo-arrow {
+
+    position: absolute;
+
+    width: 22px;
+    height: 22px;
+
+    left: 128px;
+    top: -3px;
+
+    border-top: 4px solid #f47735;
+    border-right: 4px solid #f47735;
+
+    transform: rotate(38deg);
+}
+
+
+.certificate-number {
+
+    position: absolute;
+
+    right: 0;
+    top: 3px;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.title {
+
+    position: absolute;
+
+    left: 190px;
+    right: 150px;
+
+    top: 109px;
+
+    text-align: center;
+
+    z-index: 30;
+}
+
+
+.title h1 {
+
+    margin: 0;
+
+    font-size: 37px;
+
+    line-height: 1;
+
+    font-weight: 700;
+
+    color: #0b2d56;
+}
+
+
+.certificate-heading {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 18px;
+
+    margin-top: 8px;
+
+    font-size: 16px;
+
+    letter-spacing: 7px;
+}
+
+
+.certificate-heading span {
+
+    width: 77px;
+    height: 2px;
+
+    background: #c5a044;
+}
+
+
+/* =========================================================
+   RIBBON
+========================================================= */
+
+.ribbon {
+
+    position: absolute;
+
+    left: 61px;
+    top: 0;
+
+    width: 82px;
+    height: 370px;
+
+    z-index: 15;
+
+    pointer-events: none;
+}
+
+
+.ribbon-svg {
+
+    display: block;
+
+    width: 82px;
+    height: 370px;
+}
+
+
+/* =========================================================
+   MEDAL
+========================================================= */
+
+.medal {
+
+    position: absolute;
+
+    left: 27px;
+    top: 122px;
+
+    width: 155px;
+    height: 155px;
+
+    z-index: 35;
+
+    pointer-events: none;
+
+    filter:
+        drop-shadow(
+            0 4px 5px rgba(0,0,0,.25)
+        );
+}
+
+
+.medal-svg {
+
+    display: block;
+
+    width: 155px;
+    height: 155px;
+
+    overflow: visible;
+}
+
+
+/* =========================================================
+   QR
+========================================================= */
+
+.qr {
+
+    position: absolute;
+
+    right: 77px;
+    top: 174px;
+
+    width: 100px;
+
+    text-align: center;
+
+    z-index: 35;
+
+    font-family: Arial, sans-serif;
+
+    color: #111;
+}
+
+
+.qr-box {
+
+    width: 91px;
+    height: 91px;
+
+    margin: auto;
+
+    padding: 3px;
+
+    background: #fff;
+
+    border: 2px solid #c5a044;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+}
+
+
+#qrcode {
+
+    width: 83px;
+    height: 83px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+}
+
+
+#qrcode img,
+#qrcode canvas {
+
+    display: block;
+
+    width: 83px !important;
+    height: 83px !important;
+}
+
+
+.qr-text {
+
+    margin-top: 5px;
+
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   MAIN CONTENT
+========================================================= */
+
+.main {
+    position: absolute;
+
+    left: 190px;
+    right: 205px;
+
+    /* Bonafide layout: below TO WHOM IT MAY CONCERN */
+    top: 224px;
+
+    text-align: center;
+
+    z-index: 30;
+}
+
+
+.certify {
+    font-size: 15px;
+    margin-bottom: 7px;
+}
+
+
+.intern-name {
+    font-family:
+        "Brush Script MT",
+        "Segoe Script",
+        "Lucida Handwriting",
+        cursive;
+
+    font-size: 42px;
+    font-style: italic;
+    line-height: 1.05;
+
+    color: #0b2d56;
+}
+
+
+.name-decoration {
+    width: 205px;
+
+    margin: 5px auto 9px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 7px;
+
+    color: #c5a044;
+}
+
+
+.name-decoration span {
+
+    flex: 1;
+
+    height: 1px;
+
+    background: #c5a044;
+}
+
+
+.name-decoration b {
+
+    font-size: 10px;
+}
+
+
+.completion {
+    font-size: 15px;
+    font-weight: 600;
+
+    margin-top: 6px;
+
+    line-height: 1.4;
+}
+
+
+.date-band {
+    display: inline-block;
+
+    min-width: 500px;
+
+    margin-top: 8px;
+
+    padding: 4px 30px 5px;
+
+    border-radius: 18px;
+
+    background: #e5f0f8;
+
+    font-size: 15px;
+    font-weight: 600;
+}
+
+
+.duration {
+    margin-top: 7px;
+    font-size: 15px;
+}
+
+
+.description {
+    width: 680px;
+
+    margin: 10px auto 0;
+
+    font-size: 12px;
+    line-height: 1.35;
+
+    color: #243852;
+}
+
+
+/* =========================================================
+   DETAILS
+========================================================= */
+
+.details {
+    position: absolute;
+
+    left: 120px;
+    right: 120px;
+
+    top: 456px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    column-gap: 72px;
+
+    text-align: center;
+
+    z-index: 30;
+}
+
+
+.detail {
+
+    min-width: 0;
+
+    position: relative;
+}
+
+
+.detail-icon {
+
+    height: 31px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* =========================================================
+   CALENDAR ICON
+========================================================= */
+
+.calendar span {
+
+    position: relative;
+
+    width: 19px;
+    height: 19px;
+
+    border: 2px solid #0b2d56;
+
+    border-radius: 2px;
+}
+
+
+.calendar span::before {
+
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    right: 0;
+
+    top: 6px;
+
+    border-top: 2px solid #0b2d56;
+}
+
+
+.calendar span::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 3px;
+    height: 5px;
+
+    top: -5px;
+    left: 4px;
+
+    background: #0b2d56;
+
+    box-shadow:
+        8px 0 #0b2d56;
+}
+
+
+/* =========================================================
+   LOCATION ICON
+========================================================= */
+
+.location span {
+
+    position: relative;
+
+    width: 19px;
+    height: 25px;
+
+    background: #0b2d56;
+
+    border-radius:
+        50% 50% 50% 0;
+
+    transform: rotate(-45deg);
+}
+
+
+.location span::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 7px;
+    height: 7px;
+
+    left: 6px;
+    top: 6px;
+
+    background: white;
+
+    border-radius: 50%;
+}
+
+
+/* =========================================================
+   PERSON ICON
+========================================================= */
+
+.person span {
+
+    position: relative;
+
+    width: 28px;
+    height: 27px;
+}
+
+
+.person span::before {
+
+    content: "";
+
+    position: absolute;
+
+    left: 9px;
+    top: 0;
+
+    width: 10px;
+    height: 10px;
+
+    border-radius: 50%;
+
+    background: #0b2d56;
+}
+
+
+.person span::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 4px;
+    bottom: 0;
+
+    width: 20px;
+    height: 14px;
+
+    border-radius:
+        12px 12px 2px 2px;
+
+    background: #0b2d56;
+}
+
+
+/* =========================================================
+   DETAIL TEXT
+========================================================= */
+
+.detail-line {
+
+    height: 1px;
+
+    margin:
+        2px 13px 7px;
+
+    background: #0b2d56;
+}
+
+
+.detail-title {
+
+    font-size: 12.5px;
+
+    font-weight: 600;
+}
+
+
+.detail-value {
+
+    margin-top: 4px;
+
+    font-size: 12px;
+
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   SIGNATURE
+========================================================= */
+
+.signature {
+
+    height: 31px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-family:
+        "Brush Script MT",
+        "Segoe Script",
+        cursive;
+
+    font-size: 24px;
+
+    font-style: italic;
+
+    color: #0b2d56;
+}
+
+
+/* =========================================================
+   ORGANIZATION
+========================================================= */
+
+.organization {
+    position: absolute;
+
+    left: 330px;
+    right: 330px;
+
+    top: 610px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 14px;
+
+    z-index: 30;
+}
+
+
+.organization span {
+
+    width: 90px;
+
+    height: 2px;
+
+    background: #c5a044;
+}
+
+
+.organization strong {
+
+    font-size: 17px;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   BOTTOM LEFT
+========================================================= */
+
+.bottom-left {
+    position: absolute;
+
+    left: 0;
+    bottom: 0;
+
+    width: 470px;
+    height: 215px;
+
+    overflow: hidden;
+
+    z-index: 8;
+
+    pointer-events: none;
+}
+
+
+.bottom-left svg {
+    position: absolute;
+
+    inset: 0;
+
+    width: 470px;
+    height: 215px;
+
+    display: block;
+}
+
+
+.tagline {
+    position: absolute;
+
+    left: 24px;
+    bottom: 31px;
+
+    z-index: 20;
+
+    color: #ffffff;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 15px;
+    font-style: italic;
+    font-weight: 400;
+
+    line-height: 1.25;
+    letter-spacing: 0.1px;
+
+    text-align: left;
+    white-space: nowrap;
+
+    text-shadow:
+        0 1px 1px rgba(0,0,0,.20);
+}
+
+
+/* =========================================================
+   BOTTOM RIGHT
+========================================================= */
+
+.bottom-right {
+
+    position: absolute;
+
+    right: 14px;
+    bottom: 13px;
+
+    width: 45px;
+    height: 45px;
+
+    border-right:
+        5px solid #0c315c;
+
+    border-bottom:
+        5px solid #0c315c;
+
+    z-index: 20;
+}
+
+
+.bottom-right::after {
+
+    content: "";
+
+    position: absolute;
+
+    right: 7px;
+    bottom: 7px;
+
+    width: 27px;
+    height: 27px;
+
+    border-right:
+        2px solid #c5a044;
+
+    border-bottom:
+        2px solid #c5a044;
+}
+
+
+/* =========================================================
+   PRINT
+========================================================= */
+
+@media print {
+
+    @page {
+
+        size: 1192px 757px;
+
+        margin: 0;
+    }
+
+
+    html,
+    body {
+
+        width: 1192px;
+        height: 757px;
+
+        background: white;
+    }
+
+
+    .certificate {
+
+        box-shadow: none;
+    }
+
+}
+
+/* =========================================================
+   BONAFIDE FINAL FINISHING OVERRIDES
+   Keep existing HTML class names
+========================================================= */
+
+.title {
+    top: 110px;
+}
+
+.title h1 {
+    font-size: 39px;
+}
+
+.certificate-heading {
+    margin-top: 9px;
+}
+
+.main {
+    top: 224px;
+}
+
+.details {
+    top: 456px;
+}
+
+.organization {
+    top: 610px;
+}
+
+.bottom-left {
+    width: 470px;
+    height: 215px;
+}
+
+.bottom-left svg {
+    width: 470px;
+    height: 215px;
+}
+
+.tagline {
+    left: 24px;
+    bottom: 31px;
+}
+
+/* Make sure the decorative layer never covers text */
+.outer-border,
+.inner-border {
+    pointer-events: none;
+}

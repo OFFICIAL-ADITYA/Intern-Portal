@@ -1,0 +1,876 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>On Job Training Certificate</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background: #e9edf2;
+}
+
+body {
+    font-family: Georgia, "Times New Roman", serif;
+    color: #063b6d;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+}
+
+.page {
+    position: relative;
+    width: 1123px;
+    height: 794px;
+    margin: 0 auto;
+    background: #ffffff;
+    overflow: hidden;
+}
+
+/* =========================
+   BORDERS
+========================= */
+
+.outer-border {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    border: 2px solid #063b6d;
+    z-index: 30;
+}
+
+.inner-border {
+    position: absolute;
+    top: 22px;
+    left: 22px;
+    right: 22px;
+    bottom: 22px;
+    border: 1px solid #d9aa27;
+    z-index: 30;
+}
+
+.corner {
+    position: absolute;
+    width: 45px;
+    height: 45px;
+    z-index: 31;
+}
+
+.corner::before,
+.corner::after {
+    content: "";
+    position: absolute;
+    background: #d9aa27;
+}
+
+.corner::before {
+    width: 45px;
+    height: 2px;
+    top: 0;
+    left: 0;
+}
+
+.corner::after {
+    width: 2px;
+    height: 45px;
+    top: 0;
+    left: 0;
+}
+
+.corner-tl {
+    top: 22px;
+    left: 22px;
+}
+
+.corner-tr {
+    top: 22px;
+    right: 22px;
+    transform: rotate(90deg);
+}
+
+.corner-bl {
+    bottom: 22px;
+    left: 22px;
+    transform: rotate(-90deg);
+}
+
+.corner-br {
+    bottom: 22px;
+    right: 22px;
+    transform: rotate(180deg);
+}
+
+/* =========================
+   TOP BANNER
+========================= */
+
+.top-banner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 94px;
+    background: #063b6d;
+    clip-path: polygon(
+        0 0,
+        100% 0,
+        100% 70%,
+        82% 100%,
+        18% 100%,
+        0 70%
+    );
+    z-index: 2;
+}
+
+.top-banner::after {
+    content: "";
+    position: absolute;
+    left: 120px;
+    right: 120px;
+    bottom: 13px;
+    height: 2px;
+    background: #e2b52f;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.header {
+    position: relative;
+    height: 125px;
+    padding-top: 29px;
+    text-align: center;
+    z-index: 5;
+}
+
+.logo-name {
+    color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 25px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.logo-name span {
+    color: #e2b52f;
+}
+
+.logo-tagline {
+    margin-top: 4px;
+    color: #dbe5ec;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 6px;
+    letter-spacing: 3.2px;
+}
+
+/* =========================
+   TITLE
+========================= */
+
+.title {
+    position: relative;
+    text-align: center;
+    z-index: 5;
+}
+
+.title h1 {
+    color: #063b6d;
+    font-size: 37px;
+    line-height: 1.1;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.title .subtitle {
+    margin-top: 8px;
+    color: #d29d1d;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 9px;
+    font-weight: bold;
+    letter-spacing: 4px;
+}
+
+/* =========================
+   ORNAMENT
+========================= */
+
+.ornament {
+    position: relative;
+    width: 300px;
+    height: 26px;
+    margin: 8px auto 0;
+}
+
+.ornament::before {
+    content: "";
+    position: absolute;
+    top: 12px;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: #d9aa27;
+}
+
+.ornament::after {
+    content: "";
+    position: absolute;
+    top: 7px;
+    left: calc(50% - 6px);
+    width: 12px;
+    height: 12px;
+    background: #ffffff;
+    border: 2px solid #063b6d;
+    transform: rotate(45deg);
+}
+
+/* =========================
+   MAIN CONTENT
+========================= */
+
+.content {
+    position: relative;
+    width: 850px;
+    margin: 2px auto 0;
+    text-align: center;
+    z-index: 5;
+}
+
+.intro {
+    font-size: 15px;
+    color: #425c70;
+    line-height: 1.5;
+}
+
+.student-name {
+    display: inline-block;
+    min-width: 430px;
+    margin-top: 9px;
+    padding: 0 30px 6px;
+    border-bottom: 2px solid #063b6d;
+    color: #063b6d;
+    font-size: 31px;
+    font-weight: bold;
+}
+
+.description {
+    width: 790px;
+    margin: 12px auto 0;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #3e596e;
+    font-size: 11px;
+    line-height: 1.65;
+}
+
+.description strong {
+    color: #063b6d;
+}
+
+/* =========================
+   TRAINING DETAILS
+========================= */
+
+.details {
+    width: 800px;
+    height: 112px;
+    margin: 19px auto 0;
+    padding: 15px 25px;
+    border: 1px solid #d9aa27;
+    border-radius: 9px;
+    display: grid;
+    grid-template-columns: 1fr 1px 1fr;
+    background: #fcfdfe;
+}
+
+.detail-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 11px;
+}
+
+.detail-divider {
+    width: 1px;
+    background: #d9aa27;
+}
+
+.detail-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 9px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.detail-label {
+    min-width: 92px;
+    text-align: right;
+    color: #063b6d;
+    font-size: 8px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+}
+
+.detail-value {
+    min-width: 125px;
+    text-align: left;
+    color: #50697b;
+    font-size: 9px;
+}
+
+/* =========================
+   CERTIFICATE NUMBER
+========================= */
+
+.certificate-number {
+    margin-top: 12px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 8px;
+    color: #657988;
+    letter-spacing: 0.7px;
+}
+
+.certificate-number strong {
+    color: #063b6d;
+}
+
+/* =========================
+   TRAINING STATEMENT
+========================= */
+
+.training-statement {
+    width: 790px;
+    margin: 11px auto 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 9.5px;
+    line-height: 1.5;
+    color: #536c7e;
+}
+
+.training-statement strong {
+    color: #063b6d;
+}
+
+/* =========================
+   BOTTOM SECTION
+========================= */
+
+.bottom {
+    position: absolute;
+    left: 80px;
+    right: 80px;
+    bottom: 47px;
+    height: 117px;
+    z-index: 5;
+}
+
+/* =========================
+   DATE
+========================= */
+
+.date-block {
+    position: absolute;
+    left: 0;
+    bottom: 7px;
+    width: 170px;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.date-line {
+    width: 145px;
+    height: 1px;
+    margin: 0 auto 5px;
+    background: #063b6d;
+}
+
+.date-label {
+    font-size: 7px;
+    font-weight: bold;
+    color: #063b6d;
+    letter-spacing: 1px;
+}
+
+.date-value {
+    margin-top: 3px;
+    color: #627787;
+    font-size: 8px;
+}
+
+/* =========================
+   SIGNATURE
+========================= */
+
+.signature {
+    position: absolute;
+    right: 195px;
+    bottom: 6px;
+    width: 185px;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.signature-name {
+    height: 27px;
+    font-family: "Brush Script MT", cursive;
+    color: #063b6d;
+    font-size: 21px;
+}
+
+.signature-line {
+    width: 150px;
+    height: 1px;
+    margin: 0 auto 5px;
+    background: #063b6d;
+}
+
+.signature-title {
+    color: #063b6d;
+    font-size: 7px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+.signature-company {
+    margin-top: 2px;
+    color: #657988;
+    font-size: 6.5px;
+}
+
+/* =========================
+   SEAL
+========================= */
+
+.seal {
+    position: absolute;
+    right: 72px;
+    bottom: -1px;
+    width: 94px;
+    height: 94px;
+    border: 2px solid #d9aa27;
+    border-radius: 50%;
+    transform: rotate(-8deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.seal::before {
+    content: "";
+    position: absolute;
+    width: 78px;
+    height: 78px;
+    border: 1px solid #063b6d;
+    border-radius: 50%;
+}
+
+.seal-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: #063b6d;
+}
+
+.seal-top {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 5px;
+    letter-spacing: 1px;
+}
+
+.seal-symbol {
+    margin: 3px 0;
+    font-size: 23px;
+    font-weight: bold;
+}
+
+.seal-bottom {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 4px;
+    letter-spacing: 0.5px;
+}
+
+/* =========================
+   QR
+========================= */
+
+.qr-section {
+    position: absolute;
+    left: 235px;
+    bottom: 0;
+    width: 90px;
+    text-align: center;
+}
+
+.qr-box {
+    width: 76px;
+    height: 76px;
+    margin: 0 auto;
+    padding: 5px;
+    border: 1px solid #063b6d;
+    background: #ffffff;
+}
+
+.certificate-qr-code {
+    display: block;
+    width: 64px !important;
+    height: 64px !important;
+    object-fit: contain;
+}
+
+.qr-label {
+    margin-top: 4px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #657988;
+    font-size: 5.5px;
+}
+
+/* =========================
+   SIDE DECORATION
+========================= */
+
+.side-line {
+    position: absolute;
+    top: 255px;
+    width: 3px;
+    height: 150px;
+    background: #d9aa27;
+    z-index: 3;
+}
+
+.side-line.left {
+    left: 45px;
+}
+
+.side-line.right {
+    right: 45px;
+}
+
+.side-line::before,
+.side-line::after {
+    content: "";
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border: 1px solid #063b6d;
+    transform: rotate(45deg);
+}
+
+.side-line::before {
+    top: -7px;
+}
+
+.side-line::after {
+    bottom: -7px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer {
+    position: absolute;
+    left: 80px;
+    right: 80px;
+    bottom: 25px;
+    text-align: center;
+    color: #81909b;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 5.5px;
+    letter-spacing: 1.1px;
+    z-index: 5;
+}
+
+/* =========================
+   REQUIRED PLACEHOLDERS
+========================= */
+
+.required-placeholders {
+    display: none;
+}
+
+/* =========================
+   PRINT
+========================= */
+
+@page {
+    size: A4 landscape;
+    margin: 0;
+}
+
+@media print {
+    html,
+    body {
+        width: 297mm;
+        height: 210mm;
+        background: #ffffff;
+    }
+
+    .page {
+        width: 297mm;
+        height: 210mm;
+        margin: 0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="page">
+
+    <!-- BORDER -->
+    <div class="outer-border"></div>
+    <div class="inner-border"></div>
+
+    <!-- CORNERS -->
+    <div class="corner corner-tl"></div>
+    <div class="corner corner-tr"></div>
+    <div class="corner corner-bl"></div>
+    <div class="corner corner-br"></div>
+
+    <!-- SIDE DECORATION -->
+    <div class="side-line left"></div>
+    <div class="side-line right"></div>
+
+    <!-- TOP BANNER -->
+    <div class="top-banner"></div>
+
+    <!-- HEADER -->
+    <header class="header">
+
+        <div class="logo-name">
+            UPTO<span>SKILLS</span>
+        </div>
+
+        <div class="logo-tagline">
+            SKILL · GROW · SUCCEED
+        </div>
+
+    </header>
+
+    <!-- TITLE -->
+    <section class="title">
+
+        <h1>
+            ON JOB TRAINING CERTIFICATE
+        </h1>
+
+        <div class="subtitle">
+            CERTIFICATE OF TRAINING
+        </div>
+
+        <div class="ornament"></div>
+
+    </section>
+
+    <!-- MAIN CONTENT -->
+    <section class="content">
+
+        <div class="intro">
+            This is to certify that
+        </div>
+
+        <div class="student-name">
+            {{fullName}}
+        </div>
+
+        <div class="description">
+
+            bearing Intern Code
+            <strong>{{internCode}}</strong>,
+            has successfully undergone
+            On Job Training in the domain of
+            <strong>{{domain}}</strong>
+            at <strong>UptoSkills</strong>
+            from
+            <strong>{{startDate}}</strong>
+            to
+            <strong>{{endDate}}</strong>.
+
+        </div>
+
+        <!-- DETAILS -->
+        <div class="details">
+
+            <div class="detail-column">
+
+                <div class="detail-row">
+                    <span class="detail-label">
+                        Intern Code
+                    </span>
+
+                    <span class="detail-value">
+                        {{internCode}}
+                    </span>
+                </div>
+
+                <div class="detail-row">
+                    <span class="detail-label">
+                        Training Domain
+                    </span>
+
+                    <span class="detail-value">
+                        {{domain}}
+                    </span>
+                </div>
+
+            </div>
+
+            <div class="detail-divider"></div>
+
+            <div class="detail-column">
+
+                <div class="detail-row">
+                    <span class="detail-label">
+                        Training Start
+                    </span>
+
+                    <span class="detail-value">
+                        {{startDate}}
+                    </span>
+                </div>
+
+                <div class="detail-row">
+                    <span class="detail-label">
+                        Training End
+                    </span>
+
+                    <span class="detail-value">
+                        {{endDate}}
+                    </span>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="certificate-number">
+            Certificate No:
+            <strong>{{requestNumber}}</strong>
+        </div>
+
+        <div class="training-statement">
+
+            During the training period, the intern participated in
+            assigned learning activities, practical tasks, and
+            professional development under the guidance of the
+            <strong>UptoSkills</strong> team.
+
+        </div>
+
+    </section>
+
+    <!-- BOTTOM -->
+    <section class="bottom">
+
+        <!-- DATE -->
+        <div class="date-block">
+
+            <div class="date-line"></div>
+
+            <div class="date-label">
+                DATE OF ISSUE
+            </div>
+
+            <div class="date-value">
+                {{issueDate}}
+            </div>
+
+        </div>
+
+        <!-- QR -->
+        <div class="qr-section">
+
+            <div class="qr-box">
+
+                <img
+                    src="{{qrCodeUrl}}"
+                    alt="QR Code"
+                    class="certificate-qr-code"
+                >
+
+            </div>
+
+            <div class="qr-label">
+                SCAN TO VERIFY
+            </div>
+
+        </div>
+
+        <!-- SIGNATURE -->
+        <div class="signature">
+
+            <div class="signature-name">
+                Authorized
+            </div>
+
+            <div class="signature-line"></div>
+
+            <div class="signature-title">
+                AUTHORIZED SIGNATORY
+            </div>
+
+            <div class="signature-company">
+                UptoSkills
+            </div>
+
+        </div>
+
+        <!-- SEAL -->
+        <div class="seal">
+
+            <div class="seal-content">
+
+                <div class="seal-top">
+                    U P T O S K I L L S
+                </div>
+
+                <div class="seal-symbol">
+                    U
+                </div>
+
+                <div class="seal-bottom">
+                    OJT VERIFIED
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- FOOTER -->
+    <div class="footer">
+        UPTOSKILLS · ON JOB TRAINING · SKILL · GROW · SUCCEED
+    </div>
+
+    <!-- REQUIRED PLACEHOLDERS -->
+    <div class="required-placeholders">
+        {{fullName}}
+        {{internCode}}
+        {{domain}}
+        {{startDate}}
+        {{endDate}}
+        {{issueDate}}
+        {{requestNumber}}
+        {{certificateTitle}}
+        {{qrCodeUrl}}
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,1465 @@
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: #eeeeee;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    color: #092e5b;
+}
+
+
+/* =========================================================
+   CERTIFICATE
+========================================================= */
+
+.certificate {
+
+    position: relative;
+
+    width: 1192px;
+    height: 757px;
+
+    overflow: hidden;
+
+    background: #ffffff;
+}
+
+
+/* =========================================================
+   BORDERS
+========================================================= */
+
+.outer-border {
+
+    position: absolute;
+
+    inset: 14px;
+
+    border: 2px solid #c6a044;
+
+    z-index: 100;
+    pointer-events: none;
+}
+
+
+.inner-border {
+
+    position: absolute;
+
+    left: 39px;
+    right: 39px;
+
+    top: 47px;
+    bottom: 29px;
+
+    border: 1px solid #0a315d;
+
+    z-index: 100;
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.header {
+
+    position: absolute;
+
+    left: 188px;
+    right: 72px;
+
+    top: 48px;
+
+    height: 45px;
+
+    z-index: 50;
+}
+
+
+/* =========================================================
+   LOGO
+========================================================= */
+
+.logo {
+
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    display: flex;
+    align-items: center;
+
+    height: 40px;
+}
+
+
+/* Graduation cap */
+
+.cap {
+
+    position: relative;
+
+    width: 25px;
+    height: 24px;
+
+    margin-right: 5px;
+}
+
+
+.cap-top {
+
+    position: absolute;
+
+    width: 25px;
+    height: 13px;
+
+    top: 2px;
+    left: 0;
+
+    background: #092e55;
+
+    clip-path:
+        polygon(
+            50% 0,
+            100% 50%,
+            50% 100%,
+            0 50%
+        );
+}
+
+
+.cap-bottom {
+
+    position: absolute;
+
+    width: 15px;
+    height: 7px;
+
+    left: 5px;
+    top: 11px;
+
+    background: #092e55;
+
+    border-radius:
+        0 0 50% 50%;
+}
+
+
+/* Logo text */
+
+.logo-text {
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 27px;
+
+    font-weight: 800;
+
+    letter-spacing: -1.5px;
+
+    color: #10b89d;
+
+    white-space: nowrap;
+}
+
+.logo-text span {
+    color: #f47735;
+}
+
+
+/* Logo arrow */
+
+.logo-arrow {
+
+    position: absolute;
+
+    left: 128px;
+    top: -4px;
+
+    width: 22px;
+    height: 22px;
+
+    border-top: 4px solid #f47735;
+    border-right: 4px solid #f47735;
+
+    transform: rotate(38deg);
+}
+
+
+/* Certificate number */
+
+.certificate-number {
+
+    position: absolute;
+
+    right: 0;
+    top: 6px;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   TOP RIGHT DECORATION
+========================================================= */
+
+.top-decoration {
+
+    position: absolute;
+
+    right: -55px;
+    top: -75px;
+
+    width: 355px;
+    height: 185px;
+
+    border-radius: 50%;
+
+    border-top: 6px solid #092f59;
+    border-right: 6px solid #092f59;
+
+    transform: rotate(14deg);
+
+    z-index: 10;
+}
+
+.top-decoration::before {
+
+    content: "";
+
+    position: absolute;
+
+    right: 7px;
+    top: 8px;
+
+    width: 330px;
+    height: 160px;
+
+    border-radius: 50%;
+
+    border-top: 3px solid #c6a044;
+    border-right: 3px solid #c6a044;
+}
+
+.top-decoration::after {
+
+    content: "";
+
+    position: absolute;
+
+    right: 21px;
+    top: 22px;
+
+    width: 305px;
+    height: 145px;
+
+    border-radius: 50%;
+
+    border-top: 1px solid #0a315d;
+    border-right: 1px solid #0a315d;
+}
+
+
+/* =========================================================
+   RIBBON
+========================================================= */
+
+.ribbon {
+
+    position: absolute;
+
+    left: 63px;
+    top: 0;
+
+    width: 112px;
+    height: 355px;
+
+    z-index: 40;
+
+    pointer-events: none;
+}
+
+
+/* Main ribbon */
+
+.ribbon-body {
+
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    width: 112px;
+    height: 300px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #08294e 0%,
+            #143f6d 50%,
+            #08294e 100%
+        );
+
+    border-left: 4px solid #c6a044;
+    border-right: 4px solid #c6a044;
+}
+
+
+/* Ribbon text */
+
+.ribbon-text {
+
+    position: absolute;
+
+    left: 7px;
+    right: 7px;
+
+    top: 65px;
+
+    text-align: center;
+
+    color: #f4d47a;
+
+    font-size: 15px;
+
+    font-weight: 700;
+
+    line-height: 1.5;
+}
+
+
+/* Ribbon divider */
+
+.ribbon-divider {
+
+    position: absolute;
+
+    left: 32px;
+    top: 218px;
+
+    width: 46px;
+    height: 2px;
+
+    background: #c6a044;
+}
+
+
+/* Ribbon tail */
+
+.ribbon-tail {
+
+    position: absolute;
+
+    left: 0;
+    bottom: 0;
+
+    width: 112px;
+    height: 80px;
+
+    background: #c6a044;
+
+    clip-path:
+        polygon(
+            0 0,
+            100% 0,
+            100% 68%,
+            76% 48%,
+            50% 100%,
+            24% 48%,
+            0 68%
+        );
+}
+
+
+.ribbon-tail::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 5px;
+    top: 0;
+
+    width: 102px;
+    height: 75px;
+
+    background: #0b315d;
+
+    clip-path:
+        polygon(
+            0 0,
+            100% 0,
+            100% 66%,
+            75% 46%,
+            50% 94%,
+            25% 46%,
+            0 66%
+        );
+}
+
+
+/* =========================================================
+   MEDAL
+========================================================= */
+
+.medal {
+
+    position: absolute;
+
+    /*
+       Ribbon center = 63 + 56 = 119px
+       Medal center = 119px
+    */
+
+    left: 119px;
+    top: 142px;
+
+    width: 132px;
+    height: 132px;
+
+    transform: translateX(-50%);
+
+    z-index: 80;
+
+    filter:
+        drop-shadow(
+            0 4px 5px rgba(0,0,0,.25)
+        );
+}
+
+
+/* Outer */
+
+.medal-outer {
+
+    position: absolute;
+
+    inset: 0;
+
+    width: 132px;
+    height: 132px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            #fff4b8 0%,
+            #f3d16c 55%,
+            #c9962c 72%,
+            #f1ce6a 86%,
+            #bd8724 100%
+        );
+
+    border: 3px solid #c18d27;
+
+    box-shadow:
+        inset 0 0 0 2px #ffe7a0,
+        inset 0 0 0 5px #d09b30;
+}
+
+
+/* Inner */
+
+.medal-inner {
+
+    position: absolute;
+
+    left: 13px;
+    top: 13px;
+
+    width: 102px;
+    height: 102px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            #fff6c9 0%,
+            #efcb68 100%
+        );
+
+    border: 2px solid #bd8928;
+}
+
+
+/* Stars */
+
+.medal-stars {
+
+    position: absolute;
+
+    top: 10px;
+
+    left: 0;
+    right: 0;
+
+    text-align: center;
+
+    font-size: 7px;
+
+    letter-spacing: 2px;
+
+    color: #092e55;
+}
+
+
+/* Medal text */
+
+.medal-text {
+
+    position: absolute;
+
+    left: 25px;
+    right: 25px;
+
+    top: 39px;
+
+    text-align: center;
+
+    font-size: 8px;
+
+    font-weight: 700;
+
+    line-height: 1.4;
+
+    color: #092e55;
+}
+
+
+/* Bottom stars */
+
+.medal-bottom-stars {
+
+    position: absolute;
+
+    left: 0;
+    right: 0;
+
+    bottom: 8px;
+
+    text-align: center;
+
+    color: #092e55;
+
+    font-size: 7px;
+
+    letter-spacing: 2px;
+}
+
+
+/* Laurels */
+
+.medal-laurel {
+
+    position: absolute;
+
+    top: 34px;
+
+    width: 22px;
+    height: 60px;
+}
+
+
+.medal-laurel-left {
+    left: 6px;
+}
+
+
+.medal-laurel-right {
+    right: 6px;
+
+    transform: scaleX(-1);
+}
+
+
+.medal-laurel span {
+
+    position: absolute;
+
+    width: 7px;
+    height: 15px;
+
+    background: #092e55;
+
+    border-radius:
+        100% 0 100% 0;
+}
+
+
+.medal-laurel span:nth-child(1) {
+    left: 11px;
+    top: 0;
+    transform: rotate(-15deg);
+}
+
+.medal-laurel span:nth-child(2) {
+    left: 7px;
+    top: 12px;
+    transform: rotate(-30deg);
+}
+
+.medal-laurel span:nth-child(3) {
+    left: 4px;
+    top: 24px;
+    transform: rotate(-45deg);
+}
+
+.medal-laurel span:nth-child(4) {
+    left: 2px;
+    top: 37px;
+    transform: rotate(-60deg);
+}
+
+.medal-laurel span:nth-child(5) {
+    left: 5px;
+    top: 49px;
+    transform: rotate(-70deg);
+}
+
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.title-section {
+
+    position: absolute;
+
+    top: 124px;
+
+    left: 220px;
+    right: 220px;
+
+    text-align: center;
+
+    z-index: 45;
+}
+
+
+.title-section h1 {
+
+    margin: 0;
+
+    font-size: 44px;
+
+    line-height: 1.05;
+
+    color: #092e5b;
+}
+
+
+/* Subtitle */
+
+.certificate-title {
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 18px;
+
+    margin-top: 11px;
+
+    font-size: 16px;
+
+    letter-spacing: 8px;
+}
+
+
+.certificate-title span {
+
+    width: 88px;
+    height: 2px;
+
+    background: #c6a044;
+}
+
+
+/* =========================================================
+   QR
+========================================================= */
+
+.qr-section {
+
+    position: absolute;
+
+    top: 190px;
+    right: 72px;
+
+    width: 108px;
+
+    text-align: center;
+
+    z-index: 60;
+}
+
+
+.qr-box {
+
+    width: 96px;
+    height: 96px;
+
+    margin: auto;
+
+    padding: 3px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background: white;
+
+    border: 2px solid #c6a044;
+}
+
+
+#qrcode {
+
+    width: 86px;
+    height: 86px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+}
+
+
+#qrcode img,
+#qrcode canvas {
+
+    width: 86px !important;
+    height: 86px !important;
+
+    display: block;
+}
+
+
+.qr-label {
+
+    margin-top: 5px;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 11px;
+
+    color: #111;
+}
+
+
+/* =========================================================
+   MAIN CONTENT
+========================================================= */
+
+.main-content {
+
+    position: absolute;
+
+    top: 238px;
+
+    left: 220px;
+    right: 220px;
+
+    text-align: center;
+
+    z-index: 45;
+}
+
+
+.certify {
+
+    font-size: 15px;
+
+    line-height: 1.25;
+}
+
+
+/* Intern name */
+
+.intern-name {
+
+    margin-top: 7px;
+
+    font-family:
+        "Brush Script MT",
+        "Segoe Script",
+        cursive;
+
+    font-size: 41px;
+
+    font-style: italic;
+
+    line-height: 1;
+}
+
+
+/* Name decoration */
+
+.name-decoration {
+
+    width: 285px;
+
+    margin: 8px auto 12px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+}
+
+
+.name-decoration span {
+
+    flex: 1;
+
+    height: 2px;
+
+    background: #c6a044;
+}
+
+
+.name-decoration b {
+
+    color: #c6a044;
+
+    font-size: 9px;
+}
+
+
+/* =========================================================
+   LEAGUE CONTENT
+========================================================= */
+
+.award-text {
+
+    font-size: 15px;
+
+    line-height: 1.25;
+}
+
+
+/* League badge */
+
+.league-badge {
+
+    width: 455px;
+    height: 46px;
+
+    margin: 11px auto 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background:
+        linear-gradient(
+            #ffe28c,
+            #f0c957
+        );
+
+    border: 1px solid #d6a936;
+
+    border-radius: 25px;
+
+    color: #092e5b;
+
+    font-size: 21px;
+
+    font-weight: 700;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.6);
+}
+
+
+/* League name */
+
+.league-name {
+
+    margin-top: 9px;
+
+    font-size: 17px;
+
+    font-weight: 700;
+
+    line-height: 1.25;
+}
+
+
+/* Description */
+
+.league-description {
+
+    width: 620px;
+
+    margin: 10px auto 0;
+
+    font-size: 13px;
+
+    font-style: italic;
+
+    line-height: 1.38;
+
+    color: #243b57;
+}
+
+
+/* =========================================================
+   DETAILS
+========================================================= */
+
+.details {
+
+    position: absolute;
+
+    left: 120px;
+    right: 120px;
+
+    /*
+       Enough distance from description
+    */
+
+    top: 515px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    column-gap: 34px;
+
+    text-align: center;
+
+    z-index: 55;
+}
+
+
+.detail {
+
+    min-width: 0;
+}
+
+
+/* Icons */
+
+.detail-icon {
+
+    height: 30px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    margin-bottom: 4px;
+}
+
+
+/* Calendar */
+
+.calendar-icon span {
+
+    position: relative;
+
+    width: 21px;
+    height: 21px;
+
+    border: 2px solid #092e5b;
+
+    border-radius: 2px;
+}
+
+
+.calendar-icon span::before {
+
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    right: 0;
+
+    top: 6px;
+
+    border-top: 2px solid #092e5b;
+}
+
+
+.calendar-icon span::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 4px;
+    top: -5px;
+
+    width: 3px;
+    height: 6px;
+
+    background: #092e5b;
+
+    box-shadow:
+        9px 0 #092e5b;
+}
+
+
+/* Location */
+
+.location-icon span {
+
+    width: 21px;
+    height: 25px;
+
+    background: #092e5b;
+
+    border-radius:
+        50% 50% 50% 0;
+
+    transform: rotate(-45deg);
+
+    position: relative;
+}
+
+
+.location-icon span::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 6px;
+    top: 6px;
+
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: white;
+}
+
+
+/* People */
+
+.people-icon span {
+
+    position: relative;
+
+    width: 32px;
+    height: 27px;
+}
+
+
+.people-icon span::before {
+
+    content: "";
+
+    position: absolute;
+
+    left: 11px;
+    top: 0;
+
+    width: 10px;
+    height: 10px;
+
+    background: #092e5b;
+
+    border-radius: 50%;
+}
+
+
+.people-icon span::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 4px;
+    bottom: 0;
+
+    width: 24px;
+    height: 14px;
+
+    background: #092e5b;
+
+    border-radius:
+        12px 12px 2px 2px;
+}
+
+
+/* Detail line */
+
+.detail-line {
+
+    height: 1px;
+
+    margin: 2px 10px 8px;
+
+    background: #092e5b;
+}
+
+
+/* Title */
+
+.detail-title {
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    line-height: 1.25;
+}
+
+
+/* Value */
+
+.detail-value {
+
+    margin-top: 4px;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    line-height: 1.25;
+}
+
+
+/* Signature */
+
+.signature {
+
+    height: 30px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    font-family:
+        "Brush Script MT",
+        "Segoe Script",
+        cursive;
+
+    font-size: 24px;
+
+    font-style: italic;
+}
+
+
+/* =========================================================
+   ORGANIZATION
+========================================================= */
+
+.organization {
+
+    position: absolute;
+
+    left: 365px;
+    right: 365px;
+
+    top: 660px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 14px;
+
+    z-index: 55;
+}
+
+
+.organization span {
+
+    width: 100px;
+    height: 2px;
+
+    background: #c6a044;
+}
+
+
+.organization strong {
+
+    font-size: 18px;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   BOTTOM LEFT
+========================================================= */
+
+.bottom-left {
+
+    position: absolute;
+
+    left: -5px;
+    bottom: -5px;
+
+    width: 425px;
+    height: 185px;
+
+    background: #0b315d;
+
+    z-index: 20;
+
+    border-radius:
+        0 100% 0 0 / 0 100% 0 0;
+}
+
+
+/* Gold curve */
+
+.bottom-left::before {
+
+    content: "";
+
+    position: absolute;
+
+    left: -55px;
+    top: -72px;
+
+    width: 470px;
+    height: 225px;
+
+    border-radius: 50%;
+
+    border-top: 8px solid #c6a044;
+
+    transform: rotate(7deg);
+}
+
+
+.bottom-left::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: -56px;
+    top: -57px;
+
+    width: 460px;
+    height: 210px;
+
+    border-radius: 50%;
+
+    border-top: 2px solid #e4c46c;
+
+    transform: rotate(7deg);
+}
+
+
+/* Bottom text */
+
+.tagline {
+
+    position: absolute;
+
+    left: 27px;
+    bottom: 18px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    color: #ffffff;
+
+    font-size: 15px;
+
+    font-style: italic;
+
+    line-height: 1.45;
+
+    z-index: 30;
+}
+
+
+/* =========================================================
+   BOTTOM RIGHT
+========================================================= */
+
+.bottom-right {
+
+    position: absolute;
+
+    right: -10px;
+    bottom: -8px;
+
+    width: 120px;
+    height: 165px;
+
+    background: #0b315d;
+
+    border-radius:
+        100% 0 0 0;
+
+    z-index: 20;
+
+    overflow: hidden;
+}
+
+
+.bottom-right::before {
+
+    content: "";
+
+    position: absolute;
+
+    right: -48px;
+    bottom: -25px;
+
+    width: 105px;
+    height: 205px;
+
+    border-radius: 50%;
+
+    border: 4px solid #c6a044;
+}
+
+
+/* =========================================================
+   BACKGROUND WAVES
+========================================================= */
+
+.wave-area {
+
+    position: absolute;
+
+    right: -25px;
+    top: 85px;
+
+    width: 410px;
+    height: 570px;
+
+    opacity: .16;
+
+    z-index: 2;
+
+    overflow: hidden;
+}
+
+
+.wave {
+
+    position: absolute;
+
+    border: 1px solid #d8dde3;
+
+    border-left: 0;
+    border-bottom: 0;
+
+    border-radius: 50%;
+}
+
+
+.wave-1 {
+
+    width: 500px;
+    height: 600px;
+
+    right: -185px;
+    top: 20px;
+}
+
+.wave-2 {
+
+    width: 470px;
+    height: 570px;
+
+    right: -160px;
+    top: 45px;
+}
+
+.wave-3 {
+
+    width: 440px;
+    height: 540px;
+
+    right: -135px;
+    top: 70px;
+}
+
+.wave-4 {
+
+    width: 410px;
+    height: 510px;
+
+    right: -110px;
+    top: 95px;
+}
+
+
+/* =========================================================
+   PRINT
+========================================================= */
+
+@media print {
+
+    @page {
+
+        size: 1192px 757px;
+
+        margin: 0;
+    }
+
+    html,
+    body {
+
+        width: 1192px;
+        height: 757px;
+
+        margin: 0;
+        padding: 0;
+
+        background: white;
+    }
+
+    .certificate {
+
+        box-shadow: none;
+    }
+}

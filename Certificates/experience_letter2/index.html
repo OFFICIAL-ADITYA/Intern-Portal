@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Internship Experience Letter</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="letter">
+
+    <!-- =================================================
+         BORDERS
+    ================================================== -->
+
+    <div class="outer-border"></div>
+    <div class="inner-border"></div>
+
+
+    <!-- =================================================
+         BACKGROUND WATERMARK
+    ================================================== -->
+
+    <div class="watermark">
+        <div class="watermark-ring">
+            <div class="watermark-letter">U</div>
+        </div>
+    </div>
+
+
+    <!-- =================================================
+         TOP RIGHT DECORATION
+    ================================================== -->
+
+    <svg class="top-decoration"
+         viewBox="0 0 330 150">
+
+        <path
+            d="M80 -20
+               C150 10 230 55 340 145"
+            fill="none"
+            stroke="#0b315c"
+            stroke-width="13"/>
+
+        <path
+            d="M105 -15
+               C175 15 245 60 340 145"
+            fill="none"
+            stroke="#d0a63f"
+            stroke-width="5"/>
+
+        <path
+            d="M125 -12
+               C195 18 260 65 340 140"
+            fill="none"
+            stroke="#ffffff"
+            stroke-width="2"/>
+
+    </svg>
+
+
+    <!-- =================================================
+         TOP LEFT LOGO
+    ================================================== -->
+
+    <div class="logo">
+
+        <svg class="logo-cap"
+             viewBox="0 0 50 45">
+
+            <path
+                d="M4 15 L25 4 L46 15 L25 26 Z"
+                fill="#0b315c"/>
+
+            <path
+                d="M11 18 V29
+                   C19 35 31 35 39 29
+                   V18"
+                fill="#0b315c"/>
+
+            <path
+                d="M43 17 V30"
+                stroke="#0b315c"
+                stroke-width="3"/>
+
+        </svg>
+
+        <div class="logo-name">
+            UPTO<span>SKILLS</span>
+        </div>
+
+        <div class="logo-tagline">
+            Skills for a Brighter Tomorrow
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         TOP COMPANY TAGLINE
+    ================================================== -->
+
+    <div class="company-line">
+        SOFTWARE SOLUTIONS FOR REAL IMPACT
+    </div>
+
+    <div class="company-line-rule"></div>
+
+
+    <!-- =================================================
+         TOP RIGHT INFORMATION
+    ================================================== -->
+
+    <div class="reference-info">
+
+        <div>
+            Ref No. :
+            <strong id="referenceId">
+                {{ReferenceID}}
+            </strong>
+        </div>
+
+        <div>
+            Date :
+            <strong id="issueDate">
+                {{IssueDate}}
+            </strong>
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         LEARN GROW SUCCEED
+    ================================================== -->
+
+    <div class="learn-grow">
+
+        <span>Learn</span>
+        <span>Grow</span>
+        <span>Succeed</span>
+
+    </div>
+
+
+    <!-- =================================================
+         MAIN HEADING
+    ================================================== -->
+
+    <div class="heading">
+
+        <h1>
+            INTERNSHIP EXPERIENCE LETTER
+        </h1>
+
+        <div class="heading-line">
+
+            <span></span>
+
+            <strong>
+                TO WHOM IT MAY CONCERN
+            </strong>
+
+            <span></span>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         MAIN LETTER
+    ================================================== -->
+
+    <main class="content">
+
+        <p class="opening">
+            This is to certify that
+            <strong id="internName">
+                {{InternName}}
+            </strong>
+            has successfully completed an internship at
+            <strong id="organizationName">
+                {{OrganizationName}}
+            </strong>
+            as a
+            <strong id="position">
+                {{Position}}
+            </strong>
+            in the
+            <strong id="department">
+                {{Department}}
+            </strong>
+            department, from
+            <strong id="startDate">
+                {{StartDate}}
+            </strong>
+            to
+            <strong id="endDate">
+                {{EndDate}}
+            </strong>
+            with a duration of
+            <strong id="duration">
+                {{Duration}}
+            </strong>.
+        </p>
+
+
+        <p>
+            During this period,
+            <strong id="internName2">
+                {{InternName}}
+            </strong>
+            demonstrated a proactive attitude, strong learning ability,
+            and a commitment to delivering quality work. They were involved
+            in various tasks and projects, contributing positively to the
+            team and showing initiative in understanding and applying new concepts.
+        </p>
+
+
+        <p>
+            Their professionalism, dedication, and willingness to learn
+            have been commendable. We believe that the knowledge and
+            experience gained during this internship will serve them well
+            in their future endeavors.
+        </p>
+
+
+        <p>
+            We wish
+            <strong id="internName3">
+                {{InternName}}
+            </strong>
+            continued success in all their academic and professional pursuits.
+        </p>
+
+    </main>
+
+
+    <!-- =================================================
+         FOUR INFORMATION BLOCKS
+    ================================================== -->
+
+    <section class="info-row">
+
+
+        <!-- DOMAIN -->
+
+        <div class="info-box">
+
+            <div class="info-icon briefcase">
+
+                <span></span>
+
+            </div>
+
+            <div class="info-title">
+                Domain / Role
+            </div>
+
+            <div class="info-value"
+                 id="domain">
+
+                {{Domain}}
+
+            </div>
+
+        </div>
+
+
+        <!-- DURATION -->
+
+        <div class="info-box">
+
+            <div class="info-icon calendar">
+
+                <span></span>
+
+            </div>
+
+            <div class="info-title">
+                Duration
+            </div>
+
+            <div class="info-value">
+
+                <span id="duration2">
+                    {{StartDate}}
+                </span>
+
+                -
+
+                <span id="endDate2">
+                    {{EndDate}}
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- WORK MODE -->
+
+        <div class="info-box">
+
+            <div class="info-icon location">
+
+                <span></span>
+
+            </div>
+
+            <div class="info-title">
+                Work Mode
+            </div>
+
+            <div class="info-value"
+                 id="workMode">
+
+                {{WorkMode}}
+
+            </div>
+
+        </div>
+
+
+        <!-- REPORTING MANAGER -->
+
+        <div class="info-box">
+
+            <div class="info-icon team">
+
+                <span></span>
+
+            </div>
+
+            <div class="info-title">
+                Reporting Manager
+            </div>
+
+            <div class="info-value"
+                 id="reportingManager">
+
+                {{ReportingManager}}
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =================================================
+         SIGNATURE
+    ================================================== -->
+
+    <div class="signature-section">
+
+        <div class="sincerely">
+            Sincerely,
+        </div>
+
+        <div class="signature"
+             id="authorizedSignature">
+
+            Authorized
+
+        </div>
+
+        <div class="signature-line"></div>
+
+        <div class="authorized-name"
+             id="authorizedPersonName">
+
+            {{AuthorizedPersonName}}
+
+        </div>
+
+        <div class="designation"
+             id="designation">
+
+            {{Designation}}
+
+        </div>
+
+        <div class="signature-company">
+            UptoSkills
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         COMPANY SEAL
+    ================================================== -->
+
+    <div class="seal">
+
+        <svg viewBox="0 0 180 180">
+
+            <defs>
+
+                <linearGradient
+                    id="sealGradient"
+                    x1="0"
+                    y1="0"
+                    x2="1"
+                    y2="1">
+
+                    <stop offset="0%"
+                          stop-color="#ffffff"/>
+
+                    <stop offset="100%"
+                          stop-color="#dfe7ef"/>
+
+                </linearGradient>
+
+            </defs>
+
+
+            <circle
+                cx="90"
+                cy="90"
+                r="78"
+                fill="url(#sealGradient)"
+                stroke="#0b315c"
+                stroke-width="3"/>
+
+
+            <circle
+                cx="90"
+                cy="90"
+                r="67"
+                fill="none"
+                stroke="#0b315c"
+                stroke-width="2"/>
+
+
+            <!-- TOP TEXT -->
+
+            <path
+                id="sealArcTop"
+                d="M35 90 A55 55 0 0 1 145 90"
+                fill="none"/>
+
+            <text
+                class="seal-text">
+
+                <textPath
+                    href="#sealArcTop"
+                    startOffset="50%"
+                    text-anchor="middle">
+
+                    UPTOSKILLS
+
+                </textPath>
+
+            </text>
+
+
+            <!-- CENTER LOGO -->
+
+            <circle
+                cx="90"
+                cy="92"
+                r="27"
+                fill="#0b315c"/>
+
+            <path
+                d="M76 105 L90 78 L104 105 L90 99 Z"
+                fill="#ffffff"/>
+
+            <path
+                d="M83 105 H97 V112 H83 Z"
+                fill="#ffffff"/>
+
+
+            <!-- BOTTOM TEXT -->
+
+            <path
+                id="sealArcBottom"
+                d="M38 102 A55 55 0 0 0 142 102"
+                fill="none"/>
+
+            <text
+                class="seal-text small">
+
+                <textPath
+                    href="#sealArcBottom"
+                    startOffset="50%"
+                    text-anchor="middle">
+
+                    EMPOWERING TALENT
+
+                </textPath>
+
+            </text>
+
+        </svg>
+
+        <div class="official-seal">
+            Official Company Seal
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         QR
+    ================================================== -->
+
+    <div class="qr-section">
+
+        <div class="qr-box">
+
+            <div id="qrcode"></div>
+
+        </div>
+
+        <div class="qr-label">
+            Scan to Verify
+        </div>
+
+        <div class="verification"
+             id="verificationText">
+
+            {{VerificationURL}}
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         BOTTOM LEFT DECORATION
+    ================================================== -->
+
+    <div class="bottom-left">
+
+        <svg
+            viewBox="0 0 300 155"
+            preserveAspectRatio="none">
+
+            <path
+                d="
+                M0 0
+                C55 45 95 72 150 95
+                C205 118 245 138 300 155
+                L0 155 Z"
+                fill="#0b315c"/>
+
+            <path
+                d="
+                M0 0
+                C58 43 98 69 153 92
+                C208 115 250 137 300 155"
+                fill="none"
+                stroke="#d0a63f"
+                stroke-width="7"/>
+
+            <path
+                d="
+                M0 9
+                C58 50 100 76 155 99
+                C210 122 250 144 300 155"
+                fill="none"
+                stroke="#0b315c"
+                stroke-width="3"/>
+
+            <path
+                d="
+                M0 18
+                C60 58 104 83 158 106
+                C212 129 252 148 300 155"
+                fill="none"
+                stroke="#158d96"
+                stroke-width="10"/>
+
+        </svg>
+
+
+        <div class="bottom-slogan">
+            People.<br>
+            Projects.<br>
+            Possibilities.
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         BOTTOM CONTACT BAR
+    ================================================== -->
+
+    <div class="contact-bar">
+
+        <div>
+            ✉
+            <span id="companyEmail">
+                {{CompanyEmail}}
+            </span>
+        </div>
+
+        <div>
+            │
+        </div>
+
+        <div>
+            ☎
+            <span id="companyPhone">
+                {{CompanyPhone}}
+            </span>
+        </div>
+
+        <div>
+            │
+        </div>
+
+        <div>
+            ◉
+            <span id="companyWebsite">
+                {{CompanyWebsite}}
+            </span>
+        </div>
+
+        <div>
+            │
+        </div>
+
+        <div>
+            ◆
+            <span id="companyAddress">
+                {{CompanyAddress}}
+            </span>
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         BOTTOM TAGLINE
+    ================================================== -->
+
+    <div class="bottom-tagline">
+        BUILDING SKILLS FOR A BETTER TOMORROW
+    </div>
+
+
+    <!-- =================================================
+         BOTTOM RIGHT BORDER
+    ================================================== -->
+
+    <div class="bottom-corner"></div>
+
+</div>
+
+
+<!-- =====================================================
+     QR CODE LIBRARY
+====================================================== -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+<script src="script.js"></script>
+
+</body>
+</html>
